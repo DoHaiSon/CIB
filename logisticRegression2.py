@@ -1,9 +1,11 @@
 # Logistic Regression
 import numpy as np 
 import tensorflow as tf 
+import tensorflow.compat.v1 as tf1
 import timeit
 import os
-from tensorflow.examples.tutorials.mnist import input_data
+#from tensorflow.examples.tutorials.mnist import input_data
+import tensorflow_datasets as tfds
 
 class LogisticRegression(object):
 	"""Multi class Logistic Regression Class
@@ -49,14 +51,14 @@ class LogisticRegression(object):
 		"""Minimize the error using cross entropy
 		:param y: tensor, corresponds to a vector that gives for example the correct label
 		"""
-		return tf.reduce_mean( - tf.reduce_sum(y * tf.log(self.pred), reduction_indices = 1))
+		return tf1.reduce_mean( - tf1.reduce_sum(y * tf1.log(self.pred), reduction_indices = 1))
 
 	def accuracy(self, y):
 		""" Calculate accuracy
 		:param y: desired output
 		"""
 		correct_prediction = tf.equal(self.correct, tf.argmax (y, axis = 1))
-		return tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+		return tf1.reduce_mean(tf1.cast(correct_prediction, tf.float32))
 
 if __name__ == "__main__":
 	# Load mnist dataset

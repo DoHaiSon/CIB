@@ -1,16 +1,18 @@
 # Restrict Boltzmann Machine 
 import tensorflow as tf 
+import tensorflow.compat.v1 as tf1
 import math
 import timeit
 import numpy as np 
 import matplotlib.pyplot as plt
 
-from tensorflow.examples.tutorials.mnist import input_data
+#from tensorflow.examples.tutorials.mnist import input_data
+import tensorflow_datasets as tfds
 from utils import tile_raster_images
 
 
 def weight_variable(shape):
-    initial = tf.truncated_normal(shape, stddev = 0.1)
+    initial = tf1.truncated_normal(shape, stddev = 0.1)
     return tf.Variable(initial)
 
 def bias_variable(shape):
@@ -63,10 +65,10 @@ class GRBM(object):
 		return (pre, tf.nn.sigmoid(pre))
 
 	def sample_bernoulli(self, prob):
-		return tf.nn.relu(tf.sign(prob - tf.random_uniform(tf.shape(prob))))
+		return tf.nn.relu(tf.sign(prob - tf1.random_uniform(tf1.shape(prob))))
 
 	def sample_gaussian(self, x, sigma):
-		return x + tf.random_normal(tf.shape(x), mean = 0.0, stddev = sigma, dtype=tf.float32)
+		return x + tf1.random_normal(tf.shape(x), mean = 0.0, stddev = sigma, dtype=tf.float32)
 
 
 	def sample_h_given_v(self, v0_sample):
@@ -104,8 +106,8 @@ class GRBM(object):
 	def free_energy(self, v_sample):
 		#function to compute the free energy which need for computing the gradient
 		wx_b = tf.matmul(v_sample, self.W) / self.sigma**2 + self.hbias
-		vbias_term = tf.reduce_sum(0.5*tf.square(v_sample - self.vbias)/ (self.sigma**2), axis = 1)
-		hidden_term = tf.reduce_sum(tf.log(1.0 + tf.exp(wx_b)), axis =1 )
+		vbias_term = tf1.reduce_sum(0.5*tf.square(v_sample - self.vbias)/ (self.sigma**2), axis = 1)
+		hidden_term = tf1.reduce_sum(tf1.log(1.0 + tf.exp(wx_b)), axis =1 )
 		return -hidden_term + vbias_term
 	
 	#we then add a train_ops method, whose purpose is to generate the sysbolic gradients from CD-k and PCD-k updates
@@ -151,11 +153,11 @@ class GRBM(object):
 		gparams = tf.gradients(ys = [self.cost], xs = self.params)
 		new_params = []
 		for gparam, param in zip(gparams, self.params):
-			new_params.append(tf.assign(param, param - gparam * lr))
-		cost = tf.reduce_mean(tf.reduce_sum(tf.square(self.input - nv_mean), axis=1))
+			new_params.append(tf1.assign(param, param - gparam * lr))
+		cost = tf.reduce_mean(tf1.reduce_sum(tf1.square(self.input - nv_mean), axis=1))
 			#cost = -tf.reduce_mean(tf.reduce_sum(self.input * tf.log(nv_mean) + (1.0 - self.input) * tf.log(1.0 - nv_mean), axis = 1))
 		if persistent is not None:
-			new_persistent = [tf.assign(persistent, nh_sample)]
+			new_persistent = [tf1.assign(persistent, nh_sample)]
 		else:
 			new_persistent = []
 		print("grbm")
@@ -212,7 +214,7 @@ class RBM(object):
 
 	def sample_prob(self, prob):
 		'''Do sampling with the given probability'''
-		return tf.nn.relu(tf.sign(prob - tf.random_uniform(tf.shape(prob))))
+		return tf.nn.relu(tf.sign(prob - tf1.random_uniform(tf.shape(prob))))
 	
 	def sample_h_given_v(self, v0_sample):
 		''' This function infers state of hidden units given visible units'''
@@ -254,7 +256,7 @@ class RBM(object):
     		computing the gradient of the parameters'''
 		wx_b = tf.matmul(v_sample, self.W) + self.hbias
 		vbias_term = tf.matmul(v_sample, tf.expand_dims(self.vbias, axis = 1))
-		hidden_term = tf.reduce_sum(tf.log(1 + tf.exp(wx_b)), axis = 1)
+		hidden_term = tf1.reduce_sum(tf1.log(1 + tf1.exp(wx_b)), axis = 1)
 		return -hidden_term - vbias_term
 
 	# we then add a get_train_ops method, whose purpose is to generate the
@@ -303,10 +305,10 @@ class RBM(object):
 		gparams = tf.gradients(ys = [self.cost], xs = self.params)
 		new_params = []
 		for gparam, param in zip(gparams, self.params):
-			new_params.append(tf.assign(param, param - gparam * lr))
-		cost = tf.reduce_mean(tf.reduce_sum(tf.square(self.input - nv_mean), axis=1))
+			new_params.append(tf1.assign(param, param - gparam * lr))
+		cost = tf1.reduce_mean(tf1.reduce_sum(tf1.square(self.input - nv_mean), axis=1))
 		if persistent is not None:
-			new_persistent = [tf.assign(persistent, nh_sample)]
+			new_persistent = [tf1.assign(persistent, nh_sample)]
 		else:
 			new_persistent = []
 		print("rbm")
@@ -316,7 +318,7 @@ class RBM(object):
 		'''compute the cross-entropy of the original input and the reconstruction'''
 		act_h = self.propup(self.input)
 		act_v = self.propdown(act_h)
-		cross_entropy = -tf.reduce_mean(tf.reduce_sum(self.input * tf.log(act_v) + (1.0 - self.input)* tf.log(1.0 - act_v), axis = 1))
+		cross_entropy = -tf1.reduce_mean(tf1.reduce_sum(self.input * tf1.log(act_v) + (1.0 - self.input)* tf1.log(1.0 - act_v), axis = 1))
 		print("cost rbm")
 		return cross_entropy
 		"""
@@ -366,10 +368,10 @@ def test_rbm():
 	cost = rbm.get_reconstruction_cost()
 
 	#create the persistent variable
-	persistent_chain = tf.Variable(tf.zeros([batch_size, n_hidden]), dtype = tf.float32)
+	persistent_chain = tf1.Variable(tf.zeros([batch_size, n_hidden]), dtype = tf.float32)
 	_,train = rbm.get_train_ops(lr = learning_rate, persistent = persistent_chain, k = 15)
 	#initializing the variables
-	init = tf.global_variables_initializer()
+	init = tf1.global_variables_initializer()
 
 	#------------------
 	#	Training RBM

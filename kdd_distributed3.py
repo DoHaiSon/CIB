@@ -5,20 +5,21 @@ from __future__ import division
 from __future__ import print_function
 import numpy as np 
 import tensorflow as tf
-
+import tensorflow.compat.v1 as tf1
+tf1.disable_eager_execution()
 from mlxtend.preprocessing import one_hot
 import argparse
 import random
 import sys
 import time
-from tensorflow.contrib import slim
+import tf_slim as slim
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error as MSE
 
 import os
 import pandas as pd
 from scipy import stats
-from tensorflow.contrib.learn.python.learn.datasets import base
+# from tensorflow.contrib.learn.python.learn.datasets import base
 from tensorflow.python.framework import dtypes
 from MLP import HiddenLayer, MLP
 from logisticRegression2 import LogisticRegression 
@@ -28,6 +29,10 @@ import timeit
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report, precision_score, recall_score
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 
+import collections
+
+Datasets = collections.namedtuple('Datasets', ['train', 'validation', 'test'])
+
 #----------distributed------------------------
 #define cluster
 parameter_servers = ["localhost:2222"]
@@ -35,25 +40,25 @@ workers = [ "localhost:2223", "localhost:2224", "localhost:2225"]
 cluster = tf.train.ClusterSpec({"ps":parameter_servers, "worker":workers})
 
 # Input Flags
-tf.app.flags.DEFINE_string("job_name", "", "'ps' / 'worker'")
-tf.app.flags.DEFINE_integer("task_index", 0, "Index of task within the job")
-FLAGS = tf.app.flags.FLAGS
+tf1.app.flags.DEFINE_string("job_name", "", "'ps' / 'worker'")
+tf1.app.flags.DEFINE_integer("task_index", 0, "Index of task within the job")
+FLAGS = tf1.app.flags.FLAGS
 
- #Set up server
-config = tf.ConfigProto()
+#Set up server
+config = tf1.ConfigProto()
 config.gpu_options.allow_growth = True
 config.gpu_options.visible_device_list = "0"
 config.allow_soft_placement = True
 config.log_device_placement = True
 
 
-#config.gpu_options.per_process_gpu_memory_fraction = 0.5
-server = tf.train.Server(cluster,
+config.gpu_options.per_process_gpu_memory_fraction = 0.3
+server = tf1.train.Server(cluster,
     job_name=FLAGS.job_name,
     task_index=FLAGS.task_index,
     config=config)
 
-final_step = 100000000
+final_step = 10000000
 
 LOG_DIR = 'kdd_ddl3-%d' % len(workers)
 print('parameters specification finished!')
@@ -111,7 +116,11 @@ class Dataset(object):
         end = self._index_in_epoch
         return self._segments[start:end,:, :], self._labels[start:end,:]
 
-
+# class Datasets:
+#   def __init__(self, train, validation, test):
+#     self.train = train
+#     self.validation = validation
+#     self.test = test 
 
 def windows(data, size):
     start = 0
@@ -175,7 +184,8 @@ def read_data_set(dataset1, dataset2, one_hot = False, dtype = dtypes.float32, r
         
     train = Dataset(train_x, train_y, dtype = dtype , reshape = reshape)
     test = Dataset(test_x, test_y, dtype = dtype, reshape = reshape)
-    return base.Datasets(train = train, validation=None, test = test)
+    #return base.Datasets(train = train, validation=None, test = test)
+    return Datasets(train = train, validation = None, test = test)
 
 def initlabel(dataset):
     labels = dataset['label'].copy()
@@ -407,11 +417,11 @@ if __name__ == "__main__":
         print('Training begin!')
         # Between-graph replication
         is_chief = (FLAGS.task_index == 0) #checks if this is the chief node
-        with tf.device(tf.train.replica_device_setter(ps_tasks=1,
+        with tf1.device(tf1.train.replica_device_setter(ps_tasks=1,
             worker_device="/job:worker/task:%d" % FLAGS.task_index)):
             # count the number of updates
-            global_step = tf.Variable(0,dtype=tf.int32,trainable=False,name='global_step')
-            
+            # global_step = tf.Variable(0,dtype=tf.int32,trainable=False,name='global_step')
+            global_step = tf1.train.create_global_step()
             #--------------------DBN-----------------------------------
             
             n_inp = [1, 1, 41]
@@ -483,46 +493,48 @@ if __name__ == "__main__":
             pred = logLayer.pred
 
             #----optimizer ----------------------
-            optimizer = tf.compat.v1.train.GradientDescentOptimizer(learning_rate = learning_rate_tune)
-            optimizer = tf.compat.v1.train.SyncReplicasOptimizer(optimizer,
+            optimizer = tf1.train.GradientDescentOptimizer(learning_rate = learning_rate_tune)
+            optimizer = tf1.train.SyncReplicasOptimizer(optimizer,
                                                     replicas_to_aggregate=num_agg,
                                                     total_num_replicas=num_agg)            
         
-            train_ops = optimizer.minimize(finetune_cost, var_list= params, global_step=global_step)
+            train_ops = optimizer.minimize(finetune_cost, var_list= params, global_step=tf1.train.get_global_step())
             #-------------------------------------------------------
-            c1 = tf.compat.v1.argmax(pred, axis =1)
-            c2 = tf.compat.v1.argmax(y, axis =1)
+            c1 = tf1.argmax(pred, axis =1)
+            c2 = tf1.argmax(y, axis =1)
             
             print('Summaries begin!')
 
-            tf.compat.v1.summary.scalar('loss',finetune_cost) 
-            tf.compat.v1.summary.histogram('pred_y',pred)
-            tf.compat.v1.summary.histogram('gradients',train_ops)
-            merged = tf.compat.v1.summary.merge_all()
+            tf1.summary.scalar('loss',finetune_cost) 
+            tf1.summary.histogram('pred_y',pred)
+            tf1.summary.histogram('gradients',train_ops)
+            merged = tf1.summary.merge_all()
 
-            init_op = tf.compat.v1.global_variables_initializer()
+            init_op = tf1.global_variables_initializer()
 
         sync_replicas_hook = optimizer.make_session_run_hook(is_chief)
         stop_hook = tf.estimator.StopAtStepHook(last_step = final_step)
-        summary_hook = tf.estimator.SummarySaverHook(save_secs=600,output_dir= LOG_DIR,summary_op=merged)
-        hooks = [sync_replicas_hook, stop_hook,summary_hook]
-        scaff = tf.compat.v1.train.Scaffold(init_op = init_op)
+        summary_hook = tf.estimator.SummarySaverHook(save_secs=600, output_dir= LOG_DIR, summary_op=merged)
+        hooks = [sync_replicas_hook, stop_hook, summary_hook]
+        scaff = tf1.train.Scaffold(init_op = init_op)
     
         begin_time = time.time()
         print("Waiting for other servers")
-        with tf.compat.v1.train.MonitoredTrainingSession(master = server.target,
+        with tf1.train.MonitoredTrainingSession(master = server.target,
                                               is_chief = (FLAGS.task_index ==0),
                                               checkpoint_dir = LOG_DIR,
                                               scaffold = scaff,
-                                              hooks = hooks) as sess: 
+                                              hooks = hooks
+                                              ) as sess: 
+            global_step = tf1.train.get_global_step()
             print('Starting training on worker %d'%FLAGS.task_index)
             while not sess.should_stop():
-                train_writer = tf.compat.v1.summary.FileWriter(os.path.join(LOG_DIR,'train'), graph = tf.compat.v1.get_default_graph())
-                test_writer = tf.compat.v1.summary.FileWriter(os.path.join(LOG_DIR,'test'),graph = tf.compat.v1.get_default_graph())
+                train_writer = tf1.summary.FileWriter(os.path.join(LOG_DIR,'train'), graph = tf1.get_default_graph())
+                test_writer = tf1.summary.FileWriter(os.path.join(LOG_DIR,'test'),graph = tf1.get_default_graph())
                 print('Starting training on worker %d -------------------------------------------------'%FLAGS.task_index)
                 #----pretraining -------------------------------------------------------------------------------
                 start_time = timeit.default_timer()
-                pretraining_epochs = 10 
+                pretraining_epochs = 10
                 batch_size_pre = 100
                 display_step_pre = 1
                 batch_num_pre = int(globals()['train_set_x'+str(FLAGS.task_index)].train.num_examples / batch_size_pre)
@@ -566,6 +578,8 @@ if __name__ == "__main__":
                 end_time = timeit.default_timer()
                 print("time {0} minutes".format((end_time - start_time)/ 60.))
 
+                print("Done Pre-train")
+
                 #--------------------fune-tuning----------------------------------------------------------------
                 start_time = timeit.default_timer()
 
@@ -576,24 +590,20 @@ if __name__ == "__main__":
                 ACC_max = 0
                 pre_max = 0
                 rec_max = 0
-                
                 batch_num_tune = int(globals()['train_set_x'+str(FLAGS.task_index)].train.num_examples/batch_size_num)
-
+                print(batch_num_tune)
                 for epoch in range(training_epochs):
-                    avg_cost = 0.0
+                    avg_cost = 0.0  
                     for i in range(batch_num_tune):
-                        
                         batch_xs, batch_ys = globals()['train_set_x'+str(FLAGS.task_index)].train.next_batch(batch_size_num)
                         summary, _, c, step= sess.run([merged, train_ops, finetune_cost, global_step], feed_dict = {x :batch_xs, y : batch_ys} )
-                        train_writer.add_summary(summary,i)  
+                        train_writer.add_summary(summary,i)
                         avg_cost += c / batch_num_tune
-
                     summary,output_train = sess.run([merged,pred],feed_dict={x: globals()['train_set_x'+str(FLAGS.task_index)].train.segments, y: globals()['train_set_x'+str(FLAGS.task_index)].train.labels})
                     summary,output_test = sess.run([merged,pred], feed_dict={x: globals()['train_set_x'+str(FLAGS.task_index)].test.segments, y: globals()['train_set_x'+str(FLAGS.task_index)].test.labels})
                     test_writer.add_summary(summary, epoch)
                     b =[]
                     d = []
-
                     if epoch % display_step_tune == 0:  
                         print("Epoch:", '%04d' % (epoch +1), "cost:", "{:.9f}".format(avg_cost))
 
