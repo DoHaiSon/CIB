@@ -116,12 +116,6 @@ class Dataset(object):
         end = self._index_in_epoch
         return self._segments[start:end,:, :], self._labels[start:end,:]
 
-# class Datasets:
-#   def __init__(self, train, validation, test):
-#     self.train = train
-#     self.validation = validation
-#     self.test = test 
-
 def windows(data, size):
     start = 0
     while start < data.count():
