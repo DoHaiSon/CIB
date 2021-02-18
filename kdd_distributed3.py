@@ -3,7 +3,8 @@
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
-import numpy as np 
+import numpy as np
+from numpy.core.arrayprint import FloatingFormat 
 import tensorflow as tf
 import tensorflow.compat.v1 as tf1
 tf1.disable_eager_execution()
@@ -43,6 +44,9 @@ cluster = tf.train.ClusterSpec({"ps":parameter_servers, "worker":workers})
 tf1.app.flags.DEFINE_string("job_name", "", "'ps' / 'worker'")
 tf1.app.flags.DEFINE_integer("task_index", 0, "Index of task within the job")
 FLAGS = tf1.app.flags.FLAGS
+
+FLAGS.job_name = "worker"
+FLAGS.task_index = 0
 
 #Set up server
 config = tf1.ConfigProto()
@@ -124,17 +128,16 @@ def windows(data, size):
 
 def segment_signal(data, window_size = 1):
 
-    segments = np.empty((0, window_size, 41))
+    segments = np.empty((0, window_size, 33))
     labels = np.empty((0))
-    num_features = ["duration", "protocol_type","service","flag", "src_bytes", "dst_bytes","land","wrong_fragment","urgent","hot","num_failed_logins",
-    "logged_in","num_compromised","root_shell","su_attempted","num_root",
-    "num_file_creations","num_shells","num_access_files","num_outbound_cmds",
-    "is_host_login","is_guest_login","count","srv_count","serror_rate",
-    "srv_serror_rate","rerror_rate","srv_rerror_rate","same_srv_rate",
-    "diff_srv_rate","srv_diff_host_rate","dst_host_count","dst_host_srv_count",
-    "dst_host_same_srv_rate","dst_host_diff_srv_rate","dst_host_same_srv_port_rate",
-    "dst_host_srv_diff_host_rate","dst_host_serror_rate","dst_host_srv_serror_rate",
-    "dst_host_rerror_rate","dst_host_srv_rerror_rate"
+    num_features = ["duration", "protocol_type", "service", "flag", "src_bytes", "dst_bytes",
+                "land", "wrong_fragment", "urgent", "count", "srv_count", "serror_rate",
+                "srv_serror_rate", "rerror_rate", "srv_rerror_rate", "same_srv_rate", 
+                "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
+                "dst_host_same_srv_rate", "dst_host_diff_srv_rate", "dst_host_same_src_port_rate",
+                "dst_host_srv_diff_host_rate", "dst_host_serror_rate", "dst_host_srv_serror_rate", 
+                "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "src_ip", "src_port", "dst_ip",
+                "dst_port", "conn_end_time"
     ]
     segments = np.asarray(data[num_features].copy())
     labels = data["label"]
@@ -142,16 +145,14 @@ def segment_signal(data, window_size = 1):
     return segments, labels
 
 def read_data(filename):
-    col_names = ["duration","protocol_type","service","flag","src_bytes",
-    "dst_bytes","land","wrong_fragment","urgent","hot","num_failed_logins",
-    "logged_in","num_compromised","root_shell","su_attempted","num_root",
-    "num_file_creations","num_shells","num_access_files","num_outbound_cmds",
-    "is_host_login","is_guest_login","count","srv_count","serror_rate",
-    "srv_serror_rate","rerror_rate","srv_rerror_rate","same_srv_rate",
-    "diff_srv_rate","srv_diff_host_rate","dst_host_count","dst_host_srv_count",
-    "dst_host_same_srv_rate","dst_host_diff_srv_rate","dst_host_same_srv_port_rate",
-    "dst_host_srv_diff_host_rate","dst_host_serror_rate","dst_host_srv_serror_rate",
-    "dst_host_rerror_rate","dst_host_srv_rerror_rate","label"]
+    col_names = ["duration", "protocol_type", "service", "flag", "src_bytes", "dst_bytes",
+                "land", "wrong_fragment", "urgent", "count", "srv_count", "serror_rate",
+                "srv_serror_rate", "rerror_rate", "srv_rerror_rate", "same_srv_rate", 
+                "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
+                "dst_host_same_srv_rate", "dst_host_diff_srv_rate", "dst_host_same_src_port_rate",
+                "dst_host_srv_diff_host_rate", "dst_host_serror_rate", "dst_host_srv_serror_rate", 
+                "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "src_ip", "src_port", "dst_ip",
+                "dst_port", "conn_end_time", "label"]
     dataset = pd.read_csv(filename, header = None, names = col_names)
     return dataset      
 
@@ -170,10 +171,10 @@ def read_data_set(dataset1, dataset2, one_hot = False, dtype = dtypes.float32, r
     labels = np.asarray(pd.get_dummies(labels1.append([labels2])), dtype = np.int8)
     labels1 = labels[:len(labels1)]
     labels2 = labels[len(labels1):]
-    train_x = segments1.reshape(len(segments1), 1, 1 ,41)
+    train_x = segments1.reshape(len(segments1), 1, 1 ,33)
     train_y = labels1
 
-    test_x = segments2.reshape(len(segments2), 1, 1 ,41)
+    test_x = segments2.reshape(len(segments2), 1, 1 ,33)
     test_y = labels2
         
     train = Dataset(train_x, train_y, dtype = dtype , reshape = reshape)
@@ -183,6 +184,8 @@ def read_data_set(dataset1, dataset2, one_hot = False, dtype = dtypes.float32, r
 
 def initlabel(dataset):
     labels = dataset['label'].copy()
+    labels[labels == 'ddos'] = 'ddos'
+    labels[labels == 'normal'] = 'normal'
     labels[labels == 'back.'] = 'dos'
     labels[labels == 'buffer_overflow.'] = 'u2r'
     labels[labels == 'ftp_write.'] =  'r2l'
@@ -254,40 +257,64 @@ def nomial(dataset1, dataset2):
         
     dataset1['flag'] = flag1
     dataset2['flag'] = flag2
+    
+    src_ip1 = dataset1['src_ip'].copy()
+    src_ip2 = dataset2['src_ip'].copy()
+    src_ip = dataset['src_ip'].unique()
+    for i in range(len(src_ip)):
+        src_ip1[src_ip1 == src_ip[i]] = i
+        src_ip2[src_ip2 == src_ip[i]] = i
+    dataset1['src_ip'] = src_ip1
+    dataset2['src_ip'] = src_ip2
 
+    dst_ip1 = dataset1['dst_ip'].copy()
+    dst_ip2 = dataset2['dst_ip'].copy()
+    dst_ip = dataset['dst_ip'].unique()
+    for i in range(len(dst_ip)):
+        dst_ip1[dst_ip1 == dst_ip[i]] = i
+        dst_ip2[dst_ip2 == dst_ip[i]] = i
+    dataset1['dst_ip'] = dst_ip1
+    dataset2['dst_ip'] = dst_ip2
+
+    conn_end_time1 = dataset1['conn_end_time'].copy()
+    conn_end_time2 = dataset2['conn_end_time'].copy()
+    conn_end_time = dataset['conn_end_time'].unique()
+    for i in range(len(conn_end_time)):
+        conn_end_time1[conn_end_time1 == conn_end_time[i]] = i
+        conn_end_time2[conn_end_time2 == conn_end_time[i]] = i
+    dataset1['conn_end_time'] = conn_end_time1
+    dataset2['conn_end_time'] = conn_end_time2
 
 if __name__ == "__main__":
     dir_path = os.path.dirname(os.path.realpath(__file__))
 
-    filename1 = dir_path + "/datasets/kdd/kddcup.data_10_percent_corrected"
-    filename2 = dir_path + "/datasets/kdd/corrected"
+    filename1 = dir_path + "/datasets/our_kdd_99/splited_1.csv"
+    filename2 = dir_path + "/datasets/our_kdd_99/splited_2.csv"
     
     dataset11 = read_data(filename1)
     dataset22 = read_data(filename2)
 
     #dataset22, dataset44 = train_test_split(dataset33, train_size=0.2, random_state=0)
     
-    dataset13, dataset5 = train_test_split(dataset11, train_size=0.66, random_state=0)
-    dataset24, dataset6 = train_test_split(dataset22, train_size=0.66, random_state=0)
-    dataset1, dataset3 = train_test_split(dataset13, train_size=0.5, random_state=0)
-    dataset2, dataset4 = train_test_split(dataset24, train_size=0.5, random_state=0)
+    dataset13, dataset5 = train_test_split(dataset11, train_size=0.66, random_state=2)
+    dataset24, dataset6 = train_test_split(dataset22, train_size=0.66, random_state=3)
+    dataset1, dataset3 = train_test_split(dataset13, train_size=0.5, random_state=4)
+    dataset2, dataset4 = train_test_split(dataset24, train_size=0.5, random_state=5)
 
     #-------------pre-process dataset1,2-----------------------
 
-    nomial(dataset1, dataset2)
-    
+    nomial(dataset1, dataset2)    
     dataset1['label'] = initlabel(dataset1)
     dataset2['label'] = initlabel(dataset2)
 
-    num_features = ["duration","protocol_type","service","flag", "src_bytes", "dst_bytes","land","wrong_fragment","urgent","hot","num_failed_logins",
-    "logged_in","num_compromised","root_shell","su_attempted","num_root",
-    "num_file_creations","num_shells","num_access_files","num_outbound_cmds",
-    "is_host_login","is_guest_login","count","srv_count","serror_rate",
-    "srv_serror_rate","rerror_rate","srv_rerror_rate","same_srv_rate",
-    "diff_srv_rate","srv_diff_host_rate","dst_host_count","dst_host_srv_count",
-    "dst_host_same_srv_rate","dst_host_diff_srv_rate","dst_host_same_srv_port_rate",
-    "dst_host_srv_diff_host_rate","dst_host_serror_rate","dst_host_srv_serror_rate",
-    "dst_host_rerror_rate","dst_host_srv_rerror_rate"
+    num_features = ["duration", "protocol_type", "service", "flag", "src_bytes", "dst_bytes",
+                "land", "wrong_fragment", "urgent", "count", "srv_count", "serror_rate",
+                "srv_serror_rate", "rerror_rate", "srv_rerror_rate", "same_srv_rate", 
+                "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
+                "dst_host_same_srv_rate", "dst_host_diff_srv_rate", "dst_host_same_src_port_rate",
+                "dst_host_srv_diff_host_rate", "dst_host_serror_rate", "dst_host_srv_serror_rate", 
+                "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "src_ip", "src_port", "dst_ip",
+                "dst_port", "conn_end_time"
     ]
     dataset1[num_features] = dataset1[num_features].astype(float)
     #dataset1[num_features] = dataset1[num_features].apply(lambda x:MinMaxScaler().fit_transform(x))
@@ -303,8 +330,8 @@ if __name__ == "__main__":
     labels1 = dataset1['label'].copy()
     print(labels1.unique())
 
-    labels1[labels1 == 'normal.'] = 0
-    labels1[labels1 == 'dos'] = 1
+    labels1[labels1 == 'normal'] = 0
+    labels1[labels1 == 'ddos'] = 1
     labels1[labels1 == 'u2r'] = 2
     labels1[labels1 == 'r2l'] = 3
     labels1[labels1 == 'probe'] = 4
@@ -313,8 +340,8 @@ if __name__ == "__main__":
     labels2 = dataset2['label'].copy()
     print(labels2.unique())
 
-    labels2[labels2 == 'normal.'] = 0
-    labels2[labels2 == 'dos'] = 1
+    labels2[labels2 == 'normal'] = 0
+    labels2[labels2 == 'ddos'] = 1
     labels2[labels2 == 'u2r'] = 2
     labels2[labels2 == 'r2l'] = 3
     labels2[labels2 == 'probe'] = 4
@@ -329,15 +356,14 @@ if __name__ == "__main__":
     dataset3['label'] = initlabel(dataset3)
     dataset4['label'] = initlabel(dataset4)
 
-    num_features = ["duration","protocol_type","service","flag", "src_bytes", "dst_bytes","land","wrong_fragment","urgent","hot","num_failed_logins",
-    "logged_in","num_compromised","root_shell","su_attempted","num_root",
-    "num_file_creations","num_shells","num_access_files","num_outbound_cmds",
-    "is_host_login","is_guest_login","count","srv_count","serror_rate",
-    "srv_serror_rate","rerror_rate","srv_rerror_rate","same_srv_rate",
-    "diff_srv_rate","srv_diff_host_rate","dst_host_count","dst_host_srv_count",
-    "dst_host_same_srv_rate","dst_host_diff_srv_rate","dst_host_same_srv_port_rate",
-    "dst_host_srv_diff_host_rate","dst_host_serror_rate","dst_host_srv_serror_rate",
-    "dst_host_rerror_rate","dst_host_srv_rerror_rate"
+    num_features = ["duration", "protocol_type", "service", "flag", "src_bytes", "dst_bytes",
+                "land", "wrong_fragment", "urgent", "count", "srv_count", "serror_rate",
+                "srv_serror_rate", "rerror_rate", "srv_rerror_rate", "same_srv_rate", 
+                "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
+                "dst_host_same_srv_rate", "dst_host_diff_srv_rate", "dst_host_same_src_port_rate",
+                "dst_host_srv_diff_host_rate", "dst_host_serror_rate", "dst_host_srv_serror_rate", 
+                "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "src_ip", "src_port", "dst_ip",
+                "dst_port", "conn_end_time"
     ]
     dataset3[num_features] = dataset3[num_features].astype(float)
     dataset3[num_features] = MinMaxScaler().fit_transform(dataset3[num_features].values)
@@ -345,16 +371,16 @@ if __name__ == "__main__":
     dataset4[num_features] = MinMaxScaler().fit_transform(dataset4[num_features].values)
 
     labels3 = dataset3['label'].copy()
-    labels3[labels3 == 'normal.'] = 0
-    labels3[labels3 == 'dos'] = 1
+    labels3[labels3 == 'normal'] = 0
+    labels3[labels3 == 'ddos'] = 1
     labels3[labels3 == 'u2r'] = 2
     labels3[labels3 == 'r2l'] = 3
     labels3[labels3 == 'probe'] = 4
     dataset3['label'] = labels3
     
     labels4 = dataset4['label'].copy()
-    labels4[labels4 == 'normal.'] = 0
-    labels4[labels4 == 'dos'] = 1
+    labels4[labels4 == 'normal'] = 0
+    labels4[labels4 == 'ddos'] = 1
     labels4[labels4 == 'u2r'] = 2
     labels4[labels4 == 'r2l'] = 3
     labels4[labels4 == 'probe'] = 4
@@ -368,15 +394,14 @@ if __name__ == "__main__":
     dataset5['label'] = initlabel(dataset5)
     dataset6['label'] = initlabel(dataset6)
 
-    num_features = ["duration","protocol_type","service","flag", "src_bytes", "dst_bytes","land","wrong_fragment","urgent","hot","num_failed_logins",
-    "logged_in","num_compromised","root_shell","su_attempted","num_root",
-    "num_file_creations","num_shells","num_access_files","num_outbound_cmds",
-    "is_host_login","is_guest_login","count","srv_count","serror_rate",
-    "srv_serror_rate","rerror_rate","srv_rerror_rate","same_srv_rate",
-    "diff_srv_rate","srv_diff_host_rate","dst_host_count","dst_host_srv_count",
-    "dst_host_same_srv_rate","dst_host_diff_srv_rate","dst_host_same_srv_port_rate",
-    "dst_host_srv_diff_host_rate","dst_host_serror_rate","dst_host_srv_serror_rate",
-    "dst_host_rerror_rate","dst_host_srv_rerror_rate"
+    num_features = ["duration", "protocol_type", "service", "flag", "src_bytes", "dst_bytes",
+                "land", "wrong_fragment", "urgent", "count", "srv_count", "serror_rate",
+                "srv_serror_rate", "rerror_rate", "srv_rerror_rate", "same_srv_rate", 
+                "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
+                "dst_host_same_srv_rate", "dst_host_diff_srv_rate", "dst_host_same_src_port_rate",
+                "dst_host_srv_diff_host_rate", "dst_host_serror_rate", "dst_host_srv_serror_rate", 
+                "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "src_ip", "src_port", "dst_ip",
+                "dst_port", "conn_end_time"
     ]
     dataset5[num_features] = dataset5[num_features].astype(float)
     dataset5[num_features] = MinMaxScaler().fit_transform(dataset5[num_features].values)
@@ -384,16 +409,16 @@ if __name__ == "__main__":
     dataset6[num_features] = MinMaxScaler().fit_transform(dataset6[num_features].values)
 
     labels5 = dataset5['label'].copy()
-    labels5[labels5 == 'normal.'] = 0
-    labels5[labels5 == 'dos'] = 1
+    labels5[labels5 == 'normal'] = 0
+    labels5[labels5 == 'ddos'] = 1
     labels5[labels5 == 'u2r'] = 2
     labels5[labels5 == 'r2l'] = 3
     labels5[labels5 == 'probe'] = 4
     dataset5['label'] = labels5
     
     labels6 = dataset6['label'].copy()
-    labels6[labels6 == 'normal.'] = 0
-    labels6[labels6 == 'dos'] = 1
+    labels6[labels6 == 'normal'] = 0
+    labels6[labels6 == 'ddos'] = 1
     labels6[labels6 == 'u2r'] = 2
     labels6[labels6 == 'r2l'] = 3
     labels6[labels6 == 'probe'] = 4
@@ -418,7 +443,7 @@ if __name__ == "__main__":
             global_step = tf1.train.create_global_step()
             #--------------------DBN-----------------------------------
             
-            n_inp = [1, 1, 41]
+            n_inp = [1, 1, 33]
             hidden_layer_sizes = [500, 500, 500]
             n_out = 5
 
