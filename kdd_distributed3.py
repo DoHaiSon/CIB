@@ -45,8 +45,8 @@ tf1.app.flags.DEFINE_string("job_name", "", "'ps' / 'worker'")
 tf1.app.flags.DEFINE_integer("task_index", 0, "Index of task within the job")
 FLAGS = tf1.app.flags.FLAGS
 
-FLAGS.job_name = "worker"
-FLAGS.task_index = 0
+# FLAGS.job_name = "worker"
+# FLAGS.task_index = 0
 
 #Set up server
 config = tf1.ConfigProto()
