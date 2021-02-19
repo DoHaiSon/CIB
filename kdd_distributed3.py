@@ -42,9 +42,6 @@ tf1.app.flags.DEFINE_string("job_name", "", "'ps' / 'worker'")
 tf1.app.flags.DEFINE_integer("task_index", 0, "Index of task within the job")
 FLAGS = tf1.app.flags.FLAGS
 
-# FLAGS.job_name = "worker"
-# FLAGS.task_index = 0
-
 #Set up server
 config = tf1.ConfigProto()
 config.gpu_options.allow_growth = True
@@ -441,7 +438,7 @@ if __name__ == "__main__":
             #--------------------DBN-----------------------------------
             
             n_inp = [1, 1, 33]
-            hidden_layer_sizes = [200, 200, 200]
+            hidden_layer_sizes = [500, 500, 500]
             n_out = 2
 
             sigmoid_layers = []
@@ -457,15 +454,15 @@ if __name__ == "__main__":
 
             #define the grape
             height, weight, channel = n_inp
-            x = tf.compat.v1.placeholder(tf.float32, [None, height, weight, channel])
-            y = tf.compat.v1.placeholder(tf.float32, [None, n_out])
+            x = tf1.placeholder(tf.float32, [None, height, weight, channel])
+            y = tf1.placeholder(tf.float32, [None, n_out])
 
             for i in range(n_layers):
                 # Construct the sigmoidal layer
                 # the size of the input is either the number of hidden units of the layer
                 # below or the input size if we are on the first layer
                 if i == 0:
-                    input_size = height * weight *channel
+                    input_size = height * weight * channel
                 else:
                     input_size = hidden_layer_sizes[i - 1]
 

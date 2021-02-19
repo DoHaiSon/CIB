@@ -122,7 +122,7 @@ if __name__ == "__main__":
 
 	# Define network parameters
 	n_inp = 784
-	n_hidden = 200
+	n_hidden = 500
 	n_out = 10
 
 	#Define graph parameters
