@@ -183,45 +183,45 @@ def initlabel(dataset):
     labels = dataset['label'].copy()
     labels[labels == 'ddos'] = 'ddos'
     labels[labels == 'normal'] = 'normal'
-    labels[labels == 'back.'] = 'dos'
-    labels[labels == 'buffer_overflow.'] = 'u2r'
-    labels[labels == 'ftp_write.'] =  'r2l'
-    labels[labels == 'guess_passwd.'] = 'r2l'
-    labels[labels == 'imap.'] = 'r2l'
-    labels[labels == 'ipsweep.'] = 'probe'
-    labels[labels == 'land.'] = 'dos' 
-    labels[labels == 'loadmodule.'] = 'u2r'
-    labels[labels == 'multihop.'] = 'r2l'
-    labels[labels == 'neptune.'] = 'dos'
-    labels[labels == 'nmap.'] = 'probe'
-    labels[labels == 'perl.'] = 'u2r'
-    labels[labels == 'phf.'] =  'r2l'
-    labels[labels == 'pod.'] =  'dos'
-    labels[labels == 'portsweep.'] = 'probe'
-    labels[labels == 'rootkit.'] = 'u2r'
-    labels[labels == 'satan.'] = 'probe'
-    labels[labels == 'smurf.'] = 'dos'
-    labels[labels == 'spy.'] = 'r2l'
-    labels[labels == 'teardrop.'] = 'dos'
-    labels[labels == 'warezclient.'] = 'r2l'
-    labels[labels == 'warezmaster.'] = 'r2l'
-    labels[labels == 'apache2.'] = 'dos'
-    labels[labels == 'mailbomb.'] = 'dos'
-    labels[labels == 'processtable.'] = 'dos'
-    labels[labels == 'udpstorm.'] = 'dos'
-    labels[labels == 'mscan.'] = 'probe'
-    labels[labels == 'saint.'] = 'probe'
-    labels[labels == 'ps.'] = 'u2r'
-    labels[labels == 'sqlattack.'] = 'u2r'
-    labels[labels == 'xterm.'] = 'u2r'
-    labels[labels == 'named.'] = 'r2l'
-    labels[labels == 'sendmail.'] = 'r2l'
-    labels[labels == 'snmpgetattack.'] = 'r2l'
-    labels[labels == 'snmpguess.'] = 'r2l'
-    labels[labels == 'worm.'] = 'r2l'
-    labels[labels == 'xlock.'] = 'r2l'
-    labels[labels == 'xsnoop.'] = 'r2l'
-    labels[labels == 'httptunnel.'] = 'r2l'
+    # labels[labels == 'back.'] = 'dos'
+    # labels[labels == 'buffer_overflow.'] = 'u2r'
+    # labels[labels == 'ftp_write.'] =  'r2l'
+    # labels[labels == 'guess_passwd.'] = 'r2l'
+    # labels[labels == 'imap.'] = 'r2l'
+    # labels[labels == 'ipsweep.'] = 'probe'
+    # labels[labels == 'land.'] = 'dos' 
+    # labels[labels == 'loadmodule.'] = 'u2r'
+    # labels[labels == 'multihop.'] = 'r2l'
+    # labels[labels == 'neptune.'] = 'dos'
+    # labels[labels == 'nmap.'] = 'probe'
+    # labels[labels == 'perl.'] = 'u2r'
+    # labels[labels == 'phf.'] =  'r2l'
+    # labels[labels == 'pod.'] =  'dos'
+    # labels[labels == 'portsweep.'] = 'probe'
+    # labels[labels == 'rootkit.'] = 'u2r'
+    # labels[labels == 'satan.'] = 'probe'
+    # labels[labels == 'smurf.'] = 'dos'
+    # labels[labels == 'spy.'] = 'r2l'
+    # labels[labels == 'teardrop.'] = 'dos'
+    # labels[labels == 'warezclient.'] = 'r2l'
+    # labels[labels == 'warezmaster.'] = 'r2l'
+    # labels[labels == 'apache2.'] = 'dos'
+    # labels[labels == 'mailbomb.'] = 'dos'
+    # labels[labels == 'processtable.'] = 'dos'
+    # labels[labels == 'udpstorm.'] = 'dos'
+    # labels[labels == 'mscan.'] = 'probe'
+    # labels[labels == 'saint.'] = 'probe'
+    # labels[labels == 'ps.'] = 'u2r'
+    # labels[labels == 'sqlattack.'] = 'u2r'
+    # labels[labels == 'xterm.'] = 'u2r'
+    # labels[labels == 'named.'] = 'r2l'
+    # labels[labels == 'sendmail.'] = 'r2l'
+    # labels[labels == 'snmpgetattack.'] = 'r2l'
+    # labels[labels == 'snmpguess.'] = 'r2l'
+    # labels[labels == 'worm.'] = 'r2l'
+    # labels[labels == 'xlock.'] = 'r2l'
+    # labels[labels == 'xsnoop.'] = 'r2l'
+    # labels[labels == 'httptunnel.'] = 'r2l'
     return labels
 
 def nomial(dataset1, dataset2):
@@ -329,9 +329,9 @@ if __name__ == "__main__":
 
     labels1[labels1 == 'normal'] = 0
     labels1[labels1 == 'ddos'] = 1
-    labels1[labels1 == 'u2r'] = 2
-    labels1[labels1 == 'r2l'] = 3
-    labels1[labels1 == 'probe'] = 4
+    # labels1[labels1 == 'u2r'] = 2
+    # labels1[labels1 == 'r2l'] = 3
+    # labels1[labels1 == 'probe'] = 4
     dataset1['label'] = labels1
     
     labels2 = dataset2['label'].copy()
@@ -339,9 +339,9 @@ if __name__ == "__main__":
 
     labels2[labels2 == 'normal'] = 0
     labels2[labels2 == 'ddos'] = 1
-    labels2[labels2 == 'u2r'] = 2
-    labels2[labels2 == 'r2l'] = 3
-    labels2[labels2 == 'probe'] = 4
+    # labels2[labels2 == 'u2r'] = 2
+    # labels2[labels2 == 'r2l'] = 3
+    # labels2[labels2 == 'probe'] = 4
     dataset2['label'] = labels2
     
     train_set_x0 = read_data_set(dataset1, dataset2)
@@ -370,17 +370,17 @@ if __name__ == "__main__":
     labels3 = dataset3['label'].copy()
     labels3[labels3 == 'normal'] = 0
     labels3[labels3 == 'ddos'] = 1
-    labels3[labels3 == 'u2r'] = 2
-    labels3[labels3 == 'r2l'] = 3
-    labels3[labels3 == 'probe'] = 4
+    # labels3[labels3 == 'u2r'] = 2
+    # labels3[labels3 == 'r2l'] = 3
+    # labels3[labels3 == 'probe'] = 4
     dataset3['label'] = labels3
     
     labels4 = dataset4['label'].copy()
     labels4[labels4 == 'normal'] = 0
     labels4[labels4 == 'ddos'] = 1
-    labels4[labels4 == 'u2r'] = 2
-    labels4[labels4 == 'r2l'] = 3
-    labels4[labels4 == 'probe'] = 4
+    # labels4[labels4 == 'u2r'] = 2
+    # labels4[labels4 == 'r2l'] = 3
+    # labels4[labels4 == 'probe'] = 4
     dataset4['label'] = labels4
     
     train_set_x1 = read_data_set(dataset3, dataset4)
@@ -408,17 +408,17 @@ if __name__ == "__main__":
     labels5 = dataset5['label'].copy()
     labels5[labels5 == 'normal'] = 0
     labels5[labels5 == 'ddos'] = 1
-    labels5[labels5 == 'u2r'] = 2
-    labels5[labels5 == 'r2l'] = 3
-    labels5[labels5 == 'probe'] = 4
+    # labels5[labels5 == 'u2r'] = 2
+    # labels5[labels5 == 'r2l'] = 3
+    # labels5[labels5 == 'probe'] = 4
     dataset5['label'] = labels5
     
     labels6 = dataset6['label'].copy()
     labels6[labels6 == 'normal'] = 0
     labels6[labels6 == 'ddos'] = 1
-    labels6[labels6 == 'u2r'] = 2
-    labels6[labels6 == 'r2l'] = 3
-    labels6[labels6 == 'probe'] = 4
+    # labels6[labels6 == 'u2r'] = 2
+    # labels6[labels6 == 'r2l'] = 3
+    # labels6[labels6 == 'probe'] = 4
     dataset6['label'] = labels6
     
     train_set_x2 = read_data_set(dataset5, dataset6)
@@ -441,8 +441,8 @@ if __name__ == "__main__":
             #--------------------DBN-----------------------------------
             
             n_inp = [1, 1, 33]
-            hidden_layer_sizes = [500, 500, 500]
-            n_out = 5
+            hidden_layer_sizes = [200, 200, 200]
+            n_out = 2
 
             sigmoid_layers = []
             layers = []

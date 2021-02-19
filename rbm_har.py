@@ -362,7 +362,7 @@ def test_rbm():
 	x = tf.placeholder(tf.float32, [None, 784])
 	#network parameters
 	n_visible = 784
-	n_hidden = 500
+	n_hidden = 200
 	rbm = RBM(x, n_visible = n_visible, n_hidden = n_hidden)
 
 	cost = rbm.get_reconstruction_cost()
