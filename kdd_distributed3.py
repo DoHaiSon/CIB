@@ -4,7 +4,6 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 import numpy as np
-from numpy.core.arrayprint import FloatingFormat 
 import tensorflow as tf
 import tensorflow.compat.v1 as tf1
 tf1.disable_eager_execution()
@@ -13,14 +12,12 @@ import argparse
 import random
 import sys
 import time
-import tf_slim as slim
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error as MSE
 
 import os
 import pandas as pd
 from scipy import stats
-# from tensorflow.contrib.learn.python.learn.datasets import base
 from tensorflow.python.framework import dtypes
 from MLP import HiddenLayer, MLP
 from logisticRegression2 import LogisticRegression 
