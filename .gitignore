@@ -1,0 +1,5 @@
+*.txt
+/__pycache__/*
+/kdd_ddl3-3/*
+/.vscode/*
+/datasets/*
