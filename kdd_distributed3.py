@@ -11,6 +11,8 @@ import argparse
 import random
 import sys
 import time
+import logging
+logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 from tensorflow.contrib import slim
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error as MSE
@@ -535,9 +537,9 @@ if __name__ == "__main__":
                         avg_cost += c / batch_num_pre
                 
                     if epoch % display_step_pre == 0:
-                        print("Worker {0} Pretraining layer 1 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
+                        logging.info("Worker {0} Pretraining layer 1 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
                         end_time = timeit.default_timer()
-                        print("time {0} minutes".format((end_time - start_time)/ 60.))
+                        logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
 
                 for epoch in range(pretraining_epochs):
                     avg_cost = 0.0                            
@@ -547,9 +549,9 @@ if __name__ == "__main__":
                         avg_cost += c / batch_num_pre
                 
                     if epoch % display_step_pre == 0:
-                        print("Worker {0} Pretraining layer 2 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
+                        logging.info("Worker {0} Pretraining layer 2 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
                         end_time = timeit.default_timer()
-                        print("time {0} minutes".format((end_time - start_time)/ 60.))
+                        logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
 
                 for epoch in range(pretraining_epochs):
                     avg_cost = 0.0                            
@@ -559,12 +561,12 @@ if __name__ == "__main__":
                         avg_cost += c / batch_num_pre
                 
                     if epoch % display_step_pre == 0:
-                        print("Worker {0} Pretraining layer 3 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
+                        logging.info("Worker {0} Pretraining layer 3 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
                         end_time = timeit.default_timer()
-                        print("time {0} minutes".format((end_time - start_time)/ 60.))        
+                        logging.info("time {0} minutes".format((end_time - start_time)/ 60.))        
 
                 end_time = timeit.default_timer()
-                print("time {0} minutes".format((end_time - start_time)/ 60.))
+                logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
 
                 #--------------------fune-tuning----------------------------------------------------------------
                 start_time = timeit.default_timer()
@@ -595,7 +597,7 @@ if __name__ == "__main__":
                     d = []
 
                     if epoch % display_step_tune == 0:  
-                        print("Epoch:", '%04d' % (epoch +1), "cost:", "{:.9f}".format(avg_cost))
+                        logging.info("Epoch:", '%04d' % (epoch +1), "cost:", "{:.9f}".format(avg_cost))
 
                         c_test,pr = sess.run([c1, pred], feed_dict = {x: globals()['train_set_x'+str(FLAGS.task_index)].test.segments, y: globals()['train_set_x'+str(FLAGS.task_index)].test.labels})
                         b = np.append(b,c_test)
@@ -619,12 +621,12 @@ if __name__ == "__main__":
                         if recall > rec_max:
                             rec_max = recall
 
-                        print(ac.sum() / 5)
-                        print(a)
-                        print("Epoch:", '%04d' % (epoch +1), "cost:", "{:.9f}".format(avg_cost))
-                        print("WORKER: {0}, ACCURACY: {1}, PRECISION: {2}, RECALL: {3}:".format(int(FLAGS.task_index), ACC_max, pre_max, rec_max))
+                        logging.info(ac.sum() / 5)
+                        logging.info(a)
+                        logging.info("Epoch:", '%04d' % (epoch +1), "cost:", "{:.9f}".format(avg_cost))
+                        logging.info("WORKER: {0}, ACCURACY: {1}, PRECISION: {2}, RECALL: {3}:".format(int(FLAGS.task_index), ACC_max, pre_max, rec_max))
                         end_time = timeit.default_timer()
-                        print("Time {0} minutes".format((end_time- start_time)/ 60.))
+                        logging.info("Time {0} minutes".format((end_time- start_time)/ 60.))
 
                 end_time = timeit.default_timer()
-                print("Time {0} minutes".format((end_time- start_time)/ 60.))
+                logging.info("Time {0} minutes".format((end_time- start_time)/ 60.))
