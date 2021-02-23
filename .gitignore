@@ -1,5 +1,6 @@
 *.txt
 /__pycache__/*
 /kdd_ddl3-3/*
+/kdd_ddl3-2/*
 /.vscode/*
 /datasets/*
