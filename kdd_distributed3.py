@@ -440,7 +440,7 @@ if __name__ == "__main__":
             #--------------------DBN-----------------------------------
             
             n_inp = [1, 1, 33]
-            hidden_layer_sizes = [2000, 2000, 2000]
+            hidden_layer_sizes = [1000, 1000, 1000]
             n_out = 2
 
             sigmoid_layers = []
@@ -549,7 +549,7 @@ if __name__ == "__main__":
                 print('Starting training on worker %d -------------------------------------------------'%FLAGS.task_index)
                 #----pretraining -------------------------------------------------------------------------------
                 start_time = timeit.default_timer()
-                pretraining_epochs = 10
+                pretraining_epochs = 100
                 batch_size_pre = 100
                 display_step_pre = 1
                 batch_num_pre = int(globals()['train_set_x'+str(FLAGS.task_index)].train.num_examples / batch_size_pre)
@@ -598,7 +598,7 @@ if __name__ == "__main__":
                 #--------------------fune-tuning----------------------------------------------------------------
                 start_time = timeit.default_timer()
 
-                batch_size_num = 10
+                batch_size_num = 100
                 training_epochs = 1000
                 display_step_tune = 1
                                 
