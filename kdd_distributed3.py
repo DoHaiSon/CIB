@@ -440,7 +440,7 @@ if __name__ == "__main__":
             #--------------------DBN-----------------------------------
             
             n_inp = [1, 1, 33]
-            hidden_layer_sizes = [500, 500, 500]
+            hidden_layer_sizes = [2000, 2000, 2000]
             n_out = 2
 
             sigmoid_layers = []
