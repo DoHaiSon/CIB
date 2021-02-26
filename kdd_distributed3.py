@@ -532,7 +532,16 @@ if __name__ == "__main__":
         summary_hook = tf.estimator.SummarySaverHook(save_secs=600, output_dir= LOG_DIR, summary_op=merged)
         hooks = [sync_replicas_hook, stop_hook, summary_hook]
         scaff = tf1.train.Scaffold(init_op = init_op)
-    
+
+        #
+        # Restore and Testing
+        #
+        
+        ckpt = tf1.train.get_checkpoint_state("./Model_trained")
+        idex = int(ckpt.model_checkpoint_path.split('/')[-1].split('-')[-1])
+        
+        saver = tf1.train.Saver()
+        print("Loaded model")
         begin_time = time.time()
         print("Waiting for other servers")
         with tf1.train.MonitoredTrainingSession(master = server.target,
@@ -542,114 +551,35 @@ if __name__ == "__main__":
                                               hooks = hooks
                                               ) as sess: 
             global_step = tf1.train.get_global_step()
-            print('Starting training on worker %d'%FLAGS.task_index)
             while not sess.should_stop():
                 train_writer = tf1.summary.FileWriter(os.path.join(LOG_DIR,'train'), graph = tf1.get_default_graph())
                 test_writer = tf1.summary.FileWriter(os.path.join(LOG_DIR,'test'),graph = tf1.get_default_graph())
-                print('Starting training on worker %d -------------------------------------------------'%FLAGS.task_index)
-                #----pretraining -------------------------------------------------------------------------------
-                start_time = timeit.default_timer()
-                pretraining_epochs = 100
-                batch_size_pre = 100
-                display_step_pre = 1
-                batch_num_pre = int(globals()['train_set_x'+str(FLAGS.task_index)].train.num_examples / batch_size_pre)
-
-                for epoch in range(pretraining_epochs):
-                    avg_cost = 0.0                            
-                    for j in range(batch_num_pre):
-                        batch_xs, batch_ys = globals()['train_set_x'+str(FLAGS.task_index)].train.next_batch(batch_size_pre)
-                        c,_ = sess.run([cost0, train_ops0], feed_dict = {x: batch_xs,y : batch_ys})
-                        avg_cost += c / batch_num_pre
-                
-                    if epoch % display_step_pre == 0:
-                        logging.info("Worker {0} Pretraining layer 1 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
-                        end_time = timeit.default_timer()
-                        logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
-
-                for epoch in range(pretraining_epochs):
-                    avg_cost = 0.0                            
-                    for j in range(batch_num_pre):
-                        batch_xs, batch_ys = globals()['train_set_x'+str(FLAGS.task_index)].train.next_batch(batch_size_pre)
-                        c,_ = sess.run([cost1, train_ops1], feed_dict = {x: batch_xs,y : batch_ys})
-                        avg_cost += c / batch_num_pre
-                
-                    if epoch % display_step_pre == 0:
-                        logging.info("Worker {0} Pretraining layer 2 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
-                        end_time = timeit.default_timer()
-                        logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
-
-                for epoch in range(pretraining_epochs):
-                    avg_cost = 0.0                            
-                    for j in range(batch_num_pre):
-                        batch_xs, batch_ys = globals()['train_set_x'+str(FLAGS.task_index)].train.next_batch(batch_size_pre)
-                        c,_ = sess.run([cost2, train_ops2], feed_dict = {x: batch_xs,y : batch_ys})
-                        avg_cost += c / batch_num_pre
-                
-                    if epoch % display_step_pre == 0:
-                        logging.info("Worker {0} Pretraining layer 3 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
-                        end_time = timeit.default_timer()
-                        logging.info("time {0} minutes".format((end_time - start_time)/ 60.))        
-
-                end_time = timeit.default_timer()
-                logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
-
-                logging.info("Done Pre-train")
 
                 #--------------------fune-tuning----------------------------------------------------------------
                 start_time = timeit.default_timer()
-
-                batch_size_num = 100
-                training_epochs = 1000
-                display_step_tune = 1
-                                
-                ACC_max = 0
-                pre_max = 0
-                rec_max = 0
-                batch_num_tune = int(globals()['train_set_x'+str(FLAGS.task_index)].train.num_examples/batch_size_num)
-                logging.info(batch_num_tune)
-                for epoch in range(training_epochs):
-                    avg_cost = 0.0  
-                    for i in range(batch_num_tune):
-                        batch_xs, batch_ys = globals()['train_set_x'+str(FLAGS.task_index)].train.next_batch(batch_size_num)
-                        summary, _, c, step= sess.run([merged, train_ops, finetune_cost, global_step], feed_dict = {x :batch_xs, y : batch_ys} )
-                        train_writer.add_summary(summary,i)
-                        avg_cost += c / batch_num_tune
-                    summary,output_train = sess.run([merged,pred],feed_dict={x: globals()['train_set_x'+str(FLAGS.task_index)].train.segments, y: globals()['train_set_x'+str(FLAGS.task_index)].train.labels})
-                    summary,output_test = sess.run([merged,pred], feed_dict={x: globals()['train_set_x'+str(FLAGS.task_index)].test.segments, y: globals()['train_set_x'+str(FLAGS.task_index)].test.labels})
-                    test_writer.add_summary(summary, epoch)
-                    b =[]
+                n_test = 0
+                for n_test in range (10):
+                    b = []
                     d = []
-                    if epoch % display_step_tune == 0:  
-                        logging.info("Epoch: %04d" % (epoch +1), "cost:", "{:.9f}".format(avg_cost))
+                    c_test,pr = sess.run([c1, pred], feed_dict = {x: globals()['train_set_x'+str(FLAGS.task_index)].test.segments, y: globals()['train_set_x'+str(FLAGS.task_index)].test.labels})
+                    b = np.append(b,c_test)
 
-                        c_test,pr = sess.run([c1, pred], feed_dict = {x: globals()['train_set_x'+str(FLAGS.task_index)].test.segments, y: globals()['train_set_x'+str(FLAGS.task_index)].test.labels})
-                        b = np.append(b,c_test)
-
-                        d_test, y_test = sess.run([c2, y], feed_dict ={x: globals()['train_set_x'+str(FLAGS.task_index)].test.segments, y: globals()['train_set_x'+str(FLAGS.task_index)].test.labels})
-                        d = np.append(d, d_test)
-                
-                        a = confusion_matrix(d, b)
-                        FP = a.sum(axis=0) - np.diag(a)
-                        FN = a.sum(axis=1) - np.diag(a)
-                        TP = np.diag(a)
-                        TN = a.sum() - (FP + FN + TP)
-                        ac = (TP + TN) / (TP + FP + FN + TN)
-                        ACC = ac.sum() / 2
-                        precision = precision_score(d, b, average='weighted')
-                        recall = recall_score(d, b, average='weighted')
-                        if ACC > ACC_max:
-                            ACC_max = ACC
-                        if precision > pre_max:
-                            pre_max = precision
-                        if recall > rec_max:
-                            rec_max = recall
-
-                        logging.info(ac.sum() / 2)
-                        logging.info(a)
-                        logging.info("Epoch: %04d" % (epoch +1), "cost:", "{:.9f}".format(avg_cost))
-                        logging.info("WORKER: {0}, ACCURACY: {1}, PRECISION: {2}, RECALL: {3}:".format(int(FLAGS.task_index), ACC_max, pre_max, rec_max))
-                        end_time = timeit.default_timer()
-                        logging.info("Time {0} minutes".format((end_time- start_time)/ 60.))
-
-                end_time = timeit.default_timer()
-                logging.info("Latest: Time {0} minutes".format((end_time- start_time)/ 60.))
+                    d_test, y_test = sess.run([c2, y], feed_dict ={x: globals()['train_set_x'+str(FLAGS.task_index)].test.segments, y: globals()['train_set_x'+str(FLAGS.task_index)].test.labels})
+                    d = np.append(d, d_test)
+                    
+                    a = confusion_matrix(d, b)
+                    FP = a.sum(axis=0) - np.diag(a)
+                    FN = a.sum(axis=1) - np.diag(a)
+                    TP = np.diag(a)
+                    TN = a.sum() - (FP + FN + TP)
+                    ac = (TP + TN) / (TP + FP + FN + TN)
+                    ACC = ac.sum() / 2
+                    precision = precision_score(d, b, average='weighted')
+                    recall = recall_score(d, b, average='weighted')
+                    logging.info(ac.sum() / 2)
+                    logging.info(a)
+                    logging.info("Test: {0}".format(int(epoch +1)))
+                    logging.info("WORKER: {0}, ACCURACY: {1}, PRECISION: {2}, RECALL: {3}:".format(int(FLAGS.task_index), ACC, precision, recall))
+                    end_time = timeit.default_timer()
+                    logging.info("Time {0} minutes".format((end_time- start_time)/ 60.))
+                    n_test = n_test + 1
