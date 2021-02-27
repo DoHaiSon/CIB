@@ -530,7 +530,7 @@ if __name__ == "__main__":
         sync_replicas_hook = optimizer.make_session_run_hook(is_chief)
         stop_hook = tf.estimator.StopAtStepHook(last_step = final_step)
         summary_hook = tf.estimator.SummarySaverHook(save_secs=600, output_dir= LOG_DIR, summary_op=merged)
-        hooks = [sync_replicas_hook, stop_hook, summary_hook]
+        hooks = [sync_replicas_hook, stop_hook]
         scaff = tf1.train.Scaffold(init_op = init_op)
 
         #
@@ -542,20 +542,18 @@ if __name__ == "__main__":
         
         saver = tf1.train.Saver()
         print("Loaded model")
-        begin_time = time.time()
+
         print("Waiting for other servers")
         with tf1.train.MonitoredTrainingSession(master = server.target,
-                                              is_chief = (FLAGS.task_index ==0),
-                                              checkpoint_dir = LOG_DIR,
+                                              is_chief = (FLAGS.task_index == 0),
+                                              checkpoint_dir = None,
                                               scaffold = scaff,
                                               hooks = hooks
                                               ) as sess: 
             global_step = tf1.train.get_or_create_global_step()
+            saver.restore(sess, ckpt.model_checkpoint_path)
+            graph = tf1.get_default_graph()
             while not sess.should_stop():
-                train_writer = tf1.summary.FileWriter(os.path.join(LOG_DIR,'train'), graph = tf1.get_default_graph())
-                test_writer = tf1.summary.FileWriter(os.path.join(LOG_DIR,'test'),graph = tf1.get_default_graph())
-
-                #--------------------fune-tuning----------------------------------------------------------------
                 start_time = timeit.default_timer()
                 n_test = 0
                 while(True):
@@ -566,7 +564,7 @@ if __name__ == "__main__":
 
                     d_test, y_test = sess.run([c2, y], feed_dict ={x: globals()['train_set_x'+str(FLAGS.task_index)].test.segments, y: globals()['train_set_x'+str(FLAGS.task_index)].test.labels})
                     d = np.append(d, d_test)
-                    
+                    logging.info(d_test)
                     a = confusion_matrix(d, b)
                     FP = a.sum(axis=0) - np.diag(a)
                     FN = a.sum(axis=1) - np.diag(a)
@@ -576,8 +574,8 @@ if __name__ == "__main__":
                     ACC = ac.sum() / 2
                     precision = precision_score(d, b, average='weighted')
                     recall = recall_score(d, b, average='weighted')
-                    logging.info(ac.sum() / 2)
-                    logging.info(a)
+                    #logging.info(ac.sum() / 2)
+                    #logging.info(a)
                     logging.info("Test: {0}".format(int(n_test +1)))
                     logging.info("WORKER: {0}, ACCURACY: {1}, PRECISION: {2}, RECALL: {3}:".format(int(FLAGS.task_index), ACC, precision, recall))
                     end_time = timeit.default_timer()
