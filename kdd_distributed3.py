@@ -596,27 +596,13 @@ if __name__ == "__main__":
                 start_time = timeit.default_timer()
                 n_test = 0
                 while(True):
-                    b = []
-                    d = []
-                    c_test,pr = sess.run([c1, pred], feed_dict = {x: globals()['train_set_x'+str(FLAGS.task_index)].test.segments, y: globals()['train_set_x'+str(FLAGS.task_index)].test.labels})
-                    b = np.append(b,c_test)
-
                     d_test, y_test = sess.run([c2, y], feed_dict ={x: globals()['test_dataset'].test.segments, y: globals()['test_dataset'].test.labels})
-                    d = np.append(d, d_test)
-                    logging.info(d_test)
-                    a = confusion_matrix(d, b)
-                    FP = a.sum(axis=0) - np.diag(a)
-                    FN = a.sum(axis=1) - np.diag(a)
-                    TP = np.diag(a)
-                    TN = a.sum() - (FP + FN + TP)
-                    ac = (TP + TN) / (TP + FP + FN + TN)
-                    ACC = ac.sum() / 2
-                    precision = precision_score(d, b, average='weighted')
-                    recall = recall_score(d, b, average='weighted')
-                    #logging.info(ac.sum() / 2)
-                    #logging.info(a)
+                    logging.info(batch_num_true)
+                    true_packets = len(d_test)
+                    for i in range (true_packets):
+                    	if d_test[i] != labels_test[i] : true_packets = true_packets - 1
                     logging.info("Test: {0}".format(int(n_test +1)))
-                    logging.info("WORKER: {0}, ACCURACY: {1}, PRECISION: {2}, RECALL: {3}".format(int(FLAGS.task_index), ACC, precision, recall))
+                    logging.info("WORKER: {0}, ACCURACY: {1}.".format(int(FLAGS.task_index), true_packets / len(d_test)))
                     end_time = timeit.default_timer()
                     logging.info("Time {0} minutes".format((end_time- start_time)/ 60.))
                     n_test = n_test + 1
