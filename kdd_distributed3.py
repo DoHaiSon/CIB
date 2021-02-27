@@ -178,49 +178,22 @@ def read_data_set(dataset1, dataset2, one_hot = False, dtype = dtypes.float32, r
     #return base.Datasets(train = train, validation=None, test = test)
     return Datasets(train = train, validation = None, test = test)
 
+def read_data_set_test(dataset1, one_hot = False, dtype = dtypes.float32, reshape = True):
+
+    segments1, labels1 = segment_signal(dataset1)
+    labels = np.asarray(pd.get_dummies(labels1), dtype = np.int8)
+    labels1 = labels
+    train_x = segments1.reshape(len(segments1), 1, 1 ,33)
+    train_y = labels1
+    train = Dataset(train_x, train_y, dtype = dtype , reshape = reshape)
+    test = Dataset(train_x, train_y, dtype = dtype , reshape = reshape)
+    #return base.Datasets(train = train, validation=None, test = test)
+    return Datasets(train = train, validation = None, test = test)
+
 def initlabel(dataset):
     labels = dataset['label'].copy()
     labels[labels == 'ddos'] = 'ddos'
     labels[labels == 'normal'] = 'normal'
-    # labels[labels == 'back.'] = 'dos'
-    # labels[labels == 'buffer_overflow.'] = 'u2r'
-    # labels[labels == 'ftp_write.'] =  'r2l'
-    # labels[labels == 'guess_passwd.'] = 'r2l'
-    # labels[labels == 'imap.'] = 'r2l'
-    # labels[labels == 'ipsweep.'] = 'probe'
-    # labels[labels == 'land.'] = 'dos' 
-    # labels[labels == 'loadmodule.'] = 'u2r'
-    # labels[labels == 'multihop.'] = 'r2l'
-    # labels[labels == 'neptune.'] = 'dos'
-    # labels[labels == 'nmap.'] = 'probe'
-    # labels[labels == 'perl.'] = 'u2r'
-    # labels[labels == 'phf.'] =  'r2l'
-    # labels[labels == 'pod.'] =  'dos'
-    # labels[labels == 'portsweep.'] = 'probe'
-    # labels[labels == 'rootkit.'] = 'u2r'
-    # labels[labels == 'satan.'] = 'probe'
-    # labels[labels == 'smurf.'] = 'dos'
-    # labels[labels == 'spy.'] = 'r2l'
-    # labels[labels == 'teardrop.'] = 'dos'
-    # labels[labels == 'warezclient.'] = 'r2l'
-    # labels[labels == 'warezmaster.'] = 'r2l'
-    # labels[labels == 'apache2.'] = 'dos'
-    # labels[labels == 'mailbomb.'] = 'dos'
-    # labels[labels == 'processtable.'] = 'dos'
-    # labels[labels == 'udpstorm.'] = 'dos'
-    # labels[labels == 'mscan.'] = 'probe'
-    # labels[labels == 'saint.'] = 'probe'
-    # labels[labels == 'ps.'] = 'u2r'
-    # labels[labels == 'sqlattack.'] = 'u2r'
-    # labels[labels == 'xterm.'] = 'u2r'
-    # labels[labels == 'named.'] = 'r2l'
-    # labels[labels == 'sendmail.'] = 'r2l'
-    # labels[labels == 'snmpgetattack.'] = 'r2l'
-    # labels[labels == 'snmpguess.'] = 'r2l'
-    # labels[labels == 'worm.'] = 'r2l'
-    # labels[labels == 'xlock.'] = 'r2l'
-    # labels[labels == 'xsnoop.'] = 'r2l'
-    # labels[labels == 'httptunnel.'] = 'r2l'
     return labels
 
 def nomial(dataset1, dataset2):
@@ -281,16 +254,82 @@ def nomial(dataset1, dataset2):
     dataset1['conn_end_time'] = conn_end_time1
     dataset2['conn_end_time'] = conn_end_time2
 
+def nomial_test(dataset1):
+    dataset = dataset1
+    protocol1 = dataset1['protocol_type'].copy()
+    protocol_type = dataset['protocol_type'].unique()
+    for i in range(len(protocol_type)):
+        protocol1[protocol1 == protocol_type[i]] = i
+    dataset1['protocol_type'] = protocol1
+
+    service1 = dataset1['service'].copy()
+    service_type = dataset['service'].unique()
+    for i in range(len(service_type)):
+        service1[service1 == service_type[i]] = i
+    dataset1['service'] = service1
+
+    flag1 = dataset1['flag'].copy()
+    flag_type = dataset['flag'].unique()
+    for i in range(len(flag_type)):
+        flag1[flag1 == flag_type[i]] = i
+        
+    dataset1['flag'] = flag1
+    
+    src_ip1 = dataset1['src_ip'].copy()
+    src_ip = dataset['src_ip'].unique()
+    for i in range(len(src_ip)):
+        src_ip1[src_ip1 == src_ip[i]] = i
+    dataset1['src_ip'] = src_ip1
+
+    dst_ip1 = dataset1['dst_ip'].copy()
+    dst_ip = dataset['dst_ip'].unique()
+    for i in range(len(dst_ip)):
+        dst_ip1[dst_ip1 == dst_ip[i]] = i
+    dataset1['dst_ip'] = dst_ip1
+
+    conn_end_time1 = dataset1['conn_end_time'].copy()
+    conn_end_time = dataset['conn_end_time'].unique()
+    for i in range(len(conn_end_time)):
+        conn_end_time1[conn_end_time1 == conn_end_time[i]] = i
+    dataset1['conn_end_time'] = conn_end_time1
+    
 if __name__ == "__main__":
     dir_path = os.path.dirname(os.path.realpath(__file__))
 
     filename1 = dir_path + "/datasets/our_kdd_99/splited_1.csv"
     filename2 = dir_path + "/datasets/our_kdd_99/splited_2.csv"
-    
+    file_test_dataset = dir_path + "/datasets/our_kdd_99/test_impl_dataset.csv"
+
     dataset11 = read_data(filename1)
     dataset22 = read_data(filename2)
+    test_dataset = read_data(file_test_dataset)
 
-    #dataset22, dataset44 = train_test_split(dataset33, train_size=0.2, random_state=0)
+    nomial_test(test_dataset)
+    test_dataset['label'] = initlabel(test_dataset)
+    num_features = ["duration", "protocol_type", "service", "flag", "src_bytes", "dst_bytes",
+                "land", "wrong_fragment", "urgent", "count", "srv_count", "serror_rate",
+                "srv_serror_rate", "rerror_rate", "srv_rerror_rate", "same_srv_rate", 
+                "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
+                "dst_host_same_srv_rate", "dst_host_diff_srv_rate", "dst_host_same_src_port_rate",
+                "dst_host_srv_diff_host_rate", "dst_host_serror_rate", "dst_host_srv_serror_rate", 
+                "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "src_ip", "src_port", "dst_ip",
+                "dst_port", "conn_end_time"
+    ]
+    test_dataset[num_features] = test_dataset[num_features].astype(float)
+    test_dataset[num_features] = MinMaxScaler().fit_transform(test_dataset[num_features].values)
+
+    print(test_dataset.describe())
+
+    print(test_dataset['label'].value_counts()) 
+
+    labels_test = test_dataset['label'].copy()
+    print(labels_test.unique())
+
+    labels_test[labels_test == 'normal'] = 0
+    labels_test[labels_test == 'ddos'] = 1
+
+    test_dataset['label'] = labels_test
+    test_dataset = read_data_set_test(test_dataset)
     
     dataset13, dataset5 = train_test_split(dataset11, train_size=0.66, random_state=2)
     dataset24, dataset6 = train_test_split(dataset22, train_size=0.66, random_state=3)
@@ -562,7 +601,7 @@ if __name__ == "__main__":
                     c_test,pr = sess.run([c1, pred], feed_dict = {x: globals()['train_set_x'+str(FLAGS.task_index)].test.segments, y: globals()['train_set_x'+str(FLAGS.task_index)].test.labels})
                     b = np.append(b,c_test)
 
-                    d_test, y_test = sess.run([c2, y], feed_dict ={x: globals()['train_set_x'+str(FLAGS.task_index)].test.segments, y: globals()['train_set_x'+str(FLAGS.task_index)].test.labels})
+                    d_test, y_test = sess.run([c2, y], feed_dict ={x: globals()['test_dataset'].test.segments, y: globals()['test_dataset'].test.labels})
                     d = np.append(d, d_test)
                     logging.info(d_test)
                     a = confusion_matrix(d, b)
@@ -577,7 +616,7 @@ if __name__ == "__main__":
                     #logging.info(ac.sum() / 2)
                     #logging.info(a)
                     logging.info("Test: {0}".format(int(n_test +1)))
-                    logging.info("WORKER: {0}, ACCURACY: {1}, PRECISION: {2}, RECALL: {3}:".format(int(FLAGS.task_index), ACC, precision, recall))
+                    logging.info("WORKER: {0}, ACCURACY: {1}, PRECISION: {2}, RECALL: {3}".format(int(FLAGS.task_index), ACC, precision, recall))
                     end_time = timeit.default_timer()
                     logging.info("Time {0} minutes".format((end_time- start_time)/ 60.))
                     n_test = n_test + 1
