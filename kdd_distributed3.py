@@ -550,7 +550,7 @@ if __name__ == "__main__":
                                               scaffold = scaff,
                                               hooks = hooks
                                               ) as sess: 
-            global_step = tf1.train.get_global_step()
+            global_step = tf1.train.get_or_create_global_step()
             while not sess.should_stop():
                 train_writer = tf1.summary.FileWriter(os.path.join(LOG_DIR,'train'), graph = tf1.get_default_graph())
                 test_writer = tf1.summary.FileWriter(os.path.join(LOG_DIR,'test'),graph = tf1.get_default_graph())
@@ -558,7 +558,7 @@ if __name__ == "__main__":
                 #--------------------fune-tuning----------------------------------------------------------------
                 start_time = timeit.default_timer()
                 n_test = 0
-                for n_test in range (10):
+                while(True):
                     b = []
                     d = []
                     c_test,pr = sess.run([c1, pred], feed_dict = {x: globals()['train_set_x'+str(FLAGS.task_index)].test.segments, y: globals()['train_set_x'+str(FLAGS.task_index)].test.labels})
@@ -578,7 +578,7 @@ if __name__ == "__main__":
                     recall = recall_score(d, b, average='weighted')
                     logging.info(ac.sum() / 2)
                     logging.info(a)
-                    logging.info("Test: {0}".format(int(epoch +1)))
+                    logging.info("Test: {0}".format(int(n_test +1)))
                     logging.info("WORKER: {0}, ACCURACY: {1}, PRECISION: {2}, RECALL: {3}:".format(int(FLAGS.task_index), ACC, precision, recall))
                     end_time = timeit.default_timer()
                     logging.info("Time {0} minutes".format((end_time- start_time)/ 60.))
