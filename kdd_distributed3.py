@@ -596,13 +596,17 @@ if __name__ == "__main__":
                 start_time = timeit.default_timer()
                 n_test = 0
                 while(True):
-                    d_test, y_test = sess.run([c2, y], feed_dict ={x: globals()['test_dataset'].test.segments, y: globals()['test_dataset'].test.labels})
-                    logging.info(batch_num_true)
-                    true_packets = len(d_test)
+                    pr = sess.run(pred, feed_dict ={x: globals()['test_dataset'].test.segments})
+                    num = len(pr)
+                    b = np.zeros((num), dtype = int)
+                    pr = np.array(pr, dtype=float)
+                    for i in range (num):
+                    	if (pr[i][0] <= pr[i][1]): b[i] = 1
+                    true_packets = num
                     for i in range (true_packets):
-                    	if d_test[i] != labels_test[i] : true_packets = true_packets - 1
+                    	if b[i] != labels_test[i] : true_packets = true_packets - 1
                     logging.info("Test: {0}".format(int(n_test +1)))
-                    logging.info("WORKER: {0}, ACCURACY: {1}.".format(int(FLAGS.task_index), true_packets / len(d_test)))
+                    logging.info("WORKER: {0}, ACCURACY: {1}.".format(int(FLAGS.task_index), true_packets / num))
                     end_time = timeit.default_timer()
                     logging.info("Time {0} minutes".format((end_time- start_time)/ 60.))
                     n_test = n_test + 1
