@@ -606,7 +606,7 @@ if __name__ == "__main__":
                 pre_max = 0
                 rec_max = 0
                 batch_num_tune = int(globals()['train_set_x'+str(FLAGS.task_index)].train.num_examples/batch_size_num)
-                logging.info(batch_num_tune)
+
                 for epoch in range(training_epochs):
                     avg_cost = 0.0  
                     for i in range(batch_num_tune):
