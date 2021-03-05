@@ -624,8 +624,7 @@ if __name__ == "__main__":
                     b =[]
                     d = []
                     if epoch % display_step_tune == 0:  
-                        logging.info("Epoch: %04d" % (epoch +1), "cost:", "{:.9f}".format(avg_cost))
-
+                        logging.info("Epoch: {0}, cost: {1}".format(int(epoch + 1), float(avg_cost)))
                         c_test,pr = sess.run([c1, pred], feed_dict = {x: globals()['train_set_x'+str(FLAGS.task_index)].test.segments, y: globals()['train_set_x'+str(FLAGS.task_index)].test.labels})
                         b = np.append(b,c_test)
 
@@ -650,7 +649,7 @@ if __name__ == "__main__":
 
                         logging.info(ac.sum() / 2)
                         logging.info(a)
-                        logging.info("Epoch: %04d" % (epoch +1), "cost:", "{:.9f}".format(avg_cost))
+                        logging.info("Epoch: {0}, cost: {1}".format(int(epoch + 1), float(avg_cost)))
                         logging.info("WORKER: {0}, ACCURACY: {1}, PRECISION: {2}, RECALL: {3}:".format(int(FLAGS.task_index), ACC_max, pre_max, rec_max))
                         end_time = timeit.default_timer()
                         logging.info("Time {0} minutes".format((end_time- start_time)/ 60.))
