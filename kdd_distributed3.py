@@ -34,10 +34,15 @@ import collections
 Datasets = collections.namedtuple('Datasets', ['train', 'validation', 'test'])
 
 #----------distributed------------------------
+IP_server = "192.168.1.2:2222"
+IP_worker_1 = "192.168.1.2:2223"
+IP_worker_2 = "192.168.1.2:2224"
+IP_worker_3 = "192.168.1.1:2225"
+
 #define cluster
-parameter_servers = ["localhost:2222"]
-workers = [ "localhost:2223", "localhost:2224", "localhost:2225"]
-cluster = tf.train.ClusterSpec({"ps":parameter_servers, "worker":workers})
+parameter_servers = [IP_server]
+workers = [ IP_worker_1, IP_worker_2, IP_worker_3]
+cluster = tf1.train.ClusterSpec({"ps":parameter_servers, "worker":workers})
 
 # Input Flags
 tf1.app.flags.DEFINE_string("job_name", "", "'ps' / 'worker'")
@@ -51,8 +56,7 @@ config.gpu_options.visible_device_list = "0"
 config.allow_soft_placement = True
 config.log_device_placement = True
 
-
-config.gpu_options.per_process_gpu_memory_fraction = 0.3
+# config.gpu_options.per_process_gpu_memory_fraction = 0.3
 server = tf1.train.Server(cluster,
     job_name=FLAGS.job_name,
     task_index=FLAGS.task_index,
@@ -436,7 +440,7 @@ if __name__ == "__main__":
             worker_device="/job:worker/task:%d" % FLAGS.task_index)):
             # count the number of updates
             # global_step = tf.Variable(0,dtype=tf.int32,trainable=False,name='global_step')
-            global_step = tf1.train.create_global_step()
+            global_step = tf1.train.get_or_create_global_step()
             #--------------------DBN-----------------------------------
             
             n_inp = [1, 1, 33]
