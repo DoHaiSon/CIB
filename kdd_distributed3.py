@@ -30,6 +30,8 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 
 import collections
+import warnings
+warnings.filterwarnings('ignore') 
 
 Datasets = collections.namedtuple('Datasets', ['train', 'validation', 'test'])
 
@@ -37,7 +39,7 @@ Datasets = collections.namedtuple('Datasets', ['train', 'validation', 'test'])
 IP_server = "192.168.1.2:2222"
 IP_worker_1 = "192.168.1.2:2223"
 IP_worker_2 = "192.168.1.2:2224"
-IP_worker_3 = "192.168.1.1:2225"
+IP_worker_3 = "192.168.1.2:2225"
 
 #define cluster
 parameter_servers = [IP_server]
@@ -540,7 +542,7 @@ if __name__ == "__main__":
         begin_time = time.time()
         print("Waiting for other servers")
         with tf1.train.MonitoredTrainingSession(master = server.target,
-                                              is_chief = (FLAGS.task_index ==0),
+                                              is_chief = (FLAGS.task_index == 0),
                                               checkpoint_dir = LOG_DIR,
                                               scaffold = scaff,
                                               hooks = hooks
@@ -553,7 +555,7 @@ if __name__ == "__main__":
                 print('Starting training on worker %d -------------------------------------------------'%FLAGS.task_index)
                 #----pretraining -------------------------------------------------------------------------------
                 start_time = timeit.default_timer()
-                pretraining_epochs = 100
+                pretraining_epochs = 1
                 batch_size_pre = 100
                 display_step_pre = 1
                 batch_num_pre = int(globals()['train_set_x'+str(FLAGS.task_index)].train.num_examples / batch_size_pre)
@@ -624,7 +626,6 @@ if __name__ == "__main__":
                     b =[]
                     d = []
                     if epoch % display_step_tune == 0:  
-                        logging.info("Epoch: {0}, cost: {1}".format(int(epoch + 1), float(avg_cost)))
                         c_test,pr = sess.run([c1, pred], feed_dict = {x: globals()['train_set_x'+str(FLAGS.task_index)].test.segments, y: globals()['train_set_x'+str(FLAGS.task_index)].test.labels})
                         b = np.append(b,c_test)
 
