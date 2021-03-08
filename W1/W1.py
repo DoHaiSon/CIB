@@ -39,7 +39,7 @@ Datasets = collections.namedtuple('Datasets', ['train', 'validation', 'test'])
 IP_server = "192.168.1.1:2222"
 IP_worker_1 = "192.168.1.1:2223"
 IP_worker_2 = "192.168.1.2:2224"
-IP_worker_3 = "192.168.0.135:2225"
+IP_worker_3 = "192.168.1.3:2225"
 
 #define cluster
 parameter_servers = [IP_server]
