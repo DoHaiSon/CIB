@@ -68,7 +68,8 @@ server = tf1.train.Server(cluster,
 
 final_step = 10000000
 
-LOG_DIR = '../kdd_ddl3-%d' % len(workers)
+#LOG_DIR = '../kdd_ddl3-%d' % len(workers)
+LOG_DIR = "/home/avitech-pc/haison98/CIB/kdd_ddl3-2"
 print('parameters specification finished!')
 #--------------------------------------------
 
