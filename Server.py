@@ -9,32 +9,11 @@ os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 import tensorflow as tf
 import tensorflow.compat.v1 as tf1
 tf1.disable_eager_execution()
-from mlxtend.preprocessing import one_hot
-import argparse
-import random
 import sys
-import time
 import logging
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error as MSE
-
-import pandas as pd
-from scipy import stats
-from tensorflow.python.framework import dtypes
-from MLP import HiddenLayer, MLP
-from logisticRegression2 import LogisticRegression 
-from rbm_har import  RBM,GRBM
-import math
-import timeit
-from sklearn.metrics import accuracy_score, confusion_matrix, classification_report, precision_score, recall_score
-from sklearn.preprocessing import MinMaxScaler, StandardScaler
-
-import collections
 import warnings
 warnings.filterwarnings('ignore') 
-
-Datasets = collections.namedtuple('Datasets', ['train', 'validation', 'test'])
 
 #----------distributed------------------------
 IP_server = "192.168.0.107:2222"
@@ -56,12 +35,6 @@ FLAGS = tf1.app.flags.FLAGS
 #Set up server
 config = tf1.ConfigProto()
 
-#config.gpu_options.allow_growth = True
-
-#config.allow_soft_placement = True
-#config.log_device_placement = True
-#config.gpu_options.visible_device_list = "0"
-#config.gpu_options.per_process_gpu_memory_fraction = 0.3
 server = tf1.train.Server(cluster,
     job_name=FLAGS.job_name,
     task_index=FLAGS.task_index,

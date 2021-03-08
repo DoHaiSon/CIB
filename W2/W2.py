@@ -8,25 +8,21 @@ import tensorflow as tf
 import tensorflow.compat.v1 as tf1
 tf1.disable_eager_execution()
 from mlxtend.preprocessing import one_hot
-import argparse
-import random
 import sys
 import time
 import logging
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error as MSE
 
 import os
 import pandas as pd
-from scipy import stats
 from tensorflow.python.framework import dtypes
-from MLP import HiddenLayer, MLP
-from logisticRegression2 import LogisticRegression 
-from rbm_har import  RBM,GRBM
+from ..Shared.MLP import HiddenLayer, MLP
+from ..Shared.logisticRegression2 import LogisticRegression 
+from ..Shared.rbm_har import  RBM,GRBM
 import math
 import timeit
-from sklearn.metrics import accuracy_score, confusion_matrix, classification_report, precision_score, recall_score
+from sklearn.metrics import accuracy_score, confusion_matrix, precision_score, recall_score
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 
 import collections
@@ -69,7 +65,7 @@ server = tf1.train.Server(cluster,
 final_step = 10000000
 
 LOG_DIR = 'kdd_ddl3-%d' % len(workers)
-print('parameters specification finished!')
+print('Worker 2: parameters specification finished!')
 #--------------------------------------------
 
 class Dataset(object):
