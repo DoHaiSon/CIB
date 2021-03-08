@@ -290,10 +290,9 @@ def nomial(dataset1, dataset2):
     dataset2['conn_end_time'] = conn_end_time2
 
 if __name__ == "__main__":
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-
-    filename1 = dir_path + "../datasets/our_kdd_99/splited_1.csv"
-    filename2 = dir_path + "../datasets/our_kdd_99/splited_2.csv"
+    dir_path = "/home/avitech-pc/haison98/CIB"
+    filename1 = dir_path + "/datasets/our_kdd_99/splited_1.csv"
+    filename2 = dir_path + "/datasets/our_kdd_99/splited_2.csv"
     
     dataset11 = read_data(filename1)
     dataset22 = read_data(filename2)
