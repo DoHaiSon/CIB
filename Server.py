@@ -4,6 +4,8 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 import numpy as np
+import os
+os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 import tensorflow as tf
 import tensorflow.compat.v1 as tf1
 tf1.disable_eager_execution()
@@ -17,7 +19,6 @@ logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error as MSE
 
-import os
 import pandas as pd
 from scipy import stats
 from tensorflow.python.framework import dtypes
@@ -36,9 +37,9 @@ warnings.filterwarnings('ignore')
 Datasets = collections.namedtuple('Datasets', ['train', 'validation', 'test'])
 
 #----------distributed------------------------
-IP_server = "192.168.1.1:2222"
-IP_worker_1 = "192.168.1.1:2223"
-IP_worker_2 = "192.168.1.2:2224"
+IP_server = "192.168.0.107:2222"
+IP_worker_1 = "192.168.0.107:2223"
+IP_worker_2 = "192.168.0.142:2224"
 IP_worker_3 = "192.168.0.135:2225"
 
 #define cluster
@@ -53,9 +54,7 @@ tf1.app.flags.DEFINE_integer("task_index", 0, "Index of task within the job")
 FLAGS = tf1.app.flags.FLAGS
 
 #Set up server
-config = tf1.ConfigProto(
-	device_count = {'GPU': 0}
-)
+config = tf1.ConfigProto()
 
 #config.gpu_options.allow_growth = True
 
