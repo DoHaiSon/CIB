@@ -9,6 +9,7 @@ import tensorflow.compat.v1 as tf1
 tf1.disable_eager_execution()
 from mlxtend.preprocessing import one_hot
 import sys
+sys.path.append("..") # Adds higher directory to python modules path.
 import time
 import logging
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
@@ -18,9 +19,9 @@ import os
 import pandas as pd
 from scipy import stats
 from tensorflow.python.framework import dtypes
-from ..Shared.MLP import HiddenLayer, MLP
-from ..Shared.logisticRegression2 import LogisticRegression 
-from ..Shared.rbm_har import  RBM,GRBM
+from Shared.MLP import HiddenLayer, MLP
+from Shared.logisticRegression2 import LogisticRegression 
+from Shared.rbm_har import  RBM,GRBM
 import math
 import timeit
 from sklearn.metrics import accuracy_score, confusion_matrix, precision_score, recall_score
