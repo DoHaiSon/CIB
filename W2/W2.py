@@ -36,9 +36,9 @@ warnings.filterwarnings('ignore')
 Datasets = collections.namedtuple('Datasets', ['train', 'validation', 'test'])
 
 #----------distributed------------------------
-IP_server = "192.168.1.1:2222"
-IP_worker_1 = "192.168.1.1:2223"
-IP_worker_2 = "192.168.1.2:2224"
+IP_server = "192.168.0.107:2222"
+IP_worker_1 = "192.168.0.107:2223"
+IP_worker_2 = "192.168.0.142:2224"
 IP_worker_3 = "192.168.1.3:2225"
 
 #define cluster
@@ -290,7 +290,7 @@ def nomial(dataset1, dataset2):
     dataset2['conn_end_time'] = conn_end_time2
 
 if __name__ == "__main__":
-    dir_path = "/home/avitech-pc/haison98/CIB"
+    dir_path = "/home/avitech/haison98/CIB"
     filename1 = dir_path + "/datasets/our_kdd_99/splited_1.csv"
     filename2 = dir_path + "/datasets/our_kdd_99/splited_2.csv"
     
