@@ -5,3 +5,5 @@
 /.vscode/*
 /datasets/*
 /W1/__pycache__/*
+/W2/__pycache__/*
+/W3/__pycache__/*
