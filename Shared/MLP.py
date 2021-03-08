@@ -12,7 +12,7 @@ import tensorflow.compat.v1 as tf1
 import math
 import timeit
 import os
-from logisticRegression2 import LogisticRegression
+from Shared.logisticRegression2 import LogisticRegression
 #import MNIST data
 #from tensorflow.examples.tutorials.mnist import input_data
 #mnist = input_data.read_data_sets('MNIST_data', one_hot=True)

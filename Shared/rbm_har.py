@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 #from tensorflow.examples.tutorials.mnist import input_data
 import tensorflow_datasets as tfds
-from utils import tile_raster_images
+from Shared.utils import tile_raster_images
 
 
 def weight_variable(shape):

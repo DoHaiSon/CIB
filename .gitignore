@@ -5,6 +5,7 @@
 kdd_ddl3-1/*
 /.vscode/*
 /datasets/*
+/Shared/__pycache__/*
 /W1/__pycache__/*
 /W2/__pycache__/*
 /W3/__pycache__/*
