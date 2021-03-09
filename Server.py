@@ -5,7 +5,7 @@ from __future__ import division
 from __future__ import print_function
 import numpy as np
 import os
-os.environ["CUDA_VISIBLE_DEVICES"]="-1"
+os.environ["CUDA_VISIBLE_DEVICES"]="-1"             # Force run Server in CPU
 import tensorflow as tf
 import tensorflow.compat.v1 as tf1
 tf1.disable_eager_execution()

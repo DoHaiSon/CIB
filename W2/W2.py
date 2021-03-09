@@ -16,7 +16,7 @@ from sklearn.model_selection import train_test_split
 
 import os
 sys.path.append(
-    os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
+    os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))       # Join parent path to import library
 import pandas as pd
 from tensorflow.python.framework import dtypes
 from Shared.MLP import HiddenLayer, MLP
@@ -302,55 +302,6 @@ if __name__ == "__main__":
     dataset1, dataset3 = train_test_split(dataset13, train_size=0.5, random_state=4)
     dataset2, dataset4 = train_test_split(dataset24, train_size=0.5, random_state=5)
 
-    #-------------pre-process dataset1,2-----------------------
-
-    nomial(dataset1, dataset2)    
-    dataset1['label'] = initlabel(dataset1)
-    dataset2['label'] = initlabel(dataset2)
-
-    num_features = ["duration", "protocol_type", "service", "flag", "src_bytes", "dst_bytes",
-                "land", "wrong_fragment", "urgent", "count", "srv_count", "serror_rate",
-                "srv_serror_rate", "rerror_rate", "srv_rerror_rate", "same_srv_rate", 
-                "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
-                "dst_host_same_srv_rate", "dst_host_diff_srv_rate", "dst_host_same_src_port_rate",
-                "dst_host_srv_diff_host_rate", "dst_host_serror_rate", "dst_host_srv_serror_rate", 
-                "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "src_ip", "src_port", "dst_ip",
-                "dst_port", "conn_end_time"
-    ]
-    dataset1[num_features] = dataset1[num_features].astype(float)
-    #dataset1[num_features] = dataset1[num_features].apply(lambda x:MinMaxScaler().fit_transform(x))
-    dataset1[num_features] = MinMaxScaler().fit_transform(dataset1[num_features].values)
-    dataset2[num_features] = dataset2[num_features].astype(float)
-    #dataset2[num_features] = dataset2[num_features].apply(lambda x:MinMaxScaler().fit_transform(x))
-    dataset2[num_features] = MinMaxScaler().fit_transform(dataset2[num_features].values)
-    #print(dataset.describe())
-    print(dataset1.describe())
-
-    print(dataset1['label'].value_counts()) 
-
-    labels1 = dataset1['label'].copy()
-    print(labels1.unique())
-
-    labels1[labels1 == 'normal'] = 0
-    labels1[labels1 == 'ddos'] = 1
-    # labels1[labels1 == 'u2r'] = 2
-    # labels1[labels1 == 'r2l'] = 3
-    # labels1[labels1 == 'probe'] = 4
-    dataset1['label'] = labels1
-    
-    labels2 = dataset2['label'].copy()
-    print(labels2.unique())
-
-    labels2[labels2 == 'normal'] = 0
-    labels2[labels2 == 'ddos'] = 1
-    # labels2[labels2 == 'u2r'] = 2
-    # labels2[labels2 == 'r2l'] = 3
-    # labels2[labels2 == 'probe'] = 4
-    dataset2['label'] = labels2
-    
-    train_set_x0 = read_data_set(dataset1, dataset2)
-    print(train_set_x0.train.labels)
-
     #-------------pre-process dataset3,4-----------------------
     nomial(dataset3, dataset4)
     
@@ -388,44 +339,6 @@ if __name__ == "__main__":
     dataset4['label'] = labels4
     
     train_set_x1 = read_data_set(dataset3, dataset4)
-    #-------------------------------------------------------------
-    #-------------pre-process dataset5,6-----------------------
-    nomial(dataset5, dataset6)
-    
-    dataset5['label'] = initlabel(dataset5)
-    dataset6['label'] = initlabel(dataset6)
-
-    num_features = ["duration", "protocol_type", "service", "flag", "src_bytes", "dst_bytes",
-                "land", "wrong_fragment", "urgent", "count", "srv_count", "serror_rate",
-                "srv_serror_rate", "rerror_rate", "srv_rerror_rate", "same_srv_rate", 
-                "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
-                "dst_host_same_srv_rate", "dst_host_diff_srv_rate", "dst_host_same_src_port_rate",
-                "dst_host_srv_diff_host_rate", "dst_host_serror_rate", "dst_host_srv_serror_rate", 
-                "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "src_ip", "src_port", "dst_ip",
-                "dst_port", "conn_end_time"
-    ]
-    dataset5[num_features] = dataset5[num_features].astype(float)
-    dataset5[num_features] = MinMaxScaler().fit_transform(dataset5[num_features].values)
-    dataset6[num_features] = dataset6[num_features].astype(float)
-    dataset6[num_features] = MinMaxScaler().fit_transform(dataset6[num_features].values)
-
-    labels5 = dataset5['label'].copy()
-    labels5[labels5 == 'normal'] = 0
-    labels5[labels5 == 'ddos'] = 1
-    # labels5[labels5 == 'u2r'] = 2
-    # labels5[labels5 == 'r2l'] = 3
-    # labels5[labels5 == 'probe'] = 4
-    dataset5['label'] = labels5
-    
-    labels6 = dataset6['label'].copy()
-    labels6[labels6 == 'normal'] = 0
-    labels6[labels6 == 'ddos'] = 1
-    # labels6[labels6 == 'u2r'] = 2
-    # labels6[labels6 == 'r2l'] = 3
-    # labels6[labels6 == 'probe'] = 4
-    dataset6['label'] = labels6
-    
-    train_set_x2 = read_data_set(dataset5, dataset6)
     #-------------------------------------------------------------
 
     num_agg = len(workers)
