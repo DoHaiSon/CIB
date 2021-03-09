@@ -12,6 +12,7 @@ tf1.disable_eager_execution()
 import sys
 import logging
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
+from Shared.await_workers import delete_folder
 import warnings
 warnings.filterwarnings('ignore') 
 
@@ -43,6 +44,7 @@ server = tf1.train.Server(cluster,
 final_step = 10000000
 
 LOG_DIR = 'kdd_ddl3-%d' % len(workers)
+delete_folder(LOG_DIR + '/flags')
 
 if __name__ == "__main__":
     dir_path = os.path.dirname(os.path.realpath(__file__))

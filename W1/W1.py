@@ -23,6 +23,7 @@ from tensorflow.python.framework import dtypes
 from Shared.MLP import HiddenLayer, MLP
 from Shared.logisticRegression2 import LogisticRegression 
 from Shared.rbm_har import  RBM, GRBM
+from Share.await_workers import await_another_workers
 import math
 import timeit
 from sklearn.metrics import accuracy_score, confusion_matrix, precision_score, recall_score
@@ -496,6 +497,7 @@ if __name__ == "__main__":
                         logging.info("Worker {0} Pretraining layer 1 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
                         end_time = timeit.default_timer()
                         logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
+                    await_another_workers(0, workers, LOG_DIR)
 
                 for epoch in range(pretraining_epochs):
                     avg_cost = 0.0                            
@@ -508,6 +510,7 @@ if __name__ == "__main__":
                         logging.info("Worker {0} Pretraining layer 2 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
                         end_time = timeit.default_timer()
                         logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
+                    await_another_workers(0, workers, LOG_DIR)
 
                 for epoch in range(pretraining_epochs):
                     avg_cost = 0.0                            
@@ -519,7 +522,8 @@ if __name__ == "__main__":
                     if epoch % display_step_pre == 0:
                         logging.info("Worker {0} Pretraining layer 3 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
                         end_time = timeit.default_timer()
-                        logging.info("time {0} minutes".format((end_time - start_time)/ 60.))        
+                        logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
+                    await_another_workers(0, workers, LOG_DIR)            
 
                 end_time = timeit.default_timer()
                 logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
