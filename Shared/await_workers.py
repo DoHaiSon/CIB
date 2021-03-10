@@ -4,7 +4,7 @@ import os
 import pysftp
 
 logs_flag_W1 = "/home/avitech-pc/haison98/CIB/kdd_ddl3-2/flags"
-log_flag_W2 = "/home/avitech/haison98/CIB/kdd_ddl3-2/flags"
+logs_flag_W2 = "/home/avitech/haison98/CIB/kdd_ddl3-2/flags"
 worker_user = ["avitech-pc", "avitech", "avitech"]
 worker_pass = ["1", "1", "1"]
 
