@@ -23,7 +23,7 @@ from tensorflow.python.framework import dtypes
 from Shared.MLP import HiddenLayer, MLP
 from Shared.logisticRegression2 import LogisticRegression 
 from Shared.rbm_har import  RBM, GRBM
-from Share.await_workers import await_another_workers
+from Shared.await_workers import await_another_workers
 import math
 import timeit
 from sklearn.metrics import accuracy_score, confusion_matrix, precision_score, recall_score

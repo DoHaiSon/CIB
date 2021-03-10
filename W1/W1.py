@@ -23,7 +23,7 @@ from tensorflow.python.framework import dtypes
 from Shared.MLP import HiddenLayer, MLP
 from Shared.logisticRegression2 import LogisticRegression 
 from Shared.rbm_har import  RBM, GRBM
-from Share.await_workers import await_another_workers
+from Shared.await_workers import await_another_workers
 import math
 import timeit
 from sklearn.metrics import accuracy_score, confusion_matrix, precision_score, recall_score
@@ -36,9 +36,9 @@ warnings.filterwarnings('ignore')
 Datasets = collections.namedtuple('Datasets', ['train', 'validation', 'test'])
 
 #----------distributed------------------------
-IP_server = "192.168.0.107:2222"
-IP_worker_1 = "192.168.0.107:2223"
-IP_worker_2 = "192.168.0.142:2224"
+IP_server = "192.168.1.1:2222"
+IP_worker_1 = "192.168.1.1:2223"
+IP_worker_2 = "192.168.1.2:2224"
 IP_worker_3 = "192.168.0.135:2225"
 
 #define cluster

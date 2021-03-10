@@ -15,11 +15,12 @@ logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 from Shared.await_workers import delete_folder
 import warnings
 warnings.filterwarnings('ignore') 
+from pathlib import Path
 
 #----------distributed------------------------
-IP_server = "192.168.0.107:2222"
-IP_worker_1 = "192.168.0.107:2223"
-IP_worker_2 = "192.168.0.142:2224"
+IP_server = "192.168.1.1:2222"
+IP_worker_1 = "192.168.1.1:2223"
+IP_worker_2 = "192.168.1.2:2224"
 IP_worker_3 = "192.168.0.135:2225"
 
 #define cluster
@@ -44,7 +45,11 @@ server = tf1.train.Server(cluster,
 final_step = 10000000
 
 LOG_DIR = 'kdd_ddl3-%d' % len(workers)
-delete_folder(LOG_DIR + '/flags')
+path = Path(__file__).parent
+path /= LOG_DIR + "/flags"
+delete_folder(path)
+if not os.path.exists(path + "/flag_W2"):
+    open(path + "/flag_W2", 'w'): pass
 
 if __name__ == "__main__":
     dir_path = os.path.dirname(os.path.realpath(__file__))
