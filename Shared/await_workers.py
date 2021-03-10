@@ -3,7 +3,8 @@ import pathlib
 import os
 import pysftp
 
-logs_flag = "/home/avitech-pc/haison98/CIB/kdd_ddl3-2/flags"
+logs_flag_W1 = "/home/avitech-pc/haison98/CIB/kdd_ddl3-2/flags"
+log_flag_W2 = "/home/avitech/haison98/CIB/kdd_ddl3-2/flags"
 worker_user = ["avitech-pc", "avitech", "avitech"]
 worker_pass = ["1", "1", "1"]
 
@@ -61,7 +62,7 @@ def send_flag(W, worker, epoch):
                     flag_file.write(str(epoch))
 
                 # Define the remote path where the file will be uploaded
-                remoteFilePath = logs_flag + "/" + localFilePath
+                remoteFilePath = logs_flag_W2 + "/" + localFilePath
 
                 sftp.put(localFilePath, remoteFilePath)
                 print("Sent flags epoch: {} to anther workers.".format(epoch))
@@ -76,7 +77,7 @@ def send_flag(W, worker, epoch):
                 flag_file.write(str(epoch))
 
             # Define the remote path where the file will be uploaded
-            remoteFilePath = logs_flag + "/" + localFilePath
+            remoteFilePath = logs_flag_W1 + "/" + localFilePath
 
             sftp.put(localFilePath, remoteFilePath)
             print("Sent flags epoch: {} to server.".format(epoch))
