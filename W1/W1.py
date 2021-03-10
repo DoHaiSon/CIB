@@ -39,7 +39,7 @@ Datasets = collections.namedtuple('Datasets', ['train', 'validation', 'test'])
 IP_server = "192.168.1.1:2222"
 IP_worker_1 = "192.168.1.1:2223"
 IP_worker_2 = "192.168.1.2:2224"
-IP_worker_3 = "192.168.0.135:2225"
+IP_worker_3 = "192.168.1.3:2225"
 
 #define cluster
 parameter_servers = [IP_server]
@@ -497,7 +497,7 @@ if __name__ == "__main__":
                         logging.info("Worker {0} Pretraining layer 1 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
                         end_time = timeit.default_timer()
                         logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
-                    await_another_workers(0, workers, LOG_DIR)
+                    await_another_workers(0, workers, LOG_DIR, epoch)
 
                 for epoch in range(pretraining_epochs):
                     avg_cost = 0.0                            
@@ -510,7 +510,7 @@ if __name__ == "__main__":
                         logging.info("Worker {0} Pretraining layer 2 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
                         end_time = timeit.default_timer()
                         logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
-                    await_another_workers(0, workers, LOG_DIR)
+                    await_another_workers(0, workers, LOG_DIR, epoch)
 
                 for epoch in range(pretraining_epochs):
                     avg_cost = 0.0                            
@@ -523,7 +523,7 @@ if __name__ == "__main__":
                         logging.info("Worker {0} Pretraining layer 3 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
                         end_time = timeit.default_timer()
                         logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
-                    await_another_workers(0, workers, LOG_DIR)            
+                    await_another_workers(0, workers, LOG_DIR, epoch)            
 
                 end_time = timeit.default_timer()
                 logging.info("time {0} minutes".format((end_time - start_time)/ 60.))

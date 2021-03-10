@@ -48,8 +48,13 @@ LOG_DIR = 'kdd_ddl3-%d' % len(workers)
 path = Path(__file__).parent
 path /= LOG_DIR + "/flags"
 delete_folder(path)
-if not os.path.exists(path + "/flag_W2"):
-    open(path + "/flag_W2", 'w'): pass
+
+flag_W2 = os.path.abspath(__file__)[:-9] + LOG_DIR + "/flags/flag_W2"
+if not os.path.exists(path):
+    os.makedirs(path)
+    with open(flag_W2, 'w') as flag_W2: pass
+else:
+    with open(flag_W2, 'w') as flag_W2: pass
 
 if __name__ == "__main__":
     dir_path = os.path.dirname(os.path.realpath(__file__))
