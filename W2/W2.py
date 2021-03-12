@@ -479,12 +479,11 @@ if __name__ == "__main__":
                         batch_xs, batch_ys = globals()['train_set_x'+str(FLAGS.task_index)].train.next_batch(batch_size_pre)
                         c,_ = sess.run([cost0, train_ops0], feed_dict = {x: batch_xs,y : batch_ys})
                         avg_cost += c / batch_num_pre
-                
                     if epoch % display_step_pre == 0:
                         logging.info("Worker {0} Pretraining layer 1 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
                         end_time = timeit.default_timer()
                         logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
-                    await_another_workers(1, workers, LOG_DIR)     
+                    await_another_workers(1, workers, LOG_DIR, epoch)     
 
                 for epoch in range(pretraining_epochs):
                     avg_cost = 0.0                            
@@ -497,7 +496,7 @@ if __name__ == "__main__":
                         logging.info("Worker {0} Pretraining layer 2 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
                         end_time = timeit.default_timer()
                         logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
-                    await_another_workers(1, workers, LOG_DIR) 
+                    await_another_workers(1, workers, LOG_DIR, epoch) 
 
                 for epoch in range(pretraining_epochs):
                     avg_cost = 0.0                            
@@ -510,7 +509,7 @@ if __name__ == "__main__":
                         logging.info("Worker {0} Pretraining layer 3 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
                         end_time = timeit.default_timer()
                         logging.info("time {0} minutes".format((end_time - start_time)/ 60.))   
-                    await_another_workers(1, workers, LOG_DIR)          
+                    await_another_workers(1, workers, LOG_DIR, epoch)          
 
                 end_time = timeit.default_timer()
                 logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
