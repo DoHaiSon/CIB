@@ -11,7 +11,7 @@ worker_user = ["avitech-pc", "avitech", "avitech"]
 worker_pass = ["1", "1", "1"]
 
 async def waitting():
-    await asyncio.sleep(0.1) 
+    await asyncio.sleep(50) 
 
 def await_another_workers(W, worker, LOG_DIR, epoch):
     log_W1 = ""
@@ -24,7 +24,7 @@ def await_another_workers(W, worker, LOG_DIR, epoch):
         send_flag(W, worker, epoch)
         while not str(epoch) in log_W2: #and "true" in log_W3:
             waitting()
-            logging.info("")
+            logging.info("Waiting other workers.")
             with open(log_W2_dir, 'r') as flag_W2: #, open(log_W3_dir, 'r') as flag_W3:
                 log_W2 = flag_W2.read()
                 #log_W3 = flag_W3.read()    
