@@ -29,6 +29,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix, precision_score, r
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 
 import collections
+from pathlib import Path
 import warnings
 warnings.filterwarnings('ignore') 
 
@@ -68,6 +69,16 @@ server = tf1.train.Server(cluster,
 final_step = 10000000
 
 LOG_DIR = 'kdd_ddl3-%d' % len(workers)
+
+path = Path(__file__).parent
+path /= LOG_DIR + "/flags"
+flag_W2 = os.path.abspath(__file__)[:-5] + LOG_DIR + "/flags/flag_W1"
+if not os.path.exists(path):
+    os.makedirs(path)
+    with open(flag_W2, 'w') as flag_W2: pass
+else:
+    with open(flag_W2, 'w') as flag_W2: pass
+
 print('Worker 2: parameters specification finished!')
 #--------------------------------------------
 
