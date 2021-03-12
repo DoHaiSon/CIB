@@ -2,15 +2,16 @@ import asyncio
 import pathlib
 import os
 import pysftp
+import logging
+logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 
 logs_flag_W1 = "/home/avitech-pc/haison98/CIB/kdd_ddl3-2/flags"
-logs_flag_W2 = "/home/avitech/haison98/CIB/kdd_ddl3-2/flags"
+logs_flag_W2 = "/home/avitech/haison98/CIB/W2/kdd_ddl3-2/flags"
 worker_user = ["avitech-pc", "avitech", "avitech"]
 worker_pass = ["1", "1", "1"]
 
 async def waitting():
     await asyncio.sleep(0.1) 
-    print("waiting another workers") 
 
 def await_another_workers(W, worker, LOG_DIR, epoch):
     log_W1 = ""
@@ -23,6 +24,7 @@ def await_another_workers(W, worker, LOG_DIR, epoch):
         send_flag(W, worker, epoch)
         while not str(epoch) in log_W2: #and "true" in log_W3:
             waitting()
+            logging.info("")
             with open(log_W2_dir, 'r') as flag_W2: #, open(log_W3_dir, 'r') as flag_W3:
                 log_W2 = flag_W2.read()
                 #log_W3 = flag_W3.read()    
@@ -65,7 +67,7 @@ def send_flag(W, worker, epoch):
                 remoteFilePath = logs_flag_W2 + "/" + localFilePath
 
                 sftp.put(localFilePath, remoteFilePath)
-                print("Sent flags epoch: {} to anther workers.".format(epoch))
+                print("Sent flags epoch: {} to other workers.".format(epoch))
     else:
         with pysftp.Connection(host=worker[0][:-5], username=worker_user[0], password=worker_pass[0]) as sftp:
             print("Connection succesfully stablished ...")
