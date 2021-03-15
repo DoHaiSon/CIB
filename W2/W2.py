@@ -23,6 +23,7 @@ from Shared.MLP import HiddenLayer, MLP
 from Shared.logisticRegression2 import LogisticRegression 
 from Shared.rbm_har import  RBM, GRBM
 from Shared.await_workers import await_another_workers
+from Shared.read_dataset import read_dataset
 import math
 import timeit
 from sklearn.metrics import accuracy_score, confusion_matrix, precision_score, recall_score
@@ -75,275 +76,12 @@ logs_flag = "/home/avitech-pc/haison98/CIB/" + LOG_DIR + "/logs_flag"
 print('Worker 2: parameters specification finished!')
 #--------------------------------------------
 
-class Dataset(object):
-    def __init__(self, segments, labels, one_hot = False, dtype = dtypes.float32, reshape = True):
-        """Construct a Dataset
-        one_hot arg is used only if fake_data is True. 'dtype' can be either unit9 or float32
-        """
-
-        dtype = dtypes.as_dtype(dtype).base_dtype
-        if dtype not in (dtypes.uint8, dtypes.float32):
-            raise TypeError('Invalid')
-
-        self._num_examples = segments.shape[0]
-        self._segments = segments
-        self._labels = labels
-        self._epochs_completed = 0
-        self._index_in_epoch = 0
-
-    @property
-    def segments(self):
-        return self._segments
-
-    @property
-    def labels(self):
-        return self._labels
-
-    @property
-    def num_examples(self):
-        return self._num_examples
-
-    @property
-    def epochs_completed(self):
-        return self._epochs_completed
-
-    def next_batch(self, batch_size):
-        """Return the next batch-size examples from this dataset"""
-
-        start = self._index_in_epoch
-        self._index_in_epoch += batch_size
-        if self._index_in_epoch > self._num_examples:
-            self._epochs_completed +=1
-
-            perm = np.arange(self._num_examples)
-            np.random.shuffle(perm)
-            self._segments = self._segments[perm]
-            self._labels = self._labels[perm]
-
-            #start next epoch
-            start = 0
-            self._index_in_epoch = batch_size
-            assert batch_size <= self._num_examples
-        end = self._index_in_epoch
-        return self._segments[start:end,:, :], self._labels[start:end,:]
-
-def windows(data, size):
-    start = 0
-    while start < data.count():
-        yield start, start + size
-        start += size 
-
-def segment_signal(data, window_size = 1):
-
-    segments = np.empty((0, window_size, 33))
-    labels = np.empty((0))
-    num_features = ["duration", "protocol_type", "service", "flag", "src_bytes", "dst_bytes",
-                "land", "wrong_fragment", "urgent", "count", "srv_count", "serror_rate",
-                "srv_serror_rate", "rerror_rate", "srv_rerror_rate", "same_srv_rate", 
-                "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
-                "dst_host_same_srv_rate", "dst_host_diff_srv_rate", "dst_host_same_src_port_rate",
-                "dst_host_srv_diff_host_rate", "dst_host_serror_rate", "dst_host_srv_serror_rate", 
-                "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "src_ip", "src_port", "dst_ip",
-                "dst_port", "conn_end_time"
-    ]
-    segments = np.asarray(data[num_features].copy())
-    labels = data["label"]
-
-    return segments, labels
-
-def read_data(filename):
-    col_names = ["duration", "protocol_type", "service", "flag", "src_bytes", "dst_bytes",
-                "land", "wrong_fragment", "urgent", "count", "srv_count", "serror_rate",
-                "srv_serror_rate", "rerror_rate", "srv_rerror_rate", "same_srv_rate", 
-                "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
-                "dst_host_same_srv_rate", "dst_host_diff_srv_rate", "dst_host_same_src_port_rate",
-                "dst_host_srv_diff_host_rate", "dst_host_serror_rate", "dst_host_srv_serror_rate", 
-                "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "src_ip", "src_port", "dst_ip",
-                "dst_port", "conn_end_time", "label"]
-    dataset = pd.read_csv(filename, header = None, names = col_names)
-    return dataset      
-
-def normalize(dataset):
-    mu = np.mean(dataset, axis = 0)
-    sigma = np.std(dataset, axis = 0)
-    return (dataset - mu)/sigma
-
-def read_data_set(dataset1, dataset2, one_hot = False, dtype = dtypes.float32, reshape = True):
-
-    segments1, labels1 = segment_signal(dataset1)
-    #labels1 = np.asarray(pd.get_dummies(labels1), dtype = np.int8)
-
-    segments2, labels2 = segment_signal(dataset2)
-    #labels2 = np.asarray(pd.get_dummies(labels2), dtype = np.int8)
-    labels = np.asarray(pd.get_dummies(labels1.append([labels2])), dtype = np.int8)
-    labels1 = labels[:len(labels1)]
-    labels2 = labels[len(labels1):]
-    train_x = segments1.reshape(len(segments1), 1, 1 ,33)
-    train_y = labels1
-
-    test_x = segments2.reshape(len(segments2), 1, 1 ,33)
-    test_y = labels2
-        
-    train = Dataset(train_x, train_y, dtype = dtype , reshape = reshape)
-    test = Dataset(test_x, test_y, dtype = dtype, reshape = reshape)
-    #return base.Datasets(train = train, validation=None, test = test)
-    return Datasets(train = train, validation = None, test = test)
-
-def initlabel(dataset):
-    labels = dataset['label'].copy()
-    labels[labels == 'ddos'] = 'ddos'
-    labels[labels == 'normal'] = 'normal'
-    # labels[labels == 'back.'] = 'dos'
-    # labels[labels == 'buffer_overflow.'] = 'u2r'
-    # labels[labels == 'ftp_write.'] =  'r2l'
-    # labels[labels == 'guess_passwd.'] = 'r2l'
-    # labels[labels == 'imap.'] = 'r2l'
-    # labels[labels == 'ipsweep.'] = 'probe'
-    # labels[labels == 'land.'] = 'dos' 
-    # labels[labels == 'loadmodule.'] = 'u2r'
-    # labels[labels == 'multihop.'] = 'r2l'
-    # labels[labels == 'neptune.'] = 'dos'
-    # labels[labels == 'nmap.'] = 'probe'
-    # labels[labels == 'perl.'] = 'u2r'
-    # labels[labels == 'phf.'] =  'r2l'
-    # labels[labels == 'pod.'] =  'dos'
-    # labels[labels == 'portsweep.'] = 'probe'
-    # labels[labels == 'rootkit.'] = 'u2r'
-    # labels[labels == 'satan.'] = 'probe'
-    # labels[labels == 'smurf.'] = 'dos'
-    # labels[labels == 'spy.'] = 'r2l'
-    # labels[labels == 'teardrop.'] = 'dos'
-    # labels[labels == 'warezclient.'] = 'r2l'
-    # labels[labels == 'warezmaster.'] = 'r2l'
-    # labels[labels == 'apache2.'] = 'dos'
-    # labels[labels == 'mailbomb.'] = 'dos'
-    # labels[labels == 'processtable.'] = 'dos'
-    # labels[labels == 'udpstorm.'] = 'dos'
-    # labels[labels == 'mscan.'] = 'probe'
-    # labels[labels == 'saint.'] = 'probe'
-    # labels[labels == 'ps.'] = 'u2r'
-    # labels[labels == 'sqlattack.'] = 'u2r'
-    # labels[labels == 'xterm.'] = 'u2r'
-    # labels[labels == 'named.'] = 'r2l'
-    # labels[labels == 'sendmail.'] = 'r2l'
-    # labels[labels == 'snmpgetattack.'] = 'r2l'
-    # labels[labels == 'snmpguess.'] = 'r2l'
-    # labels[labels == 'worm.'] = 'r2l'
-    # labels[labels == 'xlock.'] = 'r2l'
-    # labels[labels == 'xsnoop.'] = 'r2l'
-    # labels[labels == 'httptunnel.'] = 'r2l'
-    return labels
-
-def nomial(dataset1, dataset2):
-
-    dataset = dataset1.append([dataset2])
-    protocol1 = dataset1['protocol_type'].copy()
-    protocol2 = dataset2['protocol_type'].copy()
-    protocol_type = dataset['protocol_type'].unique()
-    for i in range(len(protocol_type)):
-        protocol1[protocol1 == protocol_type[i]] = i
-        protocol2[protocol2 == protocol_type[i]] = i
-    dataset1['protocol_type'] = protocol1
-    dataset2['protocol_type'] = protocol2
-
-    service1 = dataset1['service'].copy()
-    service2 = dataset2['service'].copy()
-    service_type = dataset['service'].unique()
-    for i in range(len(service_type)):
-        service1[service1 == service_type[i]] = i
-        service2[service2 == service_type[i]] = i
-    dataset1['service'] = service1
-    dataset2['service'] = service2
-
-    flag1 = dataset1['flag'].copy()
-    flag2 = dataset2['flag'].copy()
-    flag_type = dataset['flag'].unique()
-    for i in range(len(flag_type)):
-        flag1[flag1 == flag_type[i]] = i
-        flag2[flag2 == flag_type[i]] = i
-        
-    dataset1['flag'] = flag1
-    dataset2['flag'] = flag2
-    
-    src_ip1 = dataset1['src_ip'].copy()
-    src_ip2 = dataset2['src_ip'].copy()
-    src_ip = dataset['src_ip'].unique()
-    for i in range(len(src_ip)):
-        src_ip1[src_ip1 == src_ip[i]] = i
-        src_ip2[src_ip2 == src_ip[i]] = i
-    dataset1['src_ip'] = src_ip1
-    dataset2['src_ip'] = src_ip2
-
-    dst_ip1 = dataset1['dst_ip'].copy()
-    dst_ip2 = dataset2['dst_ip'].copy()
-    dst_ip = dataset['dst_ip'].unique()
-    for i in range(len(dst_ip)):
-        dst_ip1[dst_ip1 == dst_ip[i]] = i
-        dst_ip2[dst_ip2 == dst_ip[i]] = i
-    dataset1['dst_ip'] = dst_ip1
-    dataset2['dst_ip'] = dst_ip2
-
-    conn_end_time1 = dataset1['conn_end_time'].copy()
-    conn_end_time2 = dataset2['conn_end_time'].copy()
-    conn_end_time = dataset['conn_end_time'].unique()
-    for i in range(len(conn_end_time)):
-        conn_end_time1[conn_end_time1 == conn_end_time[i]] = i
-        conn_end_time2[conn_end_time2 == conn_end_time[i]] = i
-    dataset1['conn_end_time'] = conn_end_time1
-    dataset2['conn_end_time'] = conn_end_time2
-
 if __name__ == "__main__":
     dir_path = "/home/avitech/haison98/CIB"
     filename1 = dir_path + "/datasets/our_kdd_99/splited_1.csv"
     filename2 = dir_path + "/datasets/our_kdd_99/splited_2.csv"
     
-    dataset11 = read_data(filename1)
-    dataset22 = read_data(filename2)
-
-    #dataset22, dataset44 = train_test_split(dataset33, train_size=0.2, random_state=0)
-    
-    dataset13, dataset5 = train_test_split(dataset11, train_size=0.66, random_state=2)
-    dataset24, dataset6 = train_test_split(dataset22, train_size=0.66, random_state=3)
-    dataset1, dataset3 = train_test_split(dataset13, train_size=0.5, random_state=4)
-    dataset2, dataset4 = train_test_split(dataset24, train_size=0.5, random_state=5)
-
-    #-------------pre-process dataset3,4-----------------------
-    nomial(dataset3, dataset4)
-    
-    dataset3['label'] = initlabel(dataset3)
-    dataset4['label'] = initlabel(dataset4)
-
-    num_features = ["duration", "protocol_type", "service", "flag", "src_bytes", "dst_bytes",
-                "land", "wrong_fragment", "urgent", "count", "srv_count", "serror_rate",
-                "srv_serror_rate", "rerror_rate", "srv_rerror_rate", "same_srv_rate", 
-                "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
-                "dst_host_same_srv_rate", "dst_host_diff_srv_rate", "dst_host_same_src_port_rate",
-                "dst_host_srv_diff_host_rate", "dst_host_serror_rate", "dst_host_srv_serror_rate", 
-                "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "src_ip", "src_port", "dst_ip",
-                "dst_port", "conn_end_time"
-    ]
-    dataset3[num_features] = dataset3[num_features].astype(float)
-    dataset3[num_features] = MinMaxScaler().fit_transform(dataset3[num_features].values)
-    dataset4[num_features] = dataset4[num_features].astype(float)
-    dataset4[num_features] = MinMaxScaler().fit_transform(dataset4[num_features].values)
-
-    labels3 = dataset3['label'].copy()
-    labels3[labels3 == 'normal'] = 0
-    labels3[labels3 == 'ddos'] = 1
-    # labels3[labels3 == 'u2r'] = 2
-    # labels3[labels3 == 'r2l'] = 3
-    # labels3[labels3 == 'probe'] = 4
-    dataset3['label'] = labels3
-    
-    labels4 = dataset4['label'].copy()
-    labels4[labels4 == 'normal'] = 0
-    labels4[labels4 == 'ddos'] = 1
-    # labels4[labels4 == 'u2r'] = 2
-    # labels4[labels4 == 'r2l'] = 3
-    # labels4[labels4 == 'probe'] = 4
-    dataset4['label'] = labels4
-    
-    train_set_x1 = read_data_set(dataset3, dataset4)
+    train_set_x1 = read_dataset(filename1, filename2, FLAGS.task_index)
     #-------------------------------------------------------------
 
     num_agg = len(workers)
@@ -491,13 +229,11 @@ if __name__ == "__main__":
 
                 for epoch in range(pretraining_epochs):
                     avg_cost = 0.0                            
-                    print("Before")
                     for j in range(batch_num_pre):
                         batch_xs, batch_ys = globals()['train_set_x'+str(FLAGS.task_index)].train.next_batch(batch_size_pre)
-                        print("batch ", j)
+                        logging.info("Working at batch num: {}".format(j))
                         c,_ = sess.run([cost1, train_ops1], feed_dict = {x: batch_xs,y : batch_ys})
                         avg_cost += c / batch_num_pre
-                    print("After")
                 
                     if epoch % display_step_pre == 0:
                         logging.info("Worker {0} Pretraining layer 2 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))

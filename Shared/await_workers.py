@@ -20,7 +20,7 @@ def await_another_workers(W, worker, logs_flag, layer, epoch):
     i=0
     while flag:
         time.sleep(2)
-        print("Worker 2 waiting ", i)
+        print("Worker ", W+1, " waiting: ", i)
         i+=1        
         flag = read_log(W, logs_flag, layer, epoch)
 
