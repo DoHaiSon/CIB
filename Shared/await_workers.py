@@ -34,11 +34,17 @@ def send_flag(W, worker, logs_flag, layer, epoch):
             with open(localFilePath, 'a') as logs_flag:
                 logs_flag.write(str(W) + "," + str(layer) + "," + str(epoch) + "\n")
 
+        with pysftp.Connection(host=worker[0][:-5], username=server_user, password=server_pass) as sftp:
+            print("Connection succesfully stablished ...")    
             # Define the remote path where the file will be uploaded
-            sftp.put(localFilePath, logs_flag[:-9])
-            print("Sent flags epoch: {} to server.".format(epoch))
+            localFilePath = "logs_flag"
+            logs_flag = "/home/avitech-pc/haison98/CIB/kdd_ddl3-2/logs_flag"
+            sftp.put(localFilePath, logs_flag)
+            print("Sent flags epoch: {} to server.".format(epoch))        
 
 def read_log(W, logs_flag, layer, epoch):
+    if W != 0:
+        logs_flag = "logs_flag"
     log = []
     with open (logs_flag, "r") as logs_flag:
         for line in logs_flag:
