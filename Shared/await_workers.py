@@ -50,7 +50,7 @@ def read_log(W, logs_flag, layer, epoch):
     his = len(log_worker)
     max_layer = [0, 0, 0]
     max_epoch = [0, 0, 0]
-    for i in range (his - 1, his - 13, -1):
+    for i in range (his - 1, 0, -1):
         if log_worker[i] != W :
             if log_layer[i] > max_layer[log_worker[i]]:
                 max_layer[log_worker[i]] = log_layer[i]
@@ -60,8 +60,8 @@ def read_log(W, logs_flag, layer, epoch):
                 if log_epoch[i] > max_epoch[log_epoch[i]]:
                     max_epoch[log_worker[i]] = log_epoch[i]
     if layer < max(max_layer) or (layer == max(max_layer) and epoch < max(max_epoch)):
-        return True
-    return False
+        return False
+    return True
 
 def delete_folder(pth) :
     try:
