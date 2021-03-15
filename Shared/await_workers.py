@@ -62,7 +62,7 @@ def read_log(W, logs_flag, layer, epoch):
                 max_layer[log_worker[i]] = log_layer[i]
                 if log_epoch[i] > max_epoch[log_worker[i]]:
                     max_epoch[log_worker[i]] = log_epoch[i]
-            elif log_layer == max_layer[log_worker[i]]:
+            elif log_layer[i] == max_layer[log_worker[i]]:
                 if log_epoch[i] > max_epoch[log_worker[i]]:
                     max_epoch[log_worker[i]] = log_epoch[i]
     if layer < max(max_layer) or (layer == max(max_layer) and epoch <= max(max_epoch)):
