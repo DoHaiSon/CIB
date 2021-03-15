@@ -6,8 +6,8 @@ import logging
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 
 list_worker = ['worker_0', 'worker_1', 'worker_2']
-server_user = ["avitech-pc"]
-server_pass = ["1"]
+server_user = "avitech-pc"
+server_pass = "1"
 
 async def waitting():
     await asyncio.sleep(50) 
