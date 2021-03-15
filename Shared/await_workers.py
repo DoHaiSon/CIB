@@ -5,39 +5,68 @@ import pysftp
 import logging
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 
-logs_flag_W1 = "/home/avitech-pc/haison98/CIB/kdd_ddl3-2/flags"
-logs_flag_W2 = "/home/avitech/haison98/CIB/W2/kdd_ddl3-2/flags"
-worker_user = ["avitech-pc", "avitech", "avitech"]
-worker_pass = ["1", "1", "1"]
+list_worker = ['worker_0', 'worker_1', 'worker_2']
+server_user = ["avitech-pc"]
+server_pass = ["1"]
 
 async def waitting():
     await asyncio.sleep(50) 
 
-def await_another_workers(W, worker, LOG_DIR, epoch):
-    log_W1 = ""
-    log_W2 = ""
-    #log_W3 = ""
-    log_W1_dir = LOG_DIR + "/flags/flag_W1"
-    log_W2_dir = LOG_DIR + "/flags/flag_W2"
-    #log_W3_dir = LOG_DIR + "/flags/flag_W3"
-    if W == 0:                  ## Check flag of anthors worker, if all are true, next Epoch, else await
-        send_flag(W, worker, epoch)
-        while not str(epoch) in log_W2: #and "true" in log_W3:
-            waitting()
-            with open(log_W2_dir, 'r') as flag_W2: #, open(log_W3_dir, 'r') as flag_W3:
-                log_W2 = flag_W2.read()
-                #log_W3 = flag_W3.read()    
-        #os.remove(LOG_DIR + "/flags/flag_W2")
-        #os.remove(LOG_DIR + "/flags/flag_W3")
+def await_another_workers(W, worker, logs_flag, layer, epoch):
+    ## Check flag of anthors worker, if all are true, next Epoch, else await
+    flag = True
+    send_flag(W, worker, logs_flag, layer, epoch)
+    while flag:
+        waitting()
+        flag = read_log(W, logs_flag, layer, epoch)
 
-    elif W == 1:                ## Create a flag file with true value in server PC after done an Epoch
-        send_flag(W, worker, epoch)
-        while not str(epoch) in log_W1:
-            waitting()
-            with open(log_W1_dir, 'r') as flag_W1:
-                log_W1 = flag_W1.read()
-    else:                       ## Create a flag file with true value in server PC after done an Epoch
-        send_flag(W, worker, epoch)
+def send_flag(W, worker, logs_flag, layer, epoch):
+    if W == 0:
+        with open (logs_flag, "a") as logs_flag:
+            logs_flag.write(str(W) + "," + str(layer) + "," + str(epoch) + "\n")
+    else:
+        with pysftp.Connection(host=worker[0][:-5], username=server_user, password=server_pass) as sftp:
+            print("Connection succesfully stablished ...")
+
+            # Define the file that you want to upload from your local or absolute directorty
+            localFilePath = "logs_flag"
+            sftp.get(logs_flag, localFilePath)
+            with open(localFilePath, 'a') as logs_flag:
+                logs_flag.write(str(W) + "," + str(layer) + "," + str(epoch) + "\n")
+
+            # Define the remote path where the file will be uploaded
+            sftp.put(localFilePath, logs_flag)
+            print("Sent flags epoch: {} to server.".format(epoch))
+
+def read_log(W, logs_flag, layer, epoch):
+    log = []
+    with open (logs_flag, "r") as logs_flag:
+        for line in logs_flag:
+            log.append(line)
+    log_worker = list(map(int, [i.split(',', 2)[0] for i in log] ))
+    log_layer = list(map(int, [i.split(',', 2)[1] for i in log] ))
+    log_epoch = [i.split(',', 2)[2] for i in log]
+    log_epoch = list(map(int, [ x[:-1] for x in log_epoch ] ))
+    print(log_worker)
+    print(log_layer)
+    print(log_epoch)
+    his = len(log_worker)
+    max_layer = [0, 0, 0]
+    max_epoch = [0, 0, 0]
+    for i in range (his - 1, his - 13, -1):
+        if log_worker[i] != W :
+            if log_layer[i] > max_layer[log_worker[i]]:
+                max_layer[log_worker[i]] = log_layer[i]
+                if log_epoch[i] > max_epoch[log_epoch[i]]:
+                    max_epoch[log_worker[i]] = log_epoch[i]
+            elif log_layer == max_layer[log_worker[i]]:
+                if log_epoch[i] > max_epoch[log_epoch[i]]:
+                    max_epoch[log_worker[i]] = log_epoch[i]
+    print(max_layer)
+    print(max_epoch)
+    if layer < max(max_layer) or (layer == max(max_layer) and epoch < max(max_epoch)):
+        return True
+    return False
 
 def delete_folder(pth) :
     try:
@@ -49,36 +78,3 @@ def delete_folder(pth) :
         print("Clean flag files.")       
     except:
         print("The flags folder does not exist.")
-
-def send_flag(W, worker, epoch):
-    if W == 0:
-        for i in range (1, len(worker)):
-            with pysftp.Connection(host=worker[i][:-5], username=worker_user[i], password=worker_pass[i]) as sftp:
-                print("Connection succesfully stablished ...")
-
-                # Define the file that you want to upload from your local directorty
-                # or absolute "C:\Users\sdkca\Desktop\TUTORIAL2.txt"
-                localFilePath = 'flag_W' + str(W+1)
-                with open(localFilePath, 'w') as flag_file:
-                    flag_file.write(str(epoch))
-
-                # Define the remote path where the file will be uploaded
-                remoteFilePath = logs_flag_W2 + "/" + localFilePath
-
-                sftp.put(localFilePath, remoteFilePath)
-                print("Sent flags epoch: {} to other workers.".format(epoch))
-    else:
-        with pysftp.Connection(host=worker[0][:-5], username=worker_user[0], password=worker_pass[0]) as sftp:
-            print("Connection succesfully stablished ...")
-
-            # Define the file that you want to upload from your local directorty
-            # or absolute "C:\Users\sdkca\Desktop\TUTORIAL2.txt"
-            localFilePath = 'flag_W' + str(W+1)
-            with open(localFilePath, 'w') as flag_file:
-                flag_file.write(str(epoch))
-
-            # Define the remote path where the file will be uploaded
-            remoteFilePath = logs_flag_W1 + "/" + localFilePath
-
-            sftp.put(localFilePath, remoteFilePath)
-            print("Sent flags epoch: {} to server.".format(epoch))

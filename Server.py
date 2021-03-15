@@ -12,7 +12,6 @@ tf1.disable_eager_execution()
 import sys
 import logging
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
-from Shared.await_workers import delete_folder
 import warnings
 warnings.filterwarnings('ignore') 
 from pathlib import Path
@@ -21,7 +20,7 @@ from pathlib import Path
 IP_server = "192.168.1.1:2222"
 IP_worker_1 = "192.168.1.1:2223"
 IP_worker_2 = "192.168.1.2:2224"
-IP_worker_3 = "192.168.0.135:2225"
+IP_worker_3 = "192.168.1.3:2225"
 
 #define cluster
 parameter_servers = [IP_server]
@@ -45,16 +44,9 @@ server = tf1.train.Server(cluster,
 final_step = 10000000
 
 LOG_DIR = 'kdd_ddl3-%d' % len(workers)
-path = Path(__file__).parent
-path /= LOG_DIR + "/flags"
-delete_folder(path)
-
-flag_W2 = os.path.abspath(__file__)[:-9] + LOG_DIR + "/flags/flag_W2"
-if not os.path.exists(path):
-    os.makedirs(path)
-    with open(flag_W2, 'w') as flag_W2: pass
-else:
-    with open(flag_W2, 'w') as flag_W2: pass
+os.remove(LOG_DIR + "/logs_flag")                           ## Remove old logs_flag
+if not os.path.exists(LOG_DIR + "/logs_flag"):
+    with open(LOG_DIR + "/logs_flag", 'w') as logs_flag: pass
 
 if __name__ == "__main__":
     dir_path = os.path.dirname(os.path.realpath(__file__))

@@ -69,6 +69,8 @@ server = tf1.train.Server(cluster,
 final_step = 10000000
 
 LOG_DIR = 'kdd_ddl3-%d' % len(workers)
+logs_flag = "/home/avitech-pc/haison98/CIB/" + LOG_DIR + "/logs_flag"
+
 print('Worker 3: parameters specification finished!')
 #--------------------------------------------
 
@@ -485,7 +487,7 @@ if __name__ == "__main__":
                         logging.info("Worker {0} Pretraining layer 1 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
                         end_time = timeit.default_timer()
                         logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
-                    await_another_workers(2, workers, LOG_DIR)
+                    await_another_workers(2, workers, logs_flag, 0, epoch)
 
                 for epoch in range(pretraining_epochs):
                     avg_cost = 0.0                            
@@ -498,7 +500,7 @@ if __name__ == "__main__":
                         logging.info("Worker {0} Pretraining layer 2 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
                         end_time = timeit.default_timer()
                         logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
-                    await_another_workers(2, workers, LOG_DIR)
+                    await_another_workers(2, workers, logs_flag, 1, epoch)
 
                 for epoch in range(pretraining_epochs):
                     avg_cost = 0.0                            
@@ -511,7 +513,7 @@ if __name__ == "__main__":
                         logging.info("Worker {0} Pretraining layer 3 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
                         end_time = timeit.default_timer()
                         logging.info("time {0} minutes".format((end_time - start_time)/ 60.))        
-                    await_another_workers(2, workers, LOG_DIR)
+                    await_another_workers(2, workers, logs_flag, 2, epoch)
 
                 end_time = timeit.default_timer()
                 logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
