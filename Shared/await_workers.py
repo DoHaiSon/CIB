@@ -47,9 +47,6 @@ def read_log(W, logs_flag, layer, epoch):
     log_layer = list(map(int, [i.split(',', 2)[1] for i in log] ))
     log_epoch = [i.split(',', 2)[2] for i in log]
     log_epoch = list(map(int, [ x[:-1] for x in log_epoch ] ))
-    print(log_worker)
-    print(log_layer)
-    print(log_epoch)
     his = len(log_worker)
     max_layer = [0, 0, 0]
     max_epoch = [0, 0, 0]
@@ -62,8 +59,6 @@ def read_log(W, logs_flag, layer, epoch):
             elif log_layer == max_layer[log_worker[i]]:
                 if log_epoch[i] > max_epoch[log_epoch[i]]:
                     max_epoch[log_worker[i]] = log_epoch[i]
-    print(max_layer)
-    print(max_epoch)
     if layer < max(max_layer) or (layer == max(max_layer) and epoch < max(max_epoch)):
         return True
     return False

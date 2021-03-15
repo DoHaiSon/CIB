@@ -44,9 +44,13 @@ server = tf1.train.Server(cluster,
 final_step = 10000000
 
 LOG_DIR = 'kdd_ddl3-%d' % len(workers)
-os.remove(LOG_DIR + "/logs_flag")                           ## Remove old logs_flag
-if not os.path.exists(LOG_DIR + "/logs_flag"):
-    with open(LOG_DIR + "/logs_flag", 'w') as logs_flag: pass
+flag = os.path.abspath(__file__)[:-9] + LOG_DIR 
+
+if not os.path.exists(flag):					# Remove old flag
+    os.makedirs(flag)
+    with open(flag + "/logs_flag", 'w') as flag_W2: pass
+else:
+    with open(flag + "/logs_flag", 'w') as flag_W2: pass
 
 if __name__ == "__main__":
     dir_path = os.path.dirname(os.path.realpath(__file__))
