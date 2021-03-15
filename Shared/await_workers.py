@@ -20,7 +20,7 @@ def await_another_workers(W, worker, logs_flag, layer, epoch):
     i=0
     while flag:
         time.sleep(2)
-        print("Worker ", W+1, " waiting: ", i)
+        print("Worker", W+1, "waiting:", i)
         i+=1        
         flag = read_log(W, logs_flag, layer, epoch)
 
@@ -31,15 +31,12 @@ def send_flag(W, worker, logs_flag, layer, epoch):
     else:
         with pysftp.Connection(host=worker[0][:-5], username=server_user, password=server_pass) as sftp:
             print("Connection succesfully stablished ...")
-
-            # Define the file that you want to upload from your local or absolute directorty
             localFilePath = "logs_flag"
             sftp.get(logs_flag, localFilePath)
             with open(localFilePath, 'a') as logs_flag:
                 logs_flag.write(str(W) + "," + str(layer) + "," + str(epoch) + "\n")
 
         with pysftp.Connection(host=worker[0][:-5], username=server_user, password=server_pass) as sftp:
-            print("Connection succesfully stablished ...")    
             # Define the remote path where the file will be uploaded
             localFilePath = "logs_flag"
             logs_flag = "/home/avitech-pc/haison98/CIB/kdd_ddl3-2/logs_flag"
