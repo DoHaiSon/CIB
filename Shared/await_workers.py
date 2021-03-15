@@ -35,7 +35,7 @@ def send_flag(W, worker, logs_flag, layer, epoch):
                 logs_flag.write(str(W) + "," + str(layer) + "," + str(epoch) + "\n")
 
             # Define the remote path where the file will be uploaded
-            sftp.put(localFilePath, logs_flag)
+            sftp.put(localFilePath, logs_flag[:-9])
             print("Sent flags epoch: {} to server.".format(epoch))
 
 def read_log(W, logs_flag, layer, epoch):
@@ -59,7 +59,7 @@ def read_log(W, logs_flag, layer, epoch):
             elif log_layer == max_layer[log_worker[i]]:
                 if log_epoch[i] > max_epoch[log_epoch[i]]:
                     max_epoch[log_worker[i]] = log_epoch[i]
-    if layer < max(max_layer) or (layer == max(max_layer) and epoch < max(max_epoch)):
+    if layer < max(max_layer) or (layer == max(max_layer) and epoch <= max(max_epoch)):
         return False
     return True
 
