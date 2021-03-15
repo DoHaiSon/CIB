@@ -4,6 +4,7 @@ import os
 import pysftp
 import logging
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
+import time
 
 list_worker = ['worker_0', 'worker_1', 'worker_2']
 server_user = "avitech-pc"
@@ -16,8 +17,11 @@ def await_another_workers(W, worker, logs_flag, layer, epoch):
     ## Check flag of anthors worker, if all are true, next Epoch, else await
     flag = True
     send_flag(W, worker, logs_flag, layer, epoch)
+    i=0
     while flag:
-        waitting()
+        time.sleep(2)
+        print("Worker 2 waiting ", i)
+        i+=1        
         flag = read_log(W, logs_flag, layer, epoch)
 
 def send_flag(W, worker, logs_flag, layer, epoch):
@@ -40,7 +44,7 @@ def send_flag(W, worker, logs_flag, layer, epoch):
             localFilePath = "logs_flag"
             logs_flag = "/home/avitech-pc/haison98/CIB/kdd_ddl3-2/logs_flag"
             sftp.put(localFilePath, logs_flag)
-            print("Sent flags epoch: {} to server.".format(epoch))        
+            print("Sent flags layer: {}, epoch: {} to server.".format(layer, epoch))        
 
 def read_log(W, logs_flag, layer, epoch):
     if W != 0:

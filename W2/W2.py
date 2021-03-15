@@ -491,10 +491,13 @@ if __name__ == "__main__":
 
                 for epoch in range(pretraining_epochs):
                     avg_cost = 0.0                            
+                    print("Before")
                     for j in range(batch_num_pre):
                         batch_xs, batch_ys = globals()['train_set_x'+str(FLAGS.task_index)].train.next_batch(batch_size_pre)
+                        print("batch ", j)
                         c,_ = sess.run([cost1, train_ops1], feed_dict = {x: batch_xs,y : batch_ys})
                         avg_cost += c / batch_num_pre
+                    print("After")
                 
                     if epoch % display_step_pre == 0:
                         logging.info("Worker {0} Pretraining layer 2 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
