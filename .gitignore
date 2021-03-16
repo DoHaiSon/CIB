@@ -1,4 +1,5 @@
 *.txt
+*/logs_flag
 /__pycache__/*
 /kdd_ddl3-3/*
 /kdd_ddl3-2/*

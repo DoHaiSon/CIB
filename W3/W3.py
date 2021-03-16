@@ -35,17 +35,18 @@ import warnings
 warnings.filterwarnings('ignore') 
 
 Datasets = collections.namedtuple('Datasets', ['train', 'validation', 'test'])
+from configparser import ConfigParser
 
 #----------distributed------------------------
-IP_server = "192.168.1.1:2222"
-IP_worker_1 = "192.168.1.1:2223"
-IP_worker_2 = "192.168.1.2:2224"
-IP_worker_3 = "192.168.1.3:2225"
+
+#Read config.ini file
+config_object = ConfigParser()
+config_object.read("../config.ini")
 
 #define cluster
-parameter_servers = [IP_server]
-#workers = [ IP_worker_1, IP_worker_2, IP_worker_3]
-workers = [ IP_worker_1, IP_worker_2]
+parameter_servers = config_object["Server"]['parameter_servers'].strip('][').split(', ') 
+workers = config_object["Workers"]['workers'].strip('][').split(', ') 
+
 cluster = tf1.train.ClusterSpec({"ps":parameter_servers, "worker":workers})
 
 # Input Flags
@@ -70,13 +71,13 @@ server = tf1.train.Server(cluster,
 final_step = 100000000
 
 LOG_DIR = 'kdd_ddl3-%d' % len(workers)
-logs_flag = "/home/avitech-pc/haison98/CIB/" + LOG_DIR + "/logs_flag"
+logs_flag = config_object["Server"]["logs_flag"]
 
 print('Worker 3: parameters specification finished!')
 #--------------------------------------------
 
 if __name__ == "__main__":
-    dir_path = "/home/avitech-pc/haison98/CIB"
+    dir_path = os.path.dirname(os.path.realpath(__file__))[:-3]
     filename1 = dir_path + "/datasets/our_kdd_99/splited_1.csv"
     filename2 = dir_path + "/datasets/our_kdd_99/splited_2.csv"
     

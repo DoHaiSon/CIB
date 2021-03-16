@@ -5,10 +5,14 @@ import pysftp
 import logging
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 import time
+from configparser import ConfigParser
 
-list_worker = ['worker_0', 'worker_1', 'worker_2']
-server_user = "avitech-pc"
-server_pass = "1"
+#Read config.ini file
+config_object = ConfigParser()
+config_object.read("../config.ini")
+
+server_user =  config_object['Server']['server_user']
+server_pass =  config_object['Server']['server_pass']
 
 async def waitting():
     await asyncio.sleep(50) 
