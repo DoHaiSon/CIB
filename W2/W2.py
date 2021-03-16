@@ -211,7 +211,7 @@ if __name__ == "__main__":
                 print('Starting training on worker %d -------------------------------------------------'%FLAGS.task_index)
                 #----pretraining -------------------------------------------------------------------------------
                 start_time = timeit.default_timer()
-                pretraining_epochs = 100
+                pretraining_epochs = 10
                 batch_size_pre = 100
                 display_step_pre = 1
                 batch_num_pre = int(globals()['train_set_x'+str(FLAGS.task_index)].train.num_examples / batch_size_pre)
