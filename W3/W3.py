@@ -223,7 +223,7 @@ if __name__ == "__main__":
                         avg_cost += c / batch_num_pre
                 
                     if epoch % display_step_pre == 0:
-                        logging.info("Worker {0} Pretraining layer 1 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
+                        logging.info("Worker {0} Pretraining layer 1 Epoch {1}".format( int(FLAGS.task_index) + 1, epoch +1) + " cost {:.9f}".format(avg_cost))
                         end_time = timeit.default_timer()
                         logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
                     await_another_workers(2, workers, logs_flag, 0, epoch)
@@ -236,7 +236,7 @@ if __name__ == "__main__":
                         avg_cost += c / batch_num_pre
                 
                     if epoch % display_step_pre == 0:
-                        logging.info("Worker {0} Pretraining layer 2 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
+                        logging.info("Worker {0} Pretraining layer 2 Epoch {1}".format( int(FLAGS.task_index) + 1, epoch +1) + " cost {:.9f}".format(avg_cost))
                         end_time = timeit.default_timer()
                         logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
                     await_another_workers(2, workers, logs_flag, 1, epoch)
@@ -249,7 +249,7 @@ if __name__ == "__main__":
                         avg_cost += c / batch_num_pre
                 
                     if epoch % display_step_pre == 0:
-                        logging.info("Worker {0} Pretraining layer 3 Epoch {1}".format( int(FLAGS.task_index), epoch +1) + " cost {:.9f}".format(avg_cost))
+                        logging.info("Worker {0} Pretraining layer 3 Epoch {1}".format( int(FLAGS.task_index) + 1, epoch +1) + " cost {:.9f}".format(avg_cost))
                         end_time = timeit.default_timer()
                         logging.info("time {0} minutes".format((end_time - start_time)/ 60.))        
                     await_another_workers(2, workers, logs_flag, 2, epoch)
@@ -309,7 +309,7 @@ if __name__ == "__main__":
                         logging.info(ac.sum() / 2)
                         logging.info(a)
                         logging.info("Epoch: {0}, cost: {1}".format(int(epoch + 1), float(avg_cost)))
-                        logging.info("WORKER: {0}, ACCURACY: {1}, PRECISION: {2}, RECALL: {3}:".format(int(FLAGS.task_index), ACC_max, pre_max, rec_max))
+                        logging.info("WORKER: {0}, ACCURACY: {1}, PRECISION: {2}, RECALL: {3}:".format(int(FLAGS.task_index) + 1, ACC_max, pre_max, rec_max))
                         end_time = timeit.default_timer()
                         logging.info("Time {0} minutes".format((end_time- start_time)/ 60.))
 
