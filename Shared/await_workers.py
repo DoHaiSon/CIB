@@ -15,11 +15,11 @@ server_pass =  config_object['Server']['server_pass']
 def await_another_workers(W, worker, logs_flag, layer, epoch):
     ## Check flag of anthors worker, if all are true, next Epoch, else await
     flag = True
-    send_flag(W, worker, logs_flag, layer, epoch)
     i=0
     while flag:
         time.sleep(1)
         print("Worker", W+1, "at layer:", layer+1, ", epoch:", epoch+1, "and waited:", i+1, "seconds.")
+        send_flag(W, worker, logs_flag, layer, epoch)
         i+=1        
         flag = read_log(W, logs_flag, layer, epoch)
 

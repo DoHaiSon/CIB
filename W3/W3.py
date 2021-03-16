@@ -72,6 +72,10 @@ final_step = 100000000
 
 LOG_DIR = 'kdd_ddl3-%d' % len(workers)
 logs_flag = config_object["Server"]["logs_flag"]
+try:
+    os.remove("logs_flag")
+except:
+    print("This flag is not exist.")
 
 print('Worker 3: parameters specification finished!')
 #--------------------------------------------
