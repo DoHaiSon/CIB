@@ -40,7 +40,7 @@ def send_flag(W, worker, logs_flag, layer, epoch):
             localFilePath = "logs_flag"
             logs_flag = config_object['Server']['logs_flag']
             sftp.put(localFilePath, logs_flag)
-            print("Sent flags layer: {}, epoch: {} to server.".format(layer, epoch))        
+            print("Sent flags layer: {}, epoch: {} to server.".format(layer+1, epoch+1))        
 
 def read_log(W, logs_flag, layer, epoch):
     if W != 0:
