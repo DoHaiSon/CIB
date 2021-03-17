@@ -3,6 +3,19 @@
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
+
+import os
+
+from configparser import ConfigParser
+#Read config.ini file
+config_object = ConfigParser()
+config_object.read("../config.ini")
+try:
+	if config_object["Train"]['GPU'] == '0':
+		os.environ["CUDA_VISIBLE_DEVICES"]="-1"             # Force run Server in CPU
+except:
+	print("GPU config is fail.")
+
 import numpy as np
 import tensorflow as tf
 import tensorflow.compat.v1 as tf1
@@ -14,7 +27,6 @@ import logging
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 from sklearn.model_selection import train_test_split
 
-import os
 sys.path.append(
     os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))       # Join parent path to import library
 import pandas as pd
@@ -35,13 +47,6 @@ import warnings
 warnings.filterwarnings('ignore') 
 
 Datasets = collections.namedtuple('Datasets', ['train', 'validation', 'test'])
-from configparser import ConfigParser
-
-#----------distributed------------------------
-
-#Read config.ini file
-config_object = ConfigParser()
-config_object.read("../config.ini")
 
 #define cluster
 parameter_servers = config_object["Server"]['parameter_servers'].strip('][').split(', ') 
@@ -56,13 +61,14 @@ FLAGS = tf1.app.flags.FLAGS
 
 #Set up server
 config = tf1.ConfigProto()
-config.gpu_options.allow_growth = True
-config.gpu_options.visible_device_list = "0"
+try:
+	if config_object["Train"]['GPU'] == '0':
+		config.gpu_options.allow_growth = True
+		config.gpu_options.visible_device_list = "0"
+		config.allow_soft_placement = True
+except:
+	print("GPU config is fail.")
 
-config.allow_soft_placement = True
-#config.log_device_placement = True
-
-#config.gpu_options.per_process_gpu_memory_fraction = 0.3
 server = tf1.train.Server(cluster,
     job_name=FLAGS.job_name,
     task_index=FLAGS.task_index,
