@@ -72,6 +72,7 @@ final_step = 100000000
 
 LOG_DIR = 'kdd_ddl3-%d' % len(workers)
 logs_flag = config_object["Server"]["logs_flag"]
+pretraining_epochs = config_object["Train"]["pretraining_epochs"]
 try:
     os.remove("logs_flag")
 except:
@@ -214,7 +215,6 @@ if __name__ == "__main__":
                 print('Starting training on worker %d -------------------------------------------------'%FLAGS.task_index)
                 #----pretraining -------------------------------------------------------------------------------
                 start_time = timeit.default_timer()
-                pretraining_epochs = 100
                 batch_size_pre = 100
                 display_step_pre = 1
                 batch_num_pre = int(globals()['train_set_x'+str(FLAGS.task_index)].train.num_examples / batch_size_pre)
