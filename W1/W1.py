@@ -233,7 +233,12 @@ if __name__ == "__main__":
                         logging.info("Worker {0} Pretraining layer 1 Epoch {1}".format( int(FLAGS.task_index) + 1, epoch +1) + " cost {:.9f}".format(avg_cost))
                         end_time = timeit.default_timer()
                         logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
-                    await_another_workers(0, workers, logs_flag, 0, epoch)
+                    try:
+	                if config_object["Train"]['delay'] == '1':
+		              await_another_workers(0, workers, logs_flag, 0, epoch)
+                    except:
+	                print("Delay config is fail.")    
+                    
 
                 for epoch in range(pretraining_epochs):
                     avg_cost = 0.0                            
@@ -246,7 +251,11 @@ if __name__ == "__main__":
                         logging.info("Worker {0} Pretraining layer 2 Epoch {1}".format( int(FLAGS.task_index) + 1, epoch +1) + " cost {:.9f}".format(avg_cost))
                         end_time = timeit.default_timer()
                         logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
-                    await_another_workers(0, workers, logs_flag, 1, epoch)
+                    try:
+	                if config_object["Train"]['delay'] == '1':
+		              await_another_workers(0, workers, logs_flag, 1, epoch)
+                    except:
+	                print("Delay config is fail.")   
 
                 for epoch in range(pretraining_epochs):
                     avg_cost = 0.0                            
@@ -259,7 +268,11 @@ if __name__ == "__main__":
                         logging.info("Worker {0} Pretraining layer 3 Epoch {1}".format( int(FLAGS.task_index) + 1, epoch +1) + " cost {:.9f}".format(avg_cost))
                         end_time = timeit.default_timer()
                         logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
-                    await_another_workers(0, workers, logs_flag, 2, epoch)            
+                    try:
+	                if config_object["Train"]['delay'] == '1':
+		              await_another_workers(0, workers, logs_flag, 2, epoch)
+                    except:
+	                print("Delay config is fail.")           
 
                 end_time = timeit.default_timer()
                 logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
