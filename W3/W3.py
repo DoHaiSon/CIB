@@ -237,10 +237,10 @@ if __name__ == "__main__":
                         end_time = timeit.default_timer()
                         logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
                     try:
-	                if config_object["Train"]['delay'] == '1':
-		              await_another_workers(2, workers, logs_flag, 0, epoch)
+                        if config_object["Train"]['delay'] == '1':
+                            await_another_workers(2, workers, logs_flag, 0, epoch)
                     except:
-	                print("Delay config is fail.")   
+                        print("Delay config is fail.")   
 
                 for epoch in range(pretraining_epochs):
                     avg_cost = 0.0                            
@@ -254,10 +254,10 @@ if __name__ == "__main__":
                         end_time = timeit.default_timer()
                         logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
                     try:
-	                if config_object["Train"]['delay'] == '1':
-		              await_another_workers(2, workers, logs_flag, 1, epoch)
+                        if config_object["Train"]['delay'] == '1':
+                            await_another_workers(2, workers, logs_flag, 1, epoch)
                     except:
-	                print("Delay config is fail.")   
+                        print("Delay config is fail.") 
 
                 for epoch in range(pretraining_epochs):
                     avg_cost = 0.0                            
@@ -271,10 +271,10 @@ if __name__ == "__main__":
                         end_time = timeit.default_timer()
                         logging.info("time {0} minutes".format((end_time - start_time)/ 60.))        
                     try:
-	                if config_object["Train"]['delay'] == '1':
-		              await_another_workers(2, workers, logs_flag, 2, epoch)
+                        if config_object["Train"]['delay'] == '1':
+                            await_another_workers(2, workers, logs_flag, 2, epoch)
                     except:
-	                print("Delay config is fail.")   
+                        print("Delay config is fail.") 
 
                 end_time = timeit.default_timer()
                 logging.info("time {0} minutes".format((end_time - start_time)/ 60.))
