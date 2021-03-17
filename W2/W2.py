@@ -72,7 +72,7 @@ final_step = 100000000
 
 LOG_DIR = 'kdd_ddl3-%d' % len(workers)
 logs_flag = config_object["Server"]["logs_flag"]
-pretraining_epochs = config_object["Train"]["pretraining_epochs"]
+pretraining_epochs = int(config_object["Train"]["pretraining_epochs"])
 try:
     os.remove("logs_flag")
 except:
@@ -100,7 +100,7 @@ if __name__ == "__main__":
         # Between-graph replication
         is_chief = (FLAGS.task_index == 0) #checks if this is the chief node
         with tf1.device(tf1.train.replica_device_setter(ps_tasks=1,
-            worker_device="/job:worker/task:%d/GPU:0" % FLAGS.task_index, cluster=cluster)):
+            worker_device="/job:worker/task:%d" % FLAGS.task_index, cluster=cluster)):
             # count the number of updates
             # global_step = tf.Variable(0,dtype=tf.int32,trainable=False,name='global_step')
             global_step = tf1.train.get_or_create_global_step()
