@@ -183,7 +183,7 @@ def nomial_test(dataset1):
 if __name__ == "__main__":
     dir_path = os.path.dirname(os.path.realpath(__file__))
 
-    file_test_dataset = dir_path + "/datasets/our_kdd_99/test_impl_dataset.csv"
+    file_test_dataset = dir_path + "/datasets/our_kdd_99/test.csv"
 
     test_dataset = read_data(file_test_dataset)
 
@@ -222,9 +222,9 @@ if __name__ == "__main__":
         global_step = tf.train.get_or_create_global_step()
         #--------------------DBN-----------------------------------
         
-        n_inp = [1, 1, 33]
+        n_inp = [1, 1, 28]
         hidden_layer_sizes = [1000, 1000, 1000]
-        n_out = 2
+        n_out = 4
         sigmoid_layers = []
         layers = []
         params = []
