@@ -90,10 +90,9 @@ print('Worker 2: parameters specification finished!')
 
 if __name__ == "__main__":
     dir_path = os.path.dirname(os.path.realpath(__file__))[:-3]
-    filename1 = dir_path + "/datasets/our_kdd_99/splited_1.csv"
-    filename2 = dir_path + "/datasets/our_kdd_99/splited_2.csv"
+    filename = dir_path + "/datasets/our_kdd_99/train_W2.csv"
     
-    train_set_x1 = read_dataset(filename1, filename2, FLAGS.task_index)
+    train_set_x1 = read_dataset(filename, FLAGS.task_index)
     #-------------------------------------------------------------
 
     num_agg = len(workers)
