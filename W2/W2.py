@@ -245,7 +245,6 @@ if __name__ == "__main__":
                     avg_cost = 0.0                            
                     for j in range(batch_num_pre):
                         batch_xs, batch_ys = globals()['train_set_x'+str(FLAGS.task_index)].train.next_batch(batch_size_pre)
-                        logging.info("Working at batch num: {}".format(j))
                         c,_ = sess.run([cost1, train_ops1], feed_dict = {x: batch_xs,y : batch_ys})
                         avg_cost += c / batch_num_pre
                 
