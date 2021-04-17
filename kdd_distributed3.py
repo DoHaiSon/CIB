@@ -16,6 +16,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error as MSE
 from tensorflow.contrib.learn.python.learn.datasets import base
 from tensorflow.python.training import training
+from sklearn.utils import shuffle
 
 import os
 import pandas as pd
@@ -90,7 +91,7 @@ def windows(data, size):
 
 def segment_signal(data, window_size = 1):
 
-    segments = np.empty((0, window_size, 33))
+    segments = np.empty((0, window_size, 28))
     labels = np.empty((0))
     num_features = ["duration", "protocol_type", "service", "flag", "src_bytes", "dst_bytes",
                 "land", "wrong_fragment", "urgent", "count", "srv_count", "serror_rate",
@@ -98,8 +99,7 @@ def segment_signal(data, window_size = 1):
                 "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
                 "dst_host_same_srv_rate", "dst_host_diff_srv_rate", "dst_host_same_src_port_rate",
                 "dst_host_srv_diff_host_rate", "dst_host_serror_rate", "dst_host_srv_serror_rate", 
-                "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "src_ip", "src_port", "dst_ip",
-                "dst_port", "conn_end_time"
+                "dst_host_rerror_rate", "dst_host_srv_rerror_rate"
     ]
     segments = np.asarray(data[num_features].copy())
     labels = data["label"]
@@ -113,8 +113,7 @@ def read_data(filename):
                 "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
                 "dst_host_same_srv_rate", "dst_host_diff_srv_rate", "dst_host_same_src_port_rate",
                 "dst_host_srv_diff_host_rate", "dst_host_serror_rate", "dst_host_srv_serror_rate", 
-                "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "src_ip", "src_port", "dst_ip",
-                "dst_port", "conn_end_time", "label"]
+                "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "label"]
     dataset = pd.read_csv(filename, header = None, names = col_names)
     return dataset      
 
@@ -129,7 +128,7 @@ def read_data_set_test(dataset1, one_hot = False, dtype = dtypes.float32, reshap
     segments1, labels1 = segment_signal(dataset1)
     labels = np.asarray(pd.get_dummies(labels1), dtype = np.int8)
     labels1 = labels
-    train_x = segments1.reshape(len(segments1), 1, 1 ,33)
+    train_x = segments1.reshape(len(segments1), 1, 1 ,28)
     train_y = labels1
     train = Dataset(train_x, train_y, dtype = dtype , reshape = reshape)
     test = Dataset(train_x, train_y, dtype = dtype , reshape = reshape)
@@ -162,23 +161,6 @@ def nomial_test(dataset1):
         
     dataset1['flag'] = flag1
     
-    src_ip1 = dataset1['src_ip'].copy()
-    src_ip = dataset['src_ip'].unique()
-    for i in range(len(src_ip)):
-        src_ip1[src_ip1 == src_ip[i]] = i
-    dataset1['src_ip'] = src_ip1
-
-    dst_ip1 = dataset1['dst_ip'].copy()
-    dst_ip = dataset['dst_ip'].unique()
-    for i in range(len(dst_ip)):
-        dst_ip1[dst_ip1 == dst_ip[i]] = i
-    dataset1['dst_ip'] = dst_ip1
-
-    conn_end_time1 = dataset1['conn_end_time'].copy()
-    conn_end_time = dataset['conn_end_time'].unique()
-    for i in range(len(conn_end_time)):
-        conn_end_time1[conn_end_time1 == conn_end_time[i]] = i
-    dataset1['conn_end_time'] = conn_end_time1
     
 if __name__ == "__main__":
     dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -188,15 +170,13 @@ if __name__ == "__main__":
     test_dataset = read_data(file_test_dataset)
 
     nomial_test(test_dataset)
-    test_dataset['label'] = initlabel(test_dataset)
     num_features = ["duration", "protocol_type", "service", "flag", "src_bytes", "dst_bytes",
                 "land", "wrong_fragment", "urgent", "count", "srv_count", "serror_rate",
                 "srv_serror_rate", "rerror_rate", "srv_rerror_rate", "same_srv_rate", 
                 "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
                 "dst_host_same_srv_rate", "dst_host_diff_srv_rate", "dst_host_same_src_port_rate",
                 "dst_host_srv_diff_host_rate", "dst_host_serror_rate", "dst_host_srv_serror_rate", 
-                "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "src_ip", "src_port", "dst_ip",
-                "dst_port", "conn_end_time"
+                "dst_host_rerror_rate", "dst_host_srv_rerror_rate"
     ]
     test_dataset[num_features] = test_dataset[num_features].astype(float)
     test_dataset[num_features] = MinMaxScaler().fit_transform(test_dataset[num_features].values)
@@ -208,8 +188,10 @@ if __name__ == "__main__":
     labels_test = test_dataset['label'].copy()
     print(labels_test.unique())
 
-    labels_test[labels_test == 'normal'] = 0
-    labels_test[labels_test == 'ddos'] = 1
+    labels_test[labels_test == '0'] = 0
+    labels_test[labels_test == '1'] = 1
+    labels_test[labels_test == '2'] = 2
+    labels_test[labels_test == '3'] = 3
 
     test_dataset['label'] = labels_test
     test_dataset = read_data_set_test(test_dataset)
@@ -303,7 +285,7 @@ if __name__ == "__main__":
                 b = np.zeros((num), dtype = int)
                 pr = np.array(pr, dtype=float)
                 for i in range (num):
-                	if (pr[i][0] <= pr[i][1]): b[i] = 1
+                	b[i] = np.argmax(pr[i])
                 true_packets = num
                 for i in range (true_packets):
                 	if b[i] != labels_test[i] : true_packets = true_packets - 1

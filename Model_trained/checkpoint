@@ -1,4 +1,2 @@
-model_checkpoint_path: "/home/avitech-pc/haison98/CIB/kdd_ddl3-2/model.ckpt-34230"
-all_model_checkpoint_paths: "/home/avitech-pc/haison98/CIB/kdd_ddl3-2/model.ckpt-0"
-all_model_checkpoint_paths: "/home/avitech-pc/haison98/CIB/kdd_ddl3-2/model.ckpt-31711"
-all_model_checkpoint_paths: "/home/avitech-pc/haison98/CIB/kdd_ddl3-2/model.ckpt-34230"
+model_checkpoint_path: "model.ckpt-34230"
+all_model_checkpoint_paths: "model.ckpt-34230"

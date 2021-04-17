@@ -8,16 +8,13 @@ the architecture deep
 from __future__ import print_function
 import numpy as np 
 import tensorflow as tf 
-import tensorflow.compat.v1 as tf1
 import math
 import timeit
 import os
 from logisticRegression2 import LogisticRegression
-#import MNIST data
-#from tensorflow.examples.tutorials.mnist import input_data
-#mnist = input_data.read_data_sets('MNIST_data', one_hot=True)
-import tensorflow_datasets as tfds
-mnist = tfds.load(name="mnist", split=tfds.Split.TRAIN)
+# import MNIST data
+from tensorflow.examples.tutorials.mnist import input_data
+mnist = input_data.read_data_sets('MNIST_data', one_hot=True)
 
 class HiddenLayer(object):
 	def __init__(self, input, n_inp, n_out, W = None, b = None, activation = tf.nn.sigmoid):
@@ -42,7 +39,7 @@ class HiddenLayer(object):
 		"""
 		if W is None:
 			bound = 4.0 * math.sqrt(6.0 / (n_inp + n_out))
-			W = tf.Variable(tf1.random_uniform([n_inp, n_out], minval = -bound, 
+			W = tf.Variable(tf.random_uniform([n_inp, n_out], minval = -bound, 
 				maxval = bound), dtype = tf.float32, name = "W")
 
 		if b is None:
