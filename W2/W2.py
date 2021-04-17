@@ -108,7 +108,7 @@ if __name__ == "__main__":
             worker_device="/job:worker/task:%d" % FLAGS.task_index, cluster=cluster)):
             # count the number of updates
             # global_step = tf.Variable(0,dtype=tf.int32,trainable=False,name='global_step')
-            global_step = tf1.train.get_or_create_global_step()
+            global_step = tf1.train.create_global_step()
             #--------------------DBN-----------------------------------
             
             n_inp = [1, 1, 28]
