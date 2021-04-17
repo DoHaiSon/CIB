@@ -317,7 +317,7 @@ if __name__ == "__main__":
                         TP = np.diag(a)
                         TN = a.sum() - (FP + FN + TP)
                         ac = (TP + TN) / (TP + FP + FN + TN)
-                        ACC = ac.sum() / 2
+                        ACC = ac.sum() / 4
                         precision = precision_score(d, b, average='weighted')
                         recall = recall_score(d, b, average='weighted')
                         if ACC > ACC_max:
