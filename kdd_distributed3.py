@@ -165,7 +165,7 @@ def nomial_test(dataset1):
 if __name__ == "__main__":
     dir_path = os.path.dirname(os.path.realpath(__file__))
 
-    file_test_dataset = dir_path + "/datasets/our_kdd_99/test.csv"
+    file_test_dataset = dir_path + "/datasets/our_kdd_99/test_shuffled.csv"
 
     test_dataset = read_data(file_test_dataset)
 
@@ -281,16 +281,11 @@ if __name__ == "__main__":
             graph = tf.get_default_graph()
             while(True):
                 pr = sess.run(pred, feed_dict ={x: globals()['test_dataset'].test.segments})
-                num = len(pr)
-                b = np.zeros((num), dtype = int)
-                pr = np.array(pr, dtype=float)
-                for i in range (num):
-                	b[i] = np.argmax(pr[i])
-                true_packets = num
-                for i in range (true_packets):
-                	if b[i] != labels_test[i] : true_packets = true_packets - 1
+                prediction=tf.argmax(pr,1)
+                labels_pred = prediction.eval(feed_dict={x: globals()['test_dataset'].test.segments}, session=sess)
+                acc = accuracy_score(labels_test, labels_pred)
                 logging.info("Test: {0}".format(int(n_test +1)))
-                logging.info("ACCURACY: {0}.".format(float(true_packets / num)))
+                logging.info("ACCURACY: {0}.".format(float(acc)))
                 end_time = timeit.default_timer()
                 logging.info("Time {0} minutes".format((end_time- start_time)/ 60.))
                 n_test = n_test + 1
