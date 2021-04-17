@@ -34,7 +34,7 @@ warnings.filterwarnings('ignore')
 
 Datasets = collections.namedtuple('Datasets', ['train', 'validation', 'test'])
 
-def read_dataset(filename, W):
+def read_dataset(filename):
     dataset_raw = read_data(filename)
     dataset1, dataset2 = train_test_split(dataset_raw, train_size=0.8, random_state=2)
 
@@ -77,9 +77,9 @@ def read_dataset(filename, W):
     # labels2[labels2 == 'probe'] = 4
     dataset2['label'] = labels2
         
-    train_set_x0 = read_data_set(dataset1, dataset2)
-    print(train_set_x0.train.labels)
-    return train_set_x0    
+    train_set = read_data_set(dataset1, dataset2)
+    print(train_set.train.labels)
+    return train_set    
 
 class Dataset(object):
     def __init__(self, segments, labels, one_hot = False, dtype = dtypes.float32, reshape = True):
