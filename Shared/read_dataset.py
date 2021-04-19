@@ -236,11 +236,9 @@ def initlabel(dataset):
     return labels
 
 def nomial(dataset1, dataset2):
-
-    dataset = dataset1.append([dataset2])
     protocol1 = dataset1['protocol_type'].copy()
     protocol2 = dataset2['protocol_type'].copy()
-    protocol_type = dataset['protocol_type'].unique()
+    protocol_type = ["tcp", "udp", "icmp"]
     for i in range(len(protocol_type)):
         protocol1[protocol1 == protocol_type[i]] = i
         protocol2[protocol2 == protocol_type[i]] = i
@@ -249,7 +247,12 @@ def nomial(dataset1, dataset2):
 
     service1 = dataset1['service'].copy()
     service2 = dataset2['service'].copy()
-    service_type = dataset['service'].unique()
+    service_type = ["other", "private", "ecr_i", "urp_i", "urh_i", "red_i", "eco_i", "tim_i", "oth_i", "domain_u", "tftp_u", "ntp_u", "IRC", 
+                "X11", "Z39_50", "aol", "auth", "bgp", "courier", "csnet_ns", "ctf", "daytime", "discard", "domain", "echo", "efs", "exec", 
+                "finger", "ftp", "ftp_data", "gopher", "harvest", "hostnames", "http", "http_2784", "http_443", "http_8001", "icmp", "imap4",
+                "iso_tsap", "klogin", "kshell", "ldap", "link", "login", "mtp", "name", "netbios_dgm", "netbios_ns", "netbios_ssn", "netstat",
+                "nnsp", "nntp", "pm_dump", "pop_2", "pop_3", "printer", "remote_job", "rje", "shell", "smtp", "sql_net", "ssh", "sunrpc", 
+                "supdup", "systat", "telnet", "time", "uucp", "uucp_path", "vmnet", "whois"]
     for i in range(len(service_type)):
         service1[service1 == service_type[i]] = i
         service2[service2 == service_type[i]] = i
@@ -258,7 +261,7 @@ def nomial(dataset1, dataset2):
 
     flag1 = dataset1['flag'].copy()
     flag2 = dataset2['flag'].copy()
-    flag_type = dataset['flag'].unique()
+    flag_type = ["SF", "S0", "S1", "S2", "S3", "REJ", "RSTOS0", "RSTO", "RSTR", "SH", "RSTRH", "SHR", "OTH"]
     for i in range(len(flag_type)):
         flag1[flag1 == flag_type[i]] = i
         flag2[flag2 == flag_type[i]] = i
