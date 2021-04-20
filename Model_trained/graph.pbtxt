@@ -29,7 +29,7 @@ node {
             size: 1
           }
         }
-        string_val: "/home/avitech-pc/tensorflow_datasets/mnist/3.0.1/mnist-train.tfrecord-00000-of-00001"
+        string_val: "/home/ssllap4/tensorflow_datasets/mnist/3.0.1/mnist-train.tfrecord-00000-of-00001"
       }
     }
   }
@@ -521,7 +521,7 @@ node {
     key: "f"
     value {
       func {
-        name: "__inference_Dataset_map_parse_and_decode_51"
+        name: "__inference_Dataset_map_parse_and_decode_131"
         attr {
           key: "_tf_data_function"
           value {
@@ -683,26 +683,12 @@ node {
   input: "CacheDataset"
   input: "buffer_size"
   attr {
-    key: "_class"
-    value {
-      list {
-        s: "loc:@CacheDataset"
-      }
-    }
-  }
-  attr {
     key: "_output_shapes"
     value {
       list {
         shape {
         }
       }
-    }
-  }
-  attr {
-    key: "buffer_size_min"
-    value {
-      i: 0
     }
   }
   attr {
@@ -952,7 +938,7 @@ node {
             size: -1
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -972,7 +958,7 @@ node {
           size: -1
         }
         dim {
-          size: 4
+          size: 5
         }
       }
     }
@@ -5469,7 +5455,7 @@ node {
     key: "body"
     value {
       func {
-        name: "while_body_195"
+        name: "while_body_275"
       }
     }
   }
@@ -5477,7 +5463,7 @@ node {
     key: "cond"
     value {
       func {
-        name: "while_cond_194"
+        name: "while_cond_274"
       }
     }
   }
@@ -17713,7 +17699,7 @@ node {
     key: "body"
     value {
       func {
-        name: "while_1_body_612"
+        name: "while_1_body_692"
       }
     }
   }
@@ -17721,7 +17707,7 @@ node {
     key: "cond"
     value {
       func {
-        name: "while_1_cond_611"
+        name: "while_1_cond_691"
       }
     }
   }
@@ -25647,7 +25633,7 @@ node {
     key: "body"
     value {
       func {
-        name: "while_2_body_899"
+        name: "while_2_body_979"
       }
     }
   }
@@ -25655,7 +25641,7 @@ node {
     key: "cond"
     value {
       func {
-        name: "while_2_cond_898"
+        name: "while_2_cond_978"
       }
     }
   }
@@ -32826,7 +32812,7 @@ node {
             size: 2
           }
         }
-        tensor_content: "\350\003\000\000\004\000\000\000"
+        tensor_content: "\350\003\000\000\005\000\000\000"
       }
     }
   }
@@ -32883,7 +32869,7 @@ node {
             size: 1000
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -32944,7 +32930,7 @@ node {
           size: 1000
         }
         dim {
-          size: 4
+          size: 5
         }
       }
     }
@@ -32998,7 +32984,7 @@ node {
             size: 1000
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -33021,7 +33007,7 @@ node {
       list {
         shape {
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -33040,7 +33026,7 @@ node {
         dtype: DT_FLOAT
         tensor_shape {
           dim {
-            size: 4
+            size: 5
           }
         }
         float_val: 0.0
@@ -33093,7 +33079,7 @@ node {
     value {
       shape {
         dim {
-          size: 4
+          size: 5
         }
       }
     }
@@ -33144,7 +33130,7 @@ node {
       list {
         shape {
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -33170,7 +33156,7 @@ node {
             size: 1000
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -33204,7 +33190,7 @@ node {
             size: -1
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -33233,7 +33219,7 @@ node {
       list {
         shape {
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -33267,7 +33253,7 @@ node {
             size: -1
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -33294,7 +33280,7 @@ node {
             size: -1
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -33389,7 +33375,7 @@ node {
             size: -1
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -33417,7 +33403,7 @@ node {
             size: -1
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -34632,7 +34618,7 @@ node {
             size: -1
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -34750,7 +34736,7 @@ node {
             size: -1
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -34819,7 +34805,7 @@ node {
             size: -1
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -34847,7 +34833,7 @@ node {
             size: -1
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -34916,7 +34902,7 @@ node {
             size: -1
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -34959,7 +34945,7 @@ node {
             size: -1
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -34995,7 +34981,7 @@ node {
             size: -1
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -35023,7 +35009,7 @@ node {
             size: -1
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -35051,7 +35037,7 @@ node {
             size: -1
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -35079,7 +35065,7 @@ node {
             size: -1
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -35178,7 +35164,7 @@ node {
             size: -1
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -35206,7 +35192,7 @@ node {
             size: -1
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -35365,7 +35351,7 @@ node {
             size: -1
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -35431,7 +35417,7 @@ node {
       list {
         shape {
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -35474,7 +35460,7 @@ node {
             size: -1
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -35507,7 +35493,7 @@ node {
       list {
         shape {
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -35575,7 +35561,7 @@ node {
             size: 1000
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -35666,7 +35652,7 @@ node {
             size: 1000
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -37359,7 +37345,7 @@ node {
   name: "report_uninitialized_variables/VarIsInitializedOp"
   op: "VarIsInitializedOp"
   input: "global_step"
-  device: "/job:ps/task:0"
+  device: "/job:worker/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -37374,7 +37360,7 @@ node {
   name: "report_uninitialized_variables/VarIsInitializedOp_1"
   op: "VarIsInitializedOp"
   input: "W"
-  device: "/job:ps/task:0"
+  device: "/job:worker/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -37389,7 +37375,7 @@ node {
   name: "report_uninitialized_variables/VarIsInitializedOp_2"
   op: "VarIsInitializedOp"
   input: "b"
-  device: "/job:ps/task:0"
+  device: "/job:worker/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -37404,7 +37390,7 @@ node {
   name: "report_uninitialized_variables/VarIsInitializedOp_3"
   op: "VarIsInitializedOp"
   input: "Variable"
-  device: "/job:ps/task:0"
+  device: "/job:worker/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -37419,7 +37405,7 @@ node {
   name: "report_uninitialized_variables/VarIsInitializedOp_4"
   op: "VarIsInitializedOp"
   input: "Variable_1"
-  device: "/job:ps/task:0"
+  device: "/job:worker/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -37434,7 +37420,7 @@ node {
   name: "report_uninitialized_variables/VarIsInitializedOp_5"
   op: "VarIsInitializedOp"
   input: "W_1"
-  device: "/job:ps/task:0"
+  device: "/job:worker/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -37449,7 +37435,7 @@ node {
   name: "report_uninitialized_variables/VarIsInitializedOp_6"
   op: "VarIsInitializedOp"
   input: "b_1"
-  device: "/job:ps/task:0"
+  device: "/job:worker/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -37464,7 +37450,7 @@ node {
   name: "report_uninitialized_variables/VarIsInitializedOp_7"
   op: "VarIsInitializedOp"
   input: "Variable_2"
-  device: "/job:ps/task:0"
+  device: "/job:worker/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -37479,7 +37465,7 @@ node {
   name: "report_uninitialized_variables/VarIsInitializedOp_8"
   op: "VarIsInitializedOp"
   input: "Variable_3"
-  device: "/job:ps/task:0"
+  device: "/job:worker/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -37494,7 +37480,7 @@ node {
   name: "report_uninitialized_variables/VarIsInitializedOp_9"
   op: "VarIsInitializedOp"
   input: "W_2"
-  device: "/job:ps/task:0"
+  device: "/job:worker/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -37509,7 +37495,7 @@ node {
   name: "report_uninitialized_variables/VarIsInitializedOp_10"
   op: "VarIsInitializedOp"
   input: "b_2"
-  device: "/job:ps/task:0"
+  device: "/job:worker/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -37524,7 +37510,7 @@ node {
   name: "report_uninitialized_variables/VarIsInitializedOp_11"
   op: "VarIsInitializedOp"
   input: "Variable_4"
-  device: "/job:ps/task:0"
+  device: "/job:worker/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -37539,7 +37525,7 @@ node {
   name: "report_uninitialized_variables/VarIsInitializedOp_12"
   op: "VarIsInitializedOp"
   input: "Variable_5"
-  device: "/job:ps/task:0"
+  device: "/job:worker/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -37554,7 +37540,7 @@ node {
   name: "report_uninitialized_variables/VarIsInitializedOp_13"
   op: "VarIsInitializedOp"
   input: "Variable_6"
-  device: "/job:ps/task:0"
+  device: "/job:worker/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -37569,7 +37555,7 @@ node {
   name: "report_uninitialized_variables/VarIsInitializedOp_14"
   op: "VarIsInitializedOp"
   input: "Variable_7"
-  device: "/job:ps/task:0"
+  device: "/job:worker/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -39646,7 +39632,7 @@ node {
           size: 1000
         }
         dim {
-          size: 4
+          size: 5
         }
       }
     }
@@ -39738,7 +39724,7 @@ node {
             size: 1000
           }
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -39790,7 +39776,7 @@ node {
     value {
       shape {
         dim {
-          size: 4
+          size: 5
         }
       }
     }
@@ -39879,7 +39865,7 @@ node {
       list {
         shape {
           dim {
-            size: 4
+            size: 5
           }
         }
       }
@@ -41132,7 +41118,6 @@ node {
   name: "global_step/VarIsInitializedOp"
   op: "VarIsInitializedOp"
   input: "global_step"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -41199,7 +41184,7 @@ node {
     key: "else_branch"
     value {
       func {
-        name: "global_step_cond_false_1413"
+        name: "global_step_cond_false_1493"
       }
     }
   }
@@ -41216,7 +41201,7 @@ node {
     key: "then_branch"
     value {
       func {
-        name: "global_step_cond_true_1412"
+        name: "global_step_cond_true_1492"
       }
     }
   }
@@ -41405,7 +41390,6 @@ node {
   name: "report_uninitialized_variables_1/VarIsInitializedOp"
   op: "VarIsInitializedOp"
   input: "global_step"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -41420,7 +41404,6 @@ node {
   name: "report_uninitialized_variables_1/VarIsInitializedOp_1"
   op: "VarIsInitializedOp"
   input: "W"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -41435,7 +41418,6 @@ node {
   name: "report_uninitialized_variables_1/VarIsInitializedOp_2"
   op: "VarIsInitializedOp"
   input: "b"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -41450,7 +41432,6 @@ node {
   name: "report_uninitialized_variables_1/VarIsInitializedOp_3"
   op: "VarIsInitializedOp"
   input: "Variable"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -41465,7 +41446,6 @@ node {
   name: "report_uninitialized_variables_1/VarIsInitializedOp_4"
   op: "VarIsInitializedOp"
   input: "Variable_1"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -41480,7 +41460,6 @@ node {
   name: "report_uninitialized_variables_1/VarIsInitializedOp_5"
   op: "VarIsInitializedOp"
   input: "W_1"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -41495,7 +41474,6 @@ node {
   name: "report_uninitialized_variables_1/VarIsInitializedOp_6"
   op: "VarIsInitializedOp"
   input: "b_1"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -41510,7 +41488,6 @@ node {
   name: "report_uninitialized_variables_1/VarIsInitializedOp_7"
   op: "VarIsInitializedOp"
   input: "Variable_2"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -41525,7 +41502,6 @@ node {
   name: "report_uninitialized_variables_1/VarIsInitializedOp_8"
   op: "VarIsInitializedOp"
   input: "Variable_3"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -41540,7 +41516,6 @@ node {
   name: "report_uninitialized_variables_1/VarIsInitializedOp_9"
   op: "VarIsInitializedOp"
   input: "W_2"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -41555,7 +41530,6 @@ node {
   name: "report_uninitialized_variables_1/VarIsInitializedOp_10"
   op: "VarIsInitializedOp"
   input: "b_2"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -41570,7 +41544,6 @@ node {
   name: "report_uninitialized_variables_1/VarIsInitializedOp_11"
   op: "VarIsInitializedOp"
   input: "Variable_4"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -41585,7 +41558,6 @@ node {
   name: "report_uninitialized_variables_1/VarIsInitializedOp_12"
   op: "VarIsInitializedOp"
   input: "Variable_5"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -41600,7 +41572,6 @@ node {
   name: "report_uninitialized_variables_1/VarIsInitializedOp_13"
   op: "VarIsInitializedOp"
   input: "Variable_6"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -41615,7 +41586,6 @@ node {
   name: "report_uninitialized_variables_1/VarIsInitializedOp_14"
   op: "VarIsInitializedOp"
   input: "Variable_7"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -41630,7 +41600,6 @@ node {
   name: "report_uninitialized_variables_1/VarIsInitializedOp_15"
   op: "VarIsInitializedOp"
   input: "sync_rep_local_step"
-  device: "/job:worker/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -42908,7 +42877,6 @@ node {
   name: "report_uninitialized_variables_2/VarIsInitializedOp"
   op: "VarIsInitializedOp"
   input: "global_step"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -42923,7 +42891,6 @@ node {
   name: "report_uninitialized_variables_2/VarIsInitializedOp_1"
   op: "VarIsInitializedOp"
   input: "W"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -42938,7 +42905,6 @@ node {
   name: "report_uninitialized_variables_2/VarIsInitializedOp_2"
   op: "VarIsInitializedOp"
   input: "b"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -42953,7 +42919,6 @@ node {
   name: "report_uninitialized_variables_2/VarIsInitializedOp_3"
   op: "VarIsInitializedOp"
   input: "Variable"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -42968,7 +42933,6 @@ node {
   name: "report_uninitialized_variables_2/VarIsInitializedOp_4"
   op: "VarIsInitializedOp"
   input: "Variable_1"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -42983,7 +42947,6 @@ node {
   name: "report_uninitialized_variables_2/VarIsInitializedOp_5"
   op: "VarIsInitializedOp"
   input: "W_1"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -42998,7 +42961,6 @@ node {
   name: "report_uninitialized_variables_2/VarIsInitializedOp_6"
   op: "VarIsInitializedOp"
   input: "b_1"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -43013,7 +42975,6 @@ node {
   name: "report_uninitialized_variables_2/VarIsInitializedOp_7"
   op: "VarIsInitializedOp"
   input: "Variable_2"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -43028,7 +42989,6 @@ node {
   name: "report_uninitialized_variables_2/VarIsInitializedOp_8"
   op: "VarIsInitializedOp"
   input: "Variable_3"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -43043,7 +43003,6 @@ node {
   name: "report_uninitialized_variables_2/VarIsInitializedOp_9"
   op: "VarIsInitializedOp"
   input: "W_2"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -43058,7 +43017,6 @@ node {
   name: "report_uninitialized_variables_2/VarIsInitializedOp_10"
   op: "VarIsInitializedOp"
   input: "b_2"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -43073,7 +43031,6 @@ node {
   name: "report_uninitialized_variables_2/VarIsInitializedOp_11"
   op: "VarIsInitializedOp"
   input: "Variable_4"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -43088,7 +43045,6 @@ node {
   name: "report_uninitialized_variables_2/VarIsInitializedOp_12"
   op: "VarIsInitializedOp"
   input: "Variable_5"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -43103,7 +43059,6 @@ node {
   name: "report_uninitialized_variables_2/VarIsInitializedOp_13"
   op: "VarIsInitializedOp"
   input: "Variable_6"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -43118,7 +43073,6 @@ node {
   name: "report_uninitialized_variables_2/VarIsInitializedOp_14"
   op: "VarIsInitializedOp"
   input: "Variable_7"
-  device: "/job:ps/task:0"
   attr {
     key: "_output_shapes"
     value {
@@ -44606,7 +44560,7 @@ node {
         dtype: DT_STRING
         tensor_shape {
         }
-        string_val: "_temp/part"
+        string_val: "_temp_33350026c3244d24977d060cd48a1b60/part"
       }
     }
   }
@@ -45728,1216 +45682,25 @@ node {
 library {
   function {
     signature {
-      name: "global_step_cond_false_1413"
+      name: "global_step_cond_true_1492"
       input_arg {
-        name: "placeholder"
+        name: "read_readvariableop_global_step"
         type: DT_RESOURCE
       }
       input_arg {
-        name: "global_step_initializer_zeros_0"
+        name: "placeholder"
         type: DT_INT64
       }
       output_arg {
-        name: "global_step_initializer_zeros"
+        name: "identity"
         type: DT_INT64
-      }
-    }
-    ret {
-      key: "global_step_initializer_zeros"
-      value: "global_step_initializer_zeros_0"
-    }
-    attr {
-      key: "_input_shapes"
-      value {
-        list {
-          shape {
-            unknown_rank: true
-          }
-          shape {
-          }
-        }
-      }
-    }
-    arg_attr {
-      key: 1
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  function {
-    signature {
-      name: "while_1_cond_611"
-      input_arg {
-        name: "while_1_loop_counter"
-        type: DT_INT32
-      }
-      input_arg {
-        name: "while_1_maximum_iterations"
-        type: DT_INT32
-      }
-      input_arg {
-        name: "placeholder"
-        type: DT_INT32
-      }
-      input_arg {
-        name: "placeholder_1"
-        type: DT_FLOAT
-      }
-      input_arg {
-        name: "placeholder_2"
-        type: DT_FLOAT
-      }
-      input_arg {
-        name: "placeholder_3"
-        type: DT_FLOAT
-      }
-      input_arg {
-        name: "placeholder_4"
-        type: DT_FLOAT
-      }
-      input_arg {
-        name: "while_1_cond_611___redundant_placeholder0"
-        type: DT_RESOURCE
-      }
-      input_arg {
-        name: "while_1_cond_611___redundant_placeholder1"
-        type: DT_RESOURCE
-      }
-      input_arg {
-        name: "while_1_cond_611___redundant_placeholder2"
-        type: DT_RESOURCE
-      }
-      output_arg {
-        name: "less"
-        type: DT_BOOL
-      }
-    }
-    node_def {
-      name: "Less/y"
-      op: "Const"
-      device: "/job:worker/task:0"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_INT32
-            tensor_shape {
-            }
-            int_val: 1
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "Less/y"
-      }
-    }
-    node_def {
-      name: "Less"
-      op: "Less"
-      input: "placeholder"
-      input: "Less/y:output:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "Less"
-      }
-    }
-    ret {
-      key: "less"
-      value: "Less:z:0"
-    }
-    attr {
-      key: "_input_shapes"
-      value {
-        list {
-          shape {
-          }
-          shape {
-          }
-          shape {
-          }
-          shape {
-            dim {
-              size: -1
-            }
-            dim {
-              size: 1000
-            }
-          }
-          shape {
-            dim {
-              size: -1
-            }
-            dim {
-              size: 1000
-            }
-          }
-          shape {
-            dim {
-              size: -1
-            }
-            dim {
-              size: 1000
-            }
-          }
-          shape {
-            dim {
-              size: -1
-            }
-            dim {
-              size: 1000
-            }
-          }
-          shape {
-            unknown_rank: true
-          }
-          shape {
-            unknown_rank: true
-          }
-          shape {
-            unknown_rank: true
-          }
-        }
-      }
-    }
-    arg_attr {
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-              }
-            }
-          }
-        }
-      }
-    }
-    arg_attr {
-      key: 1
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-              }
-            }
-          }
-        }
-      }
-    }
-    arg_attr {
-      key: 2
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-              }
-            }
-          }
-        }
-      }
-    }
-    arg_attr {
-      key: 3
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-                dim {
-                  size: -1
-                }
-                dim {
-                  size: 1000
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    arg_attr {
-      key: 4
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-                dim {
-                  size: -1
-                }
-                dim {
-                  size: 1000
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    arg_attr {
-      key: 5
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-                dim {
-                  size: -1
-                }
-                dim {
-                  size: 1000
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    arg_attr {
-      key: 6
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-                dim {
-                  size: -1
-                }
-                dim {
-                  size: 1000
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  function {
-    signature {
-      name: "while_1_body_612"
-      input_arg {
-        name: "while_1_loop_counter"
-        type: DT_INT32
-      }
-      input_arg {
-        name: "while_1_maximum_iterations_0"
-        type: DT_INT32
-      }
-      input_arg {
-        name: "placeholder"
-        type: DT_INT32
-      }
-      input_arg {
-        name: "placeholder_1"
-        type: DT_FLOAT
-      }
-      input_arg {
-        name: "placeholder_2"
-        type: DT_FLOAT
-      }
-      input_arg {
-        name: "placeholder_3"
-        type: DT_FLOAT
-      }
-      input_arg {
-        name: "placeholder_4"
-        type: DT_FLOAT
-      }
-      input_arg {
-        name: "transpose_readvariableop_variable_2_0"
-        type: DT_RESOURCE
-      }
-      input_arg {
-        name: "add_1_readvariableop_variable_3_0"
-        type: DT_RESOURCE
-      }
-      input_arg {
-        name: "add_2_readvariableop_b_1_0"
-        type: DT_RESOURCE
-      }
-      output_arg {
-        name: "add_3"
-        type: DT_INT32
-      }
-      output_arg {
-        name: "while_1_maximum_iterations"
-        type: DT_INT32
-      }
-      output_arg {
-        name: "add"
-        type: DT_INT32
-      }
-      output_arg {
-        name: "sigmoid"
-        type: DT_FLOAT
-      }
-      output_arg {
-        name: "relu"
-        type: DT_FLOAT
-      }
-      output_arg {
-        name: "sigmoid_1"
-        type: DT_FLOAT
-      }
-      output_arg {
-        name: "relu_1"
-        type: DT_FLOAT
-      }
-      output_arg {
-        name: "transpose_readvariableop_variable_2"
-        type: DT_RESOURCE
-      }
-      output_arg {
-        name: "add_1_readvariableop_variable_3"
-        type: DT_RESOURCE
-      }
-      output_arg {
-        name: "add_2_readvariableop_b_1"
-        type: DT_RESOURCE
       }
       is_stateful: true
     }
     node_def {
-      name: "add/y"
-      op: "Const"
-      device: "/job:worker/task:0"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_INT32
-            tensor_shape {
-            }
-            int_val: 1
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "add/y"
-      }
-    }
-    node_def {
-      name: "add_0"
-      op: "AddV2"
-      input: "placeholder"
-      input: "add/y:output:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_INT32
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "add"
-      }
-    }
-    node_def {
-      name: "transpose/ReadVariableOp"
+      name: "Read/ReadVariableOp"
       op: "ReadVariableOp"
-      input: "transpose_readvariableop_variable_2_0"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 1000
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "transpose/ReadVariableOp"
-      }
-    }
-    node_def {
-      name: "transpose/perm"
-      op: "Const"
-      device: "/job:worker/task:0"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 2
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_INT32
-            tensor_shape {
-              dim {
-                size: 2
-              }
-            }
-            tensor_content: "\001\000\000\000\000\000\000\000"
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "transpose/perm"
-      }
-    }
-    node_def {
-      name: "transpose"
-      op: "Transpose"
-      input: "transpose/ReadVariableOp:value:0"
-      input: "transpose/perm:output:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "Tperm"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 1000
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "transpose"
-      }
-    }
-    node_def {
-      name: "MatMul"
-      op: "MatMul"
-      input: "placeholder_4"
-      input: "transpose:y:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "transpose_a"
-        value {
-          b: false
-        }
-      }
-      attr {
-        key: "transpose_b"
-        value {
-          b: false
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "MatMul"
-      }
-    }
-    node_def {
-      name: "add_1/ReadVariableOp"
-      op: "ReadVariableOp"
-      input: "add_1_readvariableop_variable_3_0"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "add_1/ReadVariableOp"
-      }
-    }
-    node_def {
-      name: "add_1"
-      op: "AddV2"
-      input: "MatMul:product:0"
-      input: "add_1/ReadVariableOp:value:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "add_1"
-      }
-    }
-    node_def {
-      name: "Sigmoid"
-      op: "Sigmoid"
-      input: "add_1:z:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "Sigmoid"
-      }
-    }
-    node_def {
-      name: "Shape"
-      op: "Shape"
-      input: "Sigmoid:y:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 2
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "out_type"
-        value {
-          type: DT_INT32
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "Shape"
-      }
-    }
-    node_def {
-      name: "random_uniform/RandomUniform"
-      op: "RandomUniform"
-      input: "Shape:output:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "seed"
-        value {
-          i: 0
-        }
-      }
-      attr {
-        key: "seed2"
-        value {
-          i: 0
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "random_uniform/RandomUniform"
-      }
-    }
-    node_def {
-      name: "sub"
-      op: "Sub"
-      input: "Sigmoid:y:0"
-      input: "random_uniform/RandomUniform:output:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "sub"
-      }
-    }
-    node_def {
-      name: "Sign"
-      op: "Sign"
-      input: "sub:z:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "Sign"
-      }
-    }
-    node_def {
-      name: "Relu"
-      op: "Relu"
-      input: "Sign:y:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "Relu"
-      }
-    }
-    node_def {
-      name: "MatMul_1/ReadVariableOp"
-      op: "ReadVariableOp"
-      input: "transpose_readvariableop_variable_2_0"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 1000
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "MatMul_1/ReadVariableOp"
-      }
-    }
-    node_def {
-      name: "MatMul_1"
-      op: "MatMul"
-      input: "Relu:activations:0"
-      input: "MatMul_1/ReadVariableOp:value:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "transpose_a"
-        value {
-          b: false
-        }
-      }
-      attr {
-        key: "transpose_b"
-        value {
-          b: false
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "MatMul_1"
-      }
-    }
-    node_def {
-      name: "add_2/ReadVariableOp"
-      op: "ReadVariableOp"
-      input: "add_2_readvariableop_b_1_0"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "add_2/ReadVariableOp"
-      }
-    }
-    node_def {
-      name: "add_2"
-      op: "AddV2"
-      input: "MatMul_1:product:0"
-      input: "add_2/ReadVariableOp:value:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "add_2"
-      }
-    }
-    node_def {
-      name: "Sigmoid_1"
-      op: "Sigmoid"
-      input: "add_2:z:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "Sigmoid_1"
-      }
-    }
-    node_def {
-      name: "Shape_1"
-      op: "Shape"
-      input: "Sigmoid_1:y:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 2
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "out_type"
-        value {
-          type: DT_INT32
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "Shape_1"
-      }
-    }
-    node_def {
-      name: "random_uniform_1/RandomUniform"
-      op: "RandomUniform"
-      input: "Shape_1:output:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "seed"
-        value {
-          i: 0
-        }
-      }
-      attr {
-        key: "seed2"
-        value {
-          i: 0
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "random_uniform_1/RandomUniform"
-      }
-    }
-    node_def {
-      name: "sub_1"
-      op: "Sub"
-      input: "Sigmoid_1:y:0"
-      input: "random_uniform_1/RandomUniform:output:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "sub_1"
-      }
-    }
-    node_def {
-      name: "Sign_1"
-      op: "Sign"
-      input: "sub_1:z:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "Sign_1"
-      }
-    }
-    node_def {
-      name: "Relu_1"
-      op: "Relu"
-      input: "Sign_1:y:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "Relu_1"
-      }
-    }
-    node_def {
-      name: "add_3/y"
-      op: "Const"
-      device: "/job:worker/task:0"
+      input: "read_readvariableop_global_step"
       attr {
         key: "_output_shapes"
         value {
@@ -46950,143 +45713,48 @@ library {
       attr {
         key: "dtype"
         value {
-          type: DT_INT32
+          type: DT_INT64
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "Read/ReadVariableOp"
+      }
+    }
+    node_def {
+      name: "Identity"
+      op: "Identity"
+      input: "Read/ReadVariableOp:value:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT64
         }
       }
       attr {
-        key: "value"
+        key: "_output_shapes"
         value {
-          tensor {
-            dtype: DT_INT32
-            tensor_shape {
+          list {
+            shape {
             }
-            int_val: 1
           }
         }
       }
       experimental_debug_info {
-        original_node_names: "add_3/y"
-      }
-    }
-    node_def {
-      name: "add_3_0"
-      op: "AddV2"
-      input: "while_1_loop_counter"
-      input: "add_3/y:output:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_INT32
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "add_3"
+        original_node_names: "Identity"
       }
     }
     ret {
-      key: "add"
-      value: "add_0:z:0"
-    }
-    ret {
-      key: "add_1_readvariableop_variable_3"
-      value: "add_1_readvariableop_variable_3_0"
-    }
-    ret {
-      key: "add_2_readvariableop_b_1"
-      value: "add_2_readvariableop_b_1_0"
-    }
-    ret {
-      key: "add_3"
-      value: "add_3_0:z:0"
-    }
-    ret {
-      key: "relu"
-      value: "Relu:activations:0"
-    }
-    ret {
-      key: "relu_1"
-      value: "Relu_1:activations:0"
-    }
-    ret {
-      key: "sigmoid"
-      value: "Sigmoid:y:0"
-    }
-    ret {
-      key: "sigmoid_1"
-      value: "Sigmoid_1:y:0"
-    }
-    ret {
-      key: "transpose_readvariableop_variable_2"
-      value: "transpose_readvariableop_variable_2_0"
-    }
-    ret {
-      key: "while_1_maximum_iterations"
-      value: "while_1_maximum_iterations_0"
+      key: "identity"
+      value: "Identity:output:0"
     }
     attr {
       key: "_input_shapes"
       value {
         list {
           shape {
-          }
-          shape {
-          }
-          shape {
-          }
-          shape {
-            dim {
-              size: -1
-            }
-            dim {
-              size: 1000
-            }
-          }
-          shape {
-            dim {
-              size: -1
-            }
-            dim {
-              size: 1000
-            }
-          }
-          shape {
-            dim {
-              size: -1
-            }
-            dim {
-              size: 1000
-            }
-          }
-          shape {
-            dim {
-              size: -1
-            }
-            dim {
-              size: 1000
-            }
-          }
-          shape {
             unknown_rank: true
           }
           shape {
-            unknown_rank: true
-          }
-          shape {
-            unknown_rank: true
-          }
-        }
-      }
-    }
-    arg_attr {
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-              }
-            }
           }
         }
       }
@@ -47105,1244 +45773,10 @@ library {
         }
       }
     }
-    arg_attr {
-      key: 2
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-              }
-            }
-          }
-        }
-      }
-    }
-    arg_attr {
-      key: 3
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-                dim {
-                  size: -1
-                }
-                dim {
-                  size: 1000
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    arg_attr {
-      key: 4
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-                dim {
-                  size: -1
-                }
-                dim {
-                  size: 1000
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    arg_attr {
-      key: 5
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-                dim {
-                  size: -1
-                }
-                dim {
-                  size: 1000
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    arg_attr {
-      key: 6
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-                dim {
-                  size: -1
-                }
-                dim {
-                  size: 1000
-                }
-              }
-            }
-          }
-        }
-      }
-    }
   }
   function {
     signature {
-      name: "while_2_body_899"
-      input_arg {
-        name: "while_2_loop_counter"
-        type: DT_INT32
-      }
-      input_arg {
-        name: "while_2_maximum_iterations_0"
-        type: DT_INT32
-      }
-      input_arg {
-        name: "placeholder"
-        type: DT_INT32
-      }
-      input_arg {
-        name: "placeholder_1"
-        type: DT_FLOAT
-      }
-      input_arg {
-        name: "placeholder_2"
-        type: DT_FLOAT
-      }
-      input_arg {
-        name: "placeholder_3"
-        type: DT_FLOAT
-      }
-      input_arg {
-        name: "placeholder_4"
-        type: DT_FLOAT
-      }
-      input_arg {
-        name: "transpose_readvariableop_variable_4_0"
-        type: DT_RESOURCE
-      }
-      input_arg {
-        name: "add_1_readvariableop_variable_5_0"
-        type: DT_RESOURCE
-      }
-      input_arg {
-        name: "add_2_readvariableop_b_2_0"
-        type: DT_RESOURCE
-      }
-      output_arg {
-        name: "add_3"
-        type: DT_INT32
-      }
-      output_arg {
-        name: "while_2_maximum_iterations"
-        type: DT_INT32
-      }
-      output_arg {
-        name: "add"
-        type: DT_INT32
-      }
-      output_arg {
-        name: "sigmoid"
-        type: DT_FLOAT
-      }
-      output_arg {
-        name: "relu"
-        type: DT_FLOAT
-      }
-      output_arg {
-        name: "sigmoid_1"
-        type: DT_FLOAT
-      }
-      output_arg {
-        name: "relu_1"
-        type: DT_FLOAT
-      }
-      output_arg {
-        name: "transpose_readvariableop_variable_4"
-        type: DT_RESOURCE
-      }
-      output_arg {
-        name: "add_1_readvariableop_variable_5"
-        type: DT_RESOURCE
-      }
-      output_arg {
-        name: "add_2_readvariableop_b_2"
-        type: DT_RESOURCE
-      }
-      is_stateful: true
-    }
-    node_def {
-      name: "add/y"
-      op: "Const"
-      device: "/job:worker/task:0"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_INT32
-            tensor_shape {
-            }
-            int_val: 1
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "add/y"
-      }
-    }
-    node_def {
-      name: "add_0"
-      op: "AddV2"
-      input: "placeholder"
-      input: "add/y:output:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_INT32
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "add"
-      }
-    }
-    node_def {
-      name: "transpose/ReadVariableOp"
-      op: "ReadVariableOp"
-      input: "transpose_readvariableop_variable_4_0"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 1000
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "transpose/ReadVariableOp"
-      }
-    }
-    node_def {
-      name: "transpose/perm"
-      op: "Const"
-      device: "/job:worker/task:0"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 2
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_INT32
-            tensor_shape {
-              dim {
-                size: 2
-              }
-            }
-            tensor_content: "\001\000\000\000\000\000\000\000"
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "transpose/perm"
-      }
-    }
-    node_def {
-      name: "transpose"
-      op: "Transpose"
-      input: "transpose/ReadVariableOp:value:0"
-      input: "transpose/perm:output:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "Tperm"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 1000
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "transpose"
-      }
-    }
-    node_def {
-      name: "MatMul"
-      op: "MatMul"
-      input: "placeholder_4"
-      input: "transpose:y:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "transpose_a"
-        value {
-          b: false
-        }
-      }
-      attr {
-        key: "transpose_b"
-        value {
-          b: false
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "MatMul"
-      }
-    }
-    node_def {
-      name: "add_1/ReadVariableOp"
-      op: "ReadVariableOp"
-      input: "add_1_readvariableop_variable_5_0"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "add_1/ReadVariableOp"
-      }
-    }
-    node_def {
-      name: "add_1"
-      op: "AddV2"
-      input: "MatMul:product:0"
-      input: "add_1/ReadVariableOp:value:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "add_1"
-      }
-    }
-    node_def {
-      name: "Sigmoid"
-      op: "Sigmoid"
-      input: "add_1:z:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "Sigmoid"
-      }
-    }
-    node_def {
-      name: "Shape"
-      op: "Shape"
-      input: "Sigmoid:y:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 2
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "out_type"
-        value {
-          type: DT_INT32
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "Shape"
-      }
-    }
-    node_def {
-      name: "random_uniform/RandomUniform"
-      op: "RandomUniform"
-      input: "Shape:output:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "seed"
-        value {
-          i: 0
-        }
-      }
-      attr {
-        key: "seed2"
-        value {
-          i: 0
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "random_uniform/RandomUniform"
-      }
-    }
-    node_def {
-      name: "sub"
-      op: "Sub"
-      input: "Sigmoid:y:0"
-      input: "random_uniform/RandomUniform:output:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "sub"
-      }
-    }
-    node_def {
-      name: "Sign"
-      op: "Sign"
-      input: "sub:z:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "Sign"
-      }
-    }
-    node_def {
-      name: "Relu"
-      op: "Relu"
-      input: "Sign:y:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "Relu"
-      }
-    }
-    node_def {
-      name: "MatMul_1/ReadVariableOp"
-      op: "ReadVariableOp"
-      input: "transpose_readvariableop_variable_4_0"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 1000
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "MatMul_1/ReadVariableOp"
-      }
-    }
-    node_def {
-      name: "MatMul_1"
-      op: "MatMul"
-      input: "Relu:activations:0"
-      input: "MatMul_1/ReadVariableOp:value:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "transpose_a"
-        value {
-          b: false
-        }
-      }
-      attr {
-        key: "transpose_b"
-        value {
-          b: false
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "MatMul_1"
-      }
-    }
-    node_def {
-      name: "add_2/ReadVariableOp"
-      op: "ReadVariableOp"
-      input: "add_2_readvariableop_b_2_0"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "add_2/ReadVariableOp"
-      }
-    }
-    node_def {
-      name: "add_2"
-      op: "AddV2"
-      input: "MatMul_1:product:0"
-      input: "add_2/ReadVariableOp:value:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "add_2"
-      }
-    }
-    node_def {
-      name: "Sigmoid_1"
-      op: "Sigmoid"
-      input: "add_2:z:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "Sigmoid_1"
-      }
-    }
-    node_def {
-      name: "Shape_1"
-      op: "Shape"
-      input: "Sigmoid_1:y:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: 2
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "out_type"
-        value {
-          type: DT_INT32
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "Shape_1"
-      }
-    }
-    node_def {
-      name: "random_uniform_1/RandomUniform"
-      op: "RandomUniform"
-      input: "Shape_1:output:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "seed"
-        value {
-          i: 0
-        }
-      }
-      attr {
-        key: "seed2"
-        value {
-          i: 0
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "random_uniform_1/RandomUniform"
-      }
-    }
-    node_def {
-      name: "sub_1"
-      op: "Sub"
-      input: "Sigmoid_1:y:0"
-      input: "random_uniform_1/RandomUniform:output:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "sub_1"
-      }
-    }
-    node_def {
-      name: "Sign_1"
-      op: "Sign"
-      input: "sub_1:z:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "Sign_1"
-      }
-    }
-    node_def {
-      name: "Relu_1"
-      op: "Relu"
-      input: "Sign_1:y:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-                size: -1
-              }
-              dim {
-                size: 1000
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "Relu_1"
-      }
-    }
-    node_def {
-      name: "add_3/y"
-      op: "Const"
-      device: "/job:worker/task:0"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_INT32
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_INT32
-            tensor_shape {
-            }
-            int_val: 1
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "add_3/y"
-      }
-    }
-    node_def {
-      name: "add_3_0"
-      op: "AddV2"
-      input: "while_2_loop_counter"
-      input: "add_3/y:output:0"
-      device: "/job:worker/task:0"
-      attr {
-        key: "T"
-        value {
-          type: DT_INT32
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "add_3"
-      }
-    }
-    ret {
-      key: "add"
-      value: "add_0:z:0"
-    }
-    ret {
-      key: "add_1_readvariableop_variable_5"
-      value: "add_1_readvariableop_variable_5_0"
-    }
-    ret {
-      key: "add_2_readvariableop_b_2"
-      value: "add_2_readvariableop_b_2_0"
-    }
-    ret {
-      key: "add_3"
-      value: "add_3_0:z:0"
-    }
-    ret {
-      key: "relu"
-      value: "Relu:activations:0"
-    }
-    ret {
-      key: "relu_1"
-      value: "Relu_1:activations:0"
-    }
-    ret {
-      key: "sigmoid"
-      value: "Sigmoid:y:0"
-    }
-    ret {
-      key: "sigmoid_1"
-      value: "Sigmoid_1:y:0"
-    }
-    ret {
-      key: "transpose_readvariableop_variable_4"
-      value: "transpose_readvariableop_variable_4_0"
-    }
-    ret {
-      key: "while_2_maximum_iterations"
-      value: "while_2_maximum_iterations_0"
-    }
-    attr {
-      key: "_input_shapes"
-      value {
-        list {
-          shape {
-          }
-          shape {
-          }
-          shape {
-          }
-          shape {
-            dim {
-              size: -1
-            }
-            dim {
-              size: 1000
-            }
-          }
-          shape {
-            dim {
-              size: -1
-            }
-            dim {
-              size: 1000
-            }
-          }
-          shape {
-            dim {
-              size: -1
-            }
-            dim {
-              size: 1000
-            }
-          }
-          shape {
-            dim {
-              size: -1
-            }
-            dim {
-              size: 1000
-            }
-          }
-          shape {
-            unknown_rank: true
-          }
-          shape {
-            unknown_rank: true
-          }
-          shape {
-            unknown_rank: true
-          }
-        }
-      }
-    }
-    arg_attr {
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-              }
-            }
-          }
-        }
-      }
-    }
-    arg_attr {
-      key: 1
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-              }
-            }
-          }
-        }
-      }
-    }
-    arg_attr {
-      key: 2
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-              }
-            }
-          }
-        }
-      }
-    }
-    arg_attr {
-      key: 3
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-                dim {
-                  size: -1
-                }
-                dim {
-                  size: 1000
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    arg_attr {
-      key: 4
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-                dim {
-                  size: -1
-                }
-                dim {
-                  size: 1000
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    arg_attr {
-      key: 5
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-                dim {
-                  size: -1
-                }
-                dim {
-                  size: 1000
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    arg_attr {
-      key: 6
-      value {
-        attr {
-          key: "_output_shapes"
-          value {
-            list {
-              shape {
-                dim {
-                  size: -1
-                }
-                dim {
-                  size: 1000
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  function {
-    signature {
-      name: "while_body_195"
+      name: "while_body_275"
       input_arg {
         name: "while_loop_counter"
         type: DT_INT32
@@ -49602,7 +47036,1434 @@ library {
   }
   function {
     signature {
-      name: "__inference_Dataset_map_parse_and_decode_51"
+      name: "while_2_body_979"
+      input_arg {
+        name: "while_2_loop_counter"
+        type: DT_INT32
+      }
+      input_arg {
+        name: "while_2_maximum_iterations_0"
+        type: DT_INT32
+      }
+      input_arg {
+        name: "placeholder"
+        type: DT_INT32
+      }
+      input_arg {
+        name: "placeholder_1"
+        type: DT_FLOAT
+      }
+      input_arg {
+        name: "placeholder_2"
+        type: DT_FLOAT
+      }
+      input_arg {
+        name: "placeholder_3"
+        type: DT_FLOAT
+      }
+      input_arg {
+        name: "placeholder_4"
+        type: DT_FLOAT
+      }
+      input_arg {
+        name: "transpose_readvariableop_variable_4_0"
+        type: DT_RESOURCE
+      }
+      input_arg {
+        name: "add_1_readvariableop_variable_5_0"
+        type: DT_RESOURCE
+      }
+      input_arg {
+        name: "add_2_readvariableop_b_2_0"
+        type: DT_RESOURCE
+      }
+      output_arg {
+        name: "add_3"
+        type: DT_INT32
+      }
+      output_arg {
+        name: "while_2_maximum_iterations"
+        type: DT_INT32
+      }
+      output_arg {
+        name: "add"
+        type: DT_INT32
+      }
+      output_arg {
+        name: "sigmoid"
+        type: DT_FLOAT
+      }
+      output_arg {
+        name: "relu"
+        type: DT_FLOAT
+      }
+      output_arg {
+        name: "sigmoid_1"
+        type: DT_FLOAT
+      }
+      output_arg {
+        name: "relu_1"
+        type: DT_FLOAT
+      }
+      output_arg {
+        name: "transpose_readvariableop_variable_4"
+        type: DT_RESOURCE
+      }
+      output_arg {
+        name: "add_1_readvariableop_variable_5"
+        type: DT_RESOURCE
+      }
+      output_arg {
+        name: "add_2_readvariableop_b_2"
+        type: DT_RESOURCE
+      }
+      is_stateful: true
+    }
+    node_def {
+      name: "add/y"
+      op: "Const"
+      device: "/job:worker/task:0"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 1
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "add/y"
+      }
+    }
+    node_def {
+      name: "add_0"
+      op: "AddV2"
+      input: "placeholder"
+      input: "add/y:output:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT32
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "add"
+      }
+    }
+    node_def {
+      name: "transpose/ReadVariableOp"
+      op: "ReadVariableOp"
+      input: "transpose_readvariableop_variable_4_0"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1000
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "transpose/ReadVariableOp"
+      }
+    }
+    node_def {
+      name: "transpose/perm"
+      op: "Const"
+      device: "/job:worker/task:0"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 2
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+              dim {
+                size: 2
+              }
+            }
+            tensor_content: "\001\000\000\000\000\000\000\000"
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "transpose/perm"
+      }
+    }
+    node_def {
+      name: "transpose"
+      op: "Transpose"
+      input: "transpose/ReadVariableOp:value:0"
+      input: "transpose/perm:output:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "Tperm"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1000
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "transpose"
+      }
+    }
+    node_def {
+      name: "MatMul"
+      op: "MatMul"
+      input: "placeholder_4"
+      input: "transpose:y:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "transpose_a"
+        value {
+          b: false
+        }
+      }
+      attr {
+        key: "transpose_b"
+        value {
+          b: false
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "MatMul"
+      }
+    }
+    node_def {
+      name: "add_1/ReadVariableOp"
+      op: "ReadVariableOp"
+      input: "add_1_readvariableop_variable_5_0"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "add_1/ReadVariableOp"
+      }
+    }
+    node_def {
+      name: "add_1"
+      op: "AddV2"
+      input: "MatMul:product:0"
+      input: "add_1/ReadVariableOp:value:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "add_1"
+      }
+    }
+    node_def {
+      name: "Sigmoid"
+      op: "Sigmoid"
+      input: "add_1:z:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "Sigmoid"
+      }
+    }
+    node_def {
+      name: "Shape"
+      op: "Shape"
+      input: "Sigmoid:y:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 2
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "out_type"
+        value {
+          type: DT_INT32
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "Shape"
+      }
+    }
+    node_def {
+      name: "random_uniform/RandomUniform"
+      op: "RandomUniform"
+      input: "Shape:output:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "seed"
+        value {
+          i: 0
+        }
+      }
+      attr {
+        key: "seed2"
+        value {
+          i: 0
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "random_uniform/RandomUniform"
+      }
+    }
+    node_def {
+      name: "sub"
+      op: "Sub"
+      input: "Sigmoid:y:0"
+      input: "random_uniform/RandomUniform:output:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "sub"
+      }
+    }
+    node_def {
+      name: "Sign"
+      op: "Sign"
+      input: "sub:z:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "Sign"
+      }
+    }
+    node_def {
+      name: "Relu"
+      op: "Relu"
+      input: "Sign:y:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "Relu"
+      }
+    }
+    node_def {
+      name: "MatMul_1/ReadVariableOp"
+      op: "ReadVariableOp"
+      input: "transpose_readvariableop_variable_4_0"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1000
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "MatMul_1/ReadVariableOp"
+      }
+    }
+    node_def {
+      name: "MatMul_1"
+      op: "MatMul"
+      input: "Relu:activations:0"
+      input: "MatMul_1/ReadVariableOp:value:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "transpose_a"
+        value {
+          b: false
+        }
+      }
+      attr {
+        key: "transpose_b"
+        value {
+          b: false
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "MatMul_1"
+      }
+    }
+    node_def {
+      name: "add_2/ReadVariableOp"
+      op: "ReadVariableOp"
+      input: "add_2_readvariableop_b_2_0"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "add_2/ReadVariableOp"
+      }
+    }
+    node_def {
+      name: "add_2"
+      op: "AddV2"
+      input: "MatMul_1:product:0"
+      input: "add_2/ReadVariableOp:value:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "add_2"
+      }
+    }
+    node_def {
+      name: "Sigmoid_1"
+      op: "Sigmoid"
+      input: "add_2:z:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "Sigmoid_1"
+      }
+    }
+    node_def {
+      name: "Shape_1"
+      op: "Shape"
+      input: "Sigmoid_1:y:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 2
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "out_type"
+        value {
+          type: DT_INT32
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "Shape_1"
+      }
+    }
+    node_def {
+      name: "random_uniform_1/RandomUniform"
+      op: "RandomUniform"
+      input: "Shape_1:output:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "seed"
+        value {
+          i: 0
+        }
+      }
+      attr {
+        key: "seed2"
+        value {
+          i: 0
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "random_uniform_1/RandomUniform"
+      }
+    }
+    node_def {
+      name: "sub_1"
+      op: "Sub"
+      input: "Sigmoid_1:y:0"
+      input: "random_uniform_1/RandomUniform:output:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "sub_1"
+      }
+    }
+    node_def {
+      name: "Sign_1"
+      op: "Sign"
+      input: "sub_1:z:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "Sign_1"
+      }
+    }
+    node_def {
+      name: "Relu_1"
+      op: "Relu"
+      input: "Sign_1:y:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "Relu_1"
+      }
+    }
+    node_def {
+      name: "add_3/y"
+      op: "Const"
+      device: "/job:worker/task:0"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 1
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "add_3/y"
+      }
+    }
+    node_def {
+      name: "add_3_0"
+      op: "AddV2"
+      input: "while_2_loop_counter"
+      input: "add_3/y:output:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT32
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "add_3"
+      }
+    }
+    ret {
+      key: "add"
+      value: "add_0:z:0"
+    }
+    ret {
+      key: "add_1_readvariableop_variable_5"
+      value: "add_1_readvariableop_variable_5_0"
+    }
+    ret {
+      key: "add_2_readvariableop_b_2"
+      value: "add_2_readvariableop_b_2_0"
+    }
+    ret {
+      key: "add_3"
+      value: "add_3_0:z:0"
+    }
+    ret {
+      key: "relu"
+      value: "Relu:activations:0"
+    }
+    ret {
+      key: "relu_1"
+      value: "Relu_1:activations:0"
+    }
+    ret {
+      key: "sigmoid"
+      value: "Sigmoid:y:0"
+    }
+    ret {
+      key: "sigmoid_1"
+      value: "Sigmoid_1:y:0"
+    }
+    ret {
+      key: "transpose_readvariableop_variable_4"
+      value: "transpose_readvariableop_variable_4_0"
+    }
+    ret {
+      key: "while_2_maximum_iterations"
+      value: "while_2_maximum_iterations_0"
+    }
+    attr {
+      key: "_input_shapes"
+      value {
+        list {
+          shape {
+          }
+          shape {
+          }
+          shape {
+          }
+          shape {
+            dim {
+              size: -1
+            }
+            dim {
+              size: 1000
+            }
+          }
+          shape {
+            dim {
+              size: -1
+            }
+            dim {
+              size: 1000
+            }
+          }
+          shape {
+            dim {
+              size: -1
+            }
+            dim {
+              size: 1000
+            }
+          }
+          shape {
+            dim {
+              size: -1
+            }
+            dim {
+              size: 1000
+            }
+          }
+          shape {
+            unknown_rank: true
+          }
+          shape {
+            unknown_rank: true
+          }
+          shape {
+            unknown_rank: true
+          }
+        }
+      }
+    }
+    arg_attr {
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+              }
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      key: 1
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+              }
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      key: 2
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+              }
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      key: 3
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+                dim {
+                  size: -1
+                }
+                dim {
+                  size: 1000
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      key: 4
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+                dim {
+                  size: -1
+                }
+                dim {
+                  size: 1000
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      key: 5
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+                dim {
+                  size: -1
+                }
+                dim {
+                  size: 1000
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      key: 6
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+                dim {
+                  size: -1
+                }
+                dim {
+                  size: 1000
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  function {
+    signature {
+      name: "while_cond_274"
+      input_arg {
+        name: "while_loop_counter"
+        type: DT_INT32
+      }
+      input_arg {
+        name: "while_maximum_iterations"
+        type: DT_INT32
+      }
+      input_arg {
+        name: "placeholder"
+        type: DT_INT32
+      }
+      input_arg {
+        name: "placeholder_1"
+        type: DT_FLOAT
+      }
+      input_arg {
+        name: "placeholder_2"
+        type: DT_FLOAT
+      }
+      input_arg {
+        name: "placeholder_3"
+        type: DT_FLOAT
+      }
+      input_arg {
+        name: "placeholder_4"
+        type: DT_FLOAT
+      }
+      input_arg {
+        name: "while_cond_274___redundant_placeholder0"
+        type: DT_RESOURCE
+      }
+      input_arg {
+        name: "while_cond_274___redundant_placeholder1"
+        type: DT_RESOURCE
+      }
+      input_arg {
+        name: "while_cond_274___redundant_placeholder2"
+        type: DT_RESOURCE
+      }
+      output_arg {
+        name: "less"
+        type: DT_BOOL
+      }
+    }
+    node_def {
+      name: "Less/y"
+      op: "Const"
+      device: "/job:worker/task:0"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 1
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "Less/y"
+      }
+    }
+    node_def {
+      name: "Less"
+      op: "Less"
+      input: "placeholder"
+      input: "Less/y:output:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "Less"
+      }
+    }
+    ret {
+      key: "less"
+      value: "Less:z:0"
+    }
+    attr {
+      key: "_input_shapes"
+      value {
+        list {
+          shape {
+          }
+          shape {
+          }
+          shape {
+          }
+          shape {
+            dim {
+              size: -1
+            }
+            dim {
+              size: 28
+            }
+          }
+          shape {
+            dim {
+              size: -1
+            }
+            dim {
+              size: 28
+            }
+          }
+          shape {
+            dim {
+              size: -1
+            }
+            dim {
+              size: 1000
+            }
+          }
+          shape {
+            dim {
+              size: -1
+            }
+            dim {
+              size: 1000
+            }
+          }
+          shape {
+            unknown_rank: true
+          }
+          shape {
+            unknown_rank: true
+          }
+          shape {
+            unknown_rank: true
+          }
+        }
+      }
+    }
+    arg_attr {
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+              }
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      key: 1
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+              }
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      key: 2
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+              }
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      key: 3
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+                dim {
+                  size: -1
+                }
+                dim {
+                  size: 28
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      key: 4
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+                dim {
+                  size: -1
+                }
+                dim {
+                  size: 28
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      key: 5
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+                dim {
+                  size: -1
+                }
+                dim {
+                  size: 1000
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      key: 6
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+                dim {
+                  size: -1
+                }
+                dim {
+                  size: 1000
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  function {
+    signature {
+      name: "__inference_Dataset_map_parse_and_decode_131"
       input_arg {
         name: "args_0"
         type: DT_STRING
@@ -49615,6 +48476,8 @@ library {
         name: "identity_1"
         type: DT_INT64
       }
+      is_stateful: true
+      control_output: "decode_image/cond_jpeg"
     }
     node_def {
       name: "ParseSingleExample/ParseExample/Const"
@@ -49925,42 +48788,6 @@ library {
       attr {
         key: "dtype"
         value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_FLOAT
-            tensor_shape {
-              dim {
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "Reshape/shape"
-      }
-    }
-    node_def {
-      name: "Reshape/shape_1"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
           type: DT_INT32
         }
       }
@@ -49977,18 +48804,18 @@ library {
         }
       }
       experimental_debug_info {
-        original_node_names: "Reshape/shape_1"
+        original_node_names: "Reshape/shape"
       }
     }
     node_def {
       name: "Reshape"
       op: "Reshape"
-      input: "ParseSingleExample/ParseExample/ParseExampleV2:dense_values:1"
-      input: "Reshape/shape_1:output:0"
+      input: "ParseSingleExample/ParseExample/ParseExampleV2:dense_values:0"
+      input: "Reshape/shape:output:0"
       attr {
         key: "T"
         value {
-          type: DT_INT64
+          type: DT_STRING
         }
       }
       attr {
@@ -50027,42 +48854,6 @@ library {
       attr {
         key: "dtype"
         value {
-          type: DT_FLOAT
-        }
-      }
-      attr {
-        key: "value"
-        value {
-          tensor {
-            dtype: DT_FLOAT
-            tensor_shape {
-              dim {
-              }
-            }
-          }
-        }
-      }
-      experimental_debug_info {
-        original_node_names: "Reshape_1/shape"
-      }
-    }
-    node_def {
-      name: "Reshape_1/shape_1"
-      op: "Const"
-      attr {
-        key: "_output_shapes"
-        value {
-          list {
-            shape {
-              dim {
-              }
-            }
-          }
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
           type: DT_INT32
         }
       }
@@ -50079,18 +48870,18 @@ library {
         }
       }
       experimental_debug_info {
-        original_node_names: "Reshape_1/shape_1"
+        original_node_names: "Reshape_1/shape"
       }
     }
     node_def {
       name: "Reshape_1"
       op: "Reshape"
-      input: "ParseSingleExample/ParseExample/ParseExampleV2:dense_values:0"
-      input: "Reshape_1/shape_1:output:0"
+      input: "ParseSingleExample/ParseExample/ParseExampleV2:dense_values:1"
+      input: "Reshape_1/shape:output:0"
       attr {
         key: "T"
         value {
-          type: DT_STRING
+          type: DT_INT64
         }
       }
       attr {
@@ -50113,9 +48904,354 @@ library {
       }
     }
     node_def {
-      name: "decode_image/DecodeImage"
-      op: "DecodeImage"
-      input: "Reshape_1:output:0"
+      name: "decode_image/Substr/pos"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 0
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/Substr/pos"
+      }
+    }
+    node_def {
+      name: "decode_image/Substr/len"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 3
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/Substr/len"
+      }
+    }
+    node_def {
+      name: "decode_image/Substr"
+      op: "Substr"
+      input: "Reshape:output:0"
+      input: "decode_image/Substr/pos:output:0"
+      input: "decode_image/Substr/len:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "unit"
+        value {
+          s: "BYTE"
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/Substr"
+      }
+    }
+    node_def {
+      name: "decode_image/is_jpeg/Substr/pos"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 0
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/is_jpeg/Substr/pos"
+      }
+    }
+    node_def {
+      name: "decode_image/is_jpeg/Substr/len"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 3
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/is_jpeg/Substr/len"
+      }
+    }
+    node_def {
+      name: "decode_image/is_jpeg/Substr"
+      op: "Substr"
+      input: "Reshape:output:0"
+      input: "decode_image/is_jpeg/Substr/pos:output:0"
+      input: "decode_image/is_jpeg/Substr/len:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "unit"
+        value {
+          s: "BYTE"
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/is_jpeg/Substr"
+      }
+    }
+    node_def {
+      name: "decode_image/is_jpeg/Equal/y"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+            }
+            string_val: "\377\330\377"
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/is_jpeg/Equal/y"
+      }
+    }
+    node_def {
+      name: "decode_image/is_jpeg/Equal"
+      op: "Equal"
+      input: "decode_image/is_jpeg/Substr:output:0"
+      input: "decode_image/is_jpeg/Equal/y:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "incompatible_shape_error"
+        value {
+          b: true
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/is_jpeg/Equal"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg"
+      op: "If"
+      input: "decode_image/is_jpeg/Equal:z:0"
+      input: "Reshape:output:0"
+      input: "decode_image/Substr:output:0"
+      attr {
+        key: "Tcond"
+        value {
+          type: DT_BOOL
+        }
+      }
+      attr {
+        key: "Tin"
+        value {
+          list {
+            type: DT_STRING
+            type: DT_STRING
+          }
+        }
+      }
+      attr {
+        key: "Tout"
+        value {
+          list {
+            type: DT_UINT8
+          }
+        }
+      }
+      attr {
+        key: "_lower_using_switch_merge"
+        value {
+          b: true
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              unknown_rank: true
+            }
+          }
+        }
+      }
+      attr {
+        key: "_read_only_resource_inputs"
+        value {
+          list {
+          }
+        }
+      }
+      attr {
+        key: "else_branch"
+        value {
+          func {
+            name: "decode_image_cond_jpeg_false_55"
+          }
+        }
+      }
+      attr {
+        key: "output_shapes"
+        value {
+          list {
+            shape {
+              unknown_rank: true
+            }
+          }
+        }
+      }
+      attr {
+        key: "then_branch"
+        value {
+          func {
+            name: "decode_image_cond_jpeg_true_54"
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/Identity"
+      op: "Identity"
+      input: "decode_image/cond_jpeg:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_UINT8
+        }
+      }
       attr {
         key: "_output_shapes"
         value {
@@ -50134,32 +49270,15 @@ library {
           }
         }
       }
-      attr {
-        key: "channels"
-        value {
-          i: 1
-        }
-      }
-      attr {
-        key: "dtype"
-        value {
-          type: DT_UINT8
-        }
-      }
-      attr {
-        key: "expand_animations"
-        value {
-          b: true
-        }
-      }
       experimental_debug_info {
-        original_node_names: "decode_image/DecodeImage"
+        original_node_names: "decode_image/cond_jpeg/Identity"
       }
     }
     node_def {
       name: "Identity"
       op: "Identity"
-      input: "decode_image/DecodeImage:image:0"
+      input: "decode_image/cond_jpeg/Identity:output:0"
+      input: "^decode_image/cond_jpeg"
       attr {
         key: "T"
         value {
@@ -50191,7 +49310,8 @@ library {
     node_def {
       name: "Identity_1"
       op: "Identity"
-      input: "Reshape:output:0"
+      input: "Reshape_1:output:0"
+      input: "^decode_image/cond_jpeg"
       attr {
         key: "T"
         value {
@@ -50234,6 +49354,10 @@ library {
         b: true
       }
     }
+    control_ret {
+      key: "decode_image/cond_jpeg"
+      value: "decode_image/cond_jpeg"
+    }
     arg_attr {
       value {
         attr {
@@ -50256,13 +49380,13 @@ library {
   }
   function {
     signature {
-      name: "while_cond_194"
+      name: "while_1_cond_691"
       input_arg {
-        name: "while_loop_counter"
+        name: "while_1_loop_counter"
         type: DT_INT32
       }
       input_arg {
-        name: "while_maximum_iterations"
+        name: "while_1_maximum_iterations"
         type: DT_INT32
       }
       input_arg {
@@ -50286,15 +49410,15 @@ library {
         type: DT_FLOAT
       }
       input_arg {
-        name: "while_cond_194___redundant_placeholder0"
+        name: "while_1_cond_691___redundant_placeholder0"
         type: DT_RESOURCE
       }
       input_arg {
-        name: "while_cond_194___redundant_placeholder1"
+        name: "while_1_cond_691___redundant_placeholder1"
         type: DT_RESOURCE
       }
       input_arg {
-        name: "while_cond_194___redundant_placeholder2"
+        name: "while_1_cond_691___redundant_placeholder2"
         type: DT_RESOURCE
       }
       output_arg {
@@ -50380,7 +49504,7 @@ library {
               size: -1
             }
             dim {
-              size: 28
+              size: 1000
             }
           }
           shape {
@@ -50388,7 +49512,7 @@ library {
               size: -1
             }
             dim {
-              size: 28
+              size: 1000
             }
           }
           shape {
@@ -50472,7 +49596,7 @@ library {
                   size: -1
                 }
                 dim {
-                  size: 28
+                  size: 1000
                 }
               }
             }
@@ -50492,7 +49616,7 @@ library {
                   size: -1
                 }
                 dim {
-                  size: 28
+                  size: 1000
                 }
               }
             }
@@ -50534,6 +49658,362 @@ library {
                 dim {
                   size: 1000
                 }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  function {
+    signature {
+      name: "decode_image_cond_jpeg_false_55"
+      input_arg {
+        name: "decode_image_cond_jpeg_is_png_substr_reshape"
+        type: DT_STRING
+      }
+      input_arg {
+        name: "decode_image_cond_jpeg_cond_png_decode_image_substr"
+        type: DT_STRING
+      }
+      output_arg {
+        name: "decode_image_cond_jpeg_identity"
+        type: DT_UINT8
+      }
+      is_stateful: true
+      control_output: "decode_image/cond_jpeg/cond_png"
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/is_png/Substr/pos"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 0
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/is_png/Substr/pos"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/is_png/Substr/len"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 3
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/is_png/Substr/len"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/is_png/Substr"
+      op: "Substr"
+      input: "decode_image_cond_jpeg_is_png_substr_reshape"
+      input: "decode_image/cond_jpeg/is_png/Substr/pos:output:0"
+      input: "decode_image/cond_jpeg/is_png/Substr/len:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "unit"
+        value {
+          s: "BYTE"
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/is_png/Substr"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/is_png/Equal/y"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+            }
+            string_val: "\211PN"
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/is_png/Equal/y"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/is_png/Equal"
+      op: "Equal"
+      input: "decode_image/cond_jpeg/is_png/Substr:output:0"
+      input: "decode_image/cond_jpeg/is_png/Equal/y:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "incompatible_shape_error"
+        value {
+          b: true
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/is_png/Equal"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png"
+      op: "If"
+      input: "decode_image/cond_jpeg/is_png/Equal:z:0"
+      input: "decode_image_cond_jpeg_is_png_substr_reshape"
+      input: "decode_image_cond_jpeg_cond_png_decode_image_substr"
+      attr {
+        key: "Tcond"
+        value {
+          type: DT_BOOL
+        }
+      }
+      attr {
+        key: "Tin"
+        value {
+          list {
+            type: DT_STRING
+            type: DT_STRING
+          }
+        }
+      }
+      attr {
+        key: "Tout"
+        value {
+          list {
+            type: DT_UINT8
+          }
+        }
+      }
+      attr {
+        key: "_lower_using_switch_merge"
+        value {
+          b: true
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              unknown_rank: true
+            }
+          }
+        }
+      }
+      attr {
+        key: "_read_only_resource_inputs"
+        value {
+          list {
+          }
+        }
+      }
+      attr {
+        key: "else_branch"
+        value {
+          func {
+            name: "decode_image_cond_jpeg_cond_png_false_74"
+          }
+        }
+      }
+      attr {
+        key: "output_shapes"
+        value {
+          list {
+            shape {
+              unknown_rank: true
+            }
+          }
+        }
+      }
+      attr {
+        key: "then_branch"
+        value {
+          func {
+            name: "decode_image_cond_jpeg_cond_png_true_73"
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/Identity"
+      op: "Identity"
+      input: "decode_image/cond_jpeg/cond_png:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_UINT8
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              unknown_rank: true
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/Identity"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/Identity"
+      op: "Identity"
+      input: "decode_image/cond_jpeg/cond_png/Identity:output:0"
+      input: "^decode_image/cond_jpeg/cond_png"
+      attr {
+        key: "T"
+        value {
+          type: DT_UINT8
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              unknown_rank: true
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/Identity"
+      }
+    }
+    ret {
+      key: "decode_image_cond_jpeg_identity"
+      value: "decode_image/cond_jpeg/Identity:output:0"
+    }
+    attr {
+      key: "_input_shapes"
+      value {
+        list {
+          shape {
+          }
+          shape {
+          }
+        }
+      }
+    }
+    control_ret {
+      key: "decode_image/cond_jpeg/cond_png"
+      value: "decode_image/cond_jpeg/cond_png"
+    }
+    arg_attr {
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+              }
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      key: 1
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
               }
             }
           }
@@ -50863,6 +50343,1146 @@ library {
   }
   function {
     signature {
+      name: "while_1_body_692"
+      input_arg {
+        name: "while_1_loop_counter"
+        type: DT_INT32
+      }
+      input_arg {
+        name: "while_1_maximum_iterations_0"
+        type: DT_INT32
+      }
+      input_arg {
+        name: "placeholder"
+        type: DT_INT32
+      }
+      input_arg {
+        name: "placeholder_1"
+        type: DT_FLOAT
+      }
+      input_arg {
+        name: "placeholder_2"
+        type: DT_FLOAT
+      }
+      input_arg {
+        name: "placeholder_3"
+        type: DT_FLOAT
+      }
+      input_arg {
+        name: "placeholder_4"
+        type: DT_FLOAT
+      }
+      input_arg {
+        name: "transpose_readvariableop_variable_2_0"
+        type: DT_RESOURCE
+      }
+      input_arg {
+        name: "add_1_readvariableop_variable_3_0"
+        type: DT_RESOURCE
+      }
+      input_arg {
+        name: "add_2_readvariableop_b_1_0"
+        type: DT_RESOURCE
+      }
+      output_arg {
+        name: "add_3"
+        type: DT_INT32
+      }
+      output_arg {
+        name: "while_1_maximum_iterations"
+        type: DT_INT32
+      }
+      output_arg {
+        name: "add"
+        type: DT_INT32
+      }
+      output_arg {
+        name: "sigmoid"
+        type: DT_FLOAT
+      }
+      output_arg {
+        name: "relu"
+        type: DT_FLOAT
+      }
+      output_arg {
+        name: "sigmoid_1"
+        type: DT_FLOAT
+      }
+      output_arg {
+        name: "relu_1"
+        type: DT_FLOAT
+      }
+      output_arg {
+        name: "transpose_readvariableop_variable_2"
+        type: DT_RESOURCE
+      }
+      output_arg {
+        name: "add_1_readvariableop_variable_3"
+        type: DT_RESOURCE
+      }
+      output_arg {
+        name: "add_2_readvariableop_b_1"
+        type: DT_RESOURCE
+      }
+      is_stateful: true
+    }
+    node_def {
+      name: "add/y"
+      op: "Const"
+      device: "/job:worker/task:0"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 1
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "add/y"
+      }
+    }
+    node_def {
+      name: "add_0"
+      op: "AddV2"
+      input: "placeholder"
+      input: "add/y:output:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT32
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "add"
+      }
+    }
+    node_def {
+      name: "transpose/ReadVariableOp"
+      op: "ReadVariableOp"
+      input: "transpose_readvariableop_variable_2_0"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1000
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "transpose/ReadVariableOp"
+      }
+    }
+    node_def {
+      name: "transpose/perm"
+      op: "Const"
+      device: "/job:worker/task:0"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 2
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+              dim {
+                size: 2
+              }
+            }
+            tensor_content: "\001\000\000\000\000\000\000\000"
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "transpose/perm"
+      }
+    }
+    node_def {
+      name: "transpose"
+      op: "Transpose"
+      input: "transpose/ReadVariableOp:value:0"
+      input: "transpose/perm:output:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "Tperm"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1000
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "transpose"
+      }
+    }
+    node_def {
+      name: "MatMul"
+      op: "MatMul"
+      input: "placeholder_4"
+      input: "transpose:y:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "transpose_a"
+        value {
+          b: false
+        }
+      }
+      attr {
+        key: "transpose_b"
+        value {
+          b: false
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "MatMul"
+      }
+    }
+    node_def {
+      name: "add_1/ReadVariableOp"
+      op: "ReadVariableOp"
+      input: "add_1_readvariableop_variable_3_0"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "add_1/ReadVariableOp"
+      }
+    }
+    node_def {
+      name: "add_1"
+      op: "AddV2"
+      input: "MatMul:product:0"
+      input: "add_1/ReadVariableOp:value:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "add_1"
+      }
+    }
+    node_def {
+      name: "Sigmoid"
+      op: "Sigmoid"
+      input: "add_1:z:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "Sigmoid"
+      }
+    }
+    node_def {
+      name: "Shape"
+      op: "Shape"
+      input: "Sigmoid:y:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 2
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "out_type"
+        value {
+          type: DT_INT32
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "Shape"
+      }
+    }
+    node_def {
+      name: "random_uniform/RandomUniform"
+      op: "RandomUniform"
+      input: "Shape:output:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "seed"
+        value {
+          i: 0
+        }
+      }
+      attr {
+        key: "seed2"
+        value {
+          i: 0
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "random_uniform/RandomUniform"
+      }
+    }
+    node_def {
+      name: "sub"
+      op: "Sub"
+      input: "Sigmoid:y:0"
+      input: "random_uniform/RandomUniform:output:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "sub"
+      }
+    }
+    node_def {
+      name: "Sign"
+      op: "Sign"
+      input: "sub:z:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "Sign"
+      }
+    }
+    node_def {
+      name: "Relu"
+      op: "Relu"
+      input: "Sign:y:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "Relu"
+      }
+    }
+    node_def {
+      name: "MatMul_1/ReadVariableOp"
+      op: "ReadVariableOp"
+      input: "transpose_readvariableop_variable_2_0"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1000
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "MatMul_1/ReadVariableOp"
+      }
+    }
+    node_def {
+      name: "MatMul_1"
+      op: "MatMul"
+      input: "Relu:activations:0"
+      input: "MatMul_1/ReadVariableOp:value:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "transpose_a"
+        value {
+          b: false
+        }
+      }
+      attr {
+        key: "transpose_b"
+        value {
+          b: false
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "MatMul_1"
+      }
+    }
+    node_def {
+      name: "add_2/ReadVariableOp"
+      op: "ReadVariableOp"
+      input: "add_2_readvariableop_b_1_0"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "add_2/ReadVariableOp"
+      }
+    }
+    node_def {
+      name: "add_2"
+      op: "AddV2"
+      input: "MatMul_1:product:0"
+      input: "add_2/ReadVariableOp:value:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "add_2"
+      }
+    }
+    node_def {
+      name: "Sigmoid_1"
+      op: "Sigmoid"
+      input: "add_2:z:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "Sigmoid_1"
+      }
+    }
+    node_def {
+      name: "Shape_1"
+      op: "Shape"
+      input: "Sigmoid_1:y:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: 2
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "out_type"
+        value {
+          type: DT_INT32
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "Shape_1"
+      }
+    }
+    node_def {
+      name: "random_uniform_1/RandomUniform"
+      op: "RandomUniform"
+      input: "Shape_1:output:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "seed"
+        value {
+          i: 0
+        }
+      }
+      attr {
+        key: "seed2"
+        value {
+          i: 0
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "random_uniform_1/RandomUniform"
+      }
+    }
+    node_def {
+      name: "sub_1"
+      op: "Sub"
+      input: "Sigmoid_1:y:0"
+      input: "random_uniform_1/RandomUniform:output:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "sub_1"
+      }
+    }
+    node_def {
+      name: "Sign_1"
+      op: "Sign"
+      input: "sub_1:z:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "Sign_1"
+      }
+    }
+    node_def {
+      name: "Relu_1"
+      op: "Relu"
+      input: "Sign_1:y:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_FLOAT
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1000
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "Relu_1"
+      }
+    }
+    node_def {
+      name: "add_3/y"
+      op: "Const"
+      device: "/job:worker/task:0"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 1
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "add_3/y"
+      }
+    }
+    node_def {
+      name: "add_3_0"
+      op: "AddV2"
+      input: "while_1_loop_counter"
+      input: "add_3/y:output:0"
+      device: "/job:worker/task:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT32
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "add_3"
+      }
+    }
+    ret {
+      key: "add"
+      value: "add_0:z:0"
+    }
+    ret {
+      key: "add_1_readvariableop_variable_3"
+      value: "add_1_readvariableop_variable_3_0"
+    }
+    ret {
+      key: "add_2_readvariableop_b_1"
+      value: "add_2_readvariableop_b_1_0"
+    }
+    ret {
+      key: "add_3"
+      value: "add_3_0:z:0"
+    }
+    ret {
+      key: "relu"
+      value: "Relu:activations:0"
+    }
+    ret {
+      key: "relu_1"
+      value: "Relu_1:activations:0"
+    }
+    ret {
+      key: "sigmoid"
+      value: "Sigmoid:y:0"
+    }
+    ret {
+      key: "sigmoid_1"
+      value: "Sigmoid_1:y:0"
+    }
+    ret {
+      key: "transpose_readvariableop_variable_2"
+      value: "transpose_readvariableop_variable_2_0"
+    }
+    ret {
+      key: "while_1_maximum_iterations"
+      value: "while_1_maximum_iterations_0"
+    }
+    attr {
+      key: "_input_shapes"
+      value {
+        list {
+          shape {
+          }
+          shape {
+          }
+          shape {
+          }
+          shape {
+            dim {
+              size: -1
+            }
+            dim {
+              size: 1000
+            }
+          }
+          shape {
+            dim {
+              size: -1
+            }
+            dim {
+              size: 1000
+            }
+          }
+          shape {
+            dim {
+              size: -1
+            }
+            dim {
+              size: 1000
+            }
+          }
+          shape {
+            dim {
+              size: -1
+            }
+            dim {
+              size: 1000
+            }
+          }
+          shape {
+            unknown_rank: true
+          }
+          shape {
+            unknown_rank: true
+          }
+          shape {
+            unknown_rank: true
+          }
+        }
+      }
+    }
+    arg_attr {
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+              }
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      key: 1
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+              }
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      key: 2
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+              }
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      key: 3
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+                dim {
+                  size: -1
+                }
+                dim {
+                  size: 1000
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      key: 4
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+                dim {
+                  size: -1
+                }
+                dim {
+                  size: 1000
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      key: 5
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+                dim {
+                  size: -1
+                }
+                dim {
+                  size: 1000
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      key: 6
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+                dim {
+                  size: -1
+                }
+                dim {
+                  size: 1000
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  function {
+    signature {
       name: "__inference_Dataset_flat_map_read_one_file_20"
       input_arg {
         name: "args_0"
@@ -51029,25 +51649,22 @@ library {
   }
   function {
     signature {
-      name: "global_step_cond_true_1412"
+      name: "decode_image_cond_jpeg_cond_png_cond_gif_false_85"
       input_arg {
-        name: "read_readvariableop_global_step"
-        type: DT_RESOURCE
-      }
-      input_arg {
-        name: "placeholder"
-        type: DT_INT64
+        name: "decode_image_cond_jpeg_cond_png_cond_gif_substr_reshape"
+        type: DT_STRING
       }
       output_arg {
-        name: "identity"
-        type: DT_INT64
+        name: "decode_image_cond_jpeg_cond_png_cond_gif_identity_1"
+        type: DT_UINT8
       }
       is_stateful: true
+      control_output: "decode_image/cond_jpeg/cond_png/cond_gif/Assert/Assert"
+      control_output: "decode_image/cond_jpeg/cond_png/cond_gif/Assert_1/Assert"
     }
     node_def {
-      name: "Read/ReadVariableOp"
-      op: "ReadVariableOp"
-      input: "read_readvariableop_global_step"
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/Substr/pos"
+      op: "Const"
       attr {
         key: "_output_shapes"
         value {
@@ -51060,21 +51677,67 @@ library {
       attr {
         key: "dtype"
         value {
-          type: DT_INT64
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 0
+          }
         }
       }
       experimental_debug_info {
-        original_node_names: "Read/ReadVariableOp"
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/Substr/pos"
       }
     }
     node_def {
-      name: "Identity"
-      op: "Identity"
-      input: "Read/ReadVariableOp:value:0"
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/Substr/len"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 2
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/Substr/len"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/Substr"
+      op: "Substr"
+      input: "decode_image_cond_jpeg_cond_png_cond_gif_substr_reshape"
+      input: "decode_image/cond_jpeg/cond_png/cond_gif/Substr/pos:output:0"
+      input: "decode_image/cond_jpeg/cond_png/cond_gif/Substr/len:output:0"
       attr {
         key: "T"
         value {
-          type: DT_INT64
+          type: DT_INT32
         }
       }
       attr {
@@ -51086,13 +51749,522 @@ library {
           }
         }
       }
+      attr {
+        key: "unit"
+        value {
+          s: "BYTE"
+        }
+      }
       experimental_debug_info {
-        original_node_names: "Identity"
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/Substr"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/is_bmp/y"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+            }
+            string_val: "BM"
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/is_bmp/y"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/is_bmp"
+      op: "Equal"
+      input: "decode_image/cond_jpeg/cond_png/cond_gif/Substr:output:0"
+      input: "decode_image/cond_jpeg/cond_png/cond_gif/is_bmp/y:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "incompatible_shape_error"
+        value {
+          b: true
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/is_bmp"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/Assert/Const"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+            }
+            string_val: "Unable to decode bytes as JPEG, PNG, GIF, or BMP"
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/Assert/Const"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/Assert/Assert/data_0"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+            }
+            string_val: "Unable to decode bytes as JPEG, PNG, GIF, or BMP"
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/Assert/Assert/data_0"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/Assert/Assert"
+      op: "Assert"
+      input: "decode_image/cond_jpeg/cond_png/cond_gif/is_bmp:z:0"
+      input: "decode_image/cond_jpeg/cond_png/cond_gif/Assert/Assert/data_0:output:0"
+      attr {
+        key: "T"
+        value {
+          list {
+            type: DT_STRING
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+          }
+        }
+      }
+      attr {
+        key: "summarize"
+        value {
+          i: 3
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/Assert/Assert"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/check_channels/x"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 1
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/check_channels/x"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/check_channels/y"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 1
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/check_channels/y"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/check_channels"
+      op: "NotEqual"
+      input: "decode_image/cond_jpeg/cond_png/cond_gif/check_channels/x:output:0"
+      input: "decode_image/cond_jpeg/cond_png/cond_gif/check_channels/y:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "incompatible_shape_error"
+        value {
+          b: true
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/check_channels"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/Assert_1/Const"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+            }
+            string_val: "Channels must be in (None, 0, 3) when decoding BMP images"
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/Assert_1/Const"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/Assert_1/Assert/data_0"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+            }
+            string_val: "Channels must be in (None, 0, 3) when decoding BMP images"
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/Assert_1/Assert/data_0"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/Assert_1/Assert"
+      op: "Assert"
+      input: "decode_image/cond_jpeg/cond_png/cond_gif/check_channels:z:0"
+      input: "decode_image/cond_jpeg/cond_png/cond_gif/Assert_1/Assert/data_0:output:0"
+      input: "^decode_image/cond_jpeg/cond_png/cond_gif/Assert/Assert"
+      attr {
+        key: "T"
+        value {
+          list {
+            type: DT_STRING
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+          }
+        }
+      }
+      attr {
+        key: "summarize"
+        value {
+          i: 3
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/Assert_1/Assert"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/DecodeBmp"
+      op: "DecodeBmp"
+      input: "decode_image_cond_jpeg_cond_png_cond_gif_substr_reshape"
+      input: "^decode_image/cond_jpeg/cond_png/cond_gif/Assert/Assert"
+      input: "^decode_image/cond_jpeg/cond_png/cond_gif/Assert_1/Assert"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: -1
+              }
+              dim {
+                size: -1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "channels"
+        value {
+          i: 0
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/DecodeBmp"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/Identity"
+      op: "Identity"
+      input: "decode_image/cond_jpeg/cond_png/cond_gif/DecodeBmp:image:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_UINT8
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: -1
+              }
+              dim {
+                size: -1
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/Identity"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/Identity_1"
+      op: "Identity"
+      input: "decode_image/cond_jpeg/cond_png/cond_gif/Identity:output:0"
+      input: "^decode_image/cond_jpeg/cond_png/cond_gif/Assert/Assert"
+      input: "^decode_image/cond_jpeg/cond_png/cond_gif/Assert_1/Assert"
+      attr {
+        key: "T"
+        value {
+          type: DT_UINT8
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: -1
+              }
+              dim {
+                size: -1
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/Identity_1"
       }
     }
     ret {
-      key: "identity"
-      value: "Identity:output:0"
+      key: "decode_image_cond_jpeg_cond_png_cond_gif_identity_1"
+      value: "decode_image/cond_jpeg/cond_png/cond_gif/Identity_1:output:0"
+    }
+    attr {
+      key: "_input_shapes"
+      value {
+        list {
+          shape {
+          }
+        }
+      }
+    }
+    control_ret {
+      key: "decode_image/cond_jpeg/cond_png/cond_gif/Assert/Assert"
+      value: "decode_image/cond_jpeg/cond_png/cond_gif/Assert/Assert"
+    }
+    control_ret {
+      key: "decode_image/cond_jpeg/cond_png/cond_gif/Assert_1/Assert"
+      value: "decode_image/cond_jpeg/cond_png/cond_gif/Assert_1/Assert"
+    }
+    arg_attr {
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  function {
+    signature {
+      name: "global_step_cond_false_1493"
+      input_arg {
+        name: "placeholder"
+        type: DT_RESOURCE
+      }
+      input_arg {
+        name: "global_step_initializer_zeros_0"
+        type: DT_INT64
+      }
+      output_arg {
+        name: "global_step_initializer_zeros"
+        type: DT_INT64
+      }
+    }
+    ret {
+      key: "global_step_initializer_zeros"
+      value: "global_step_initializer_zeros_0"
     }
     attr {
       key: "_input_shapes"
@@ -51123,7 +52295,7 @@ library {
   }
   function {
     signature {
-      name: "while_2_cond_898"
+      name: "while_2_cond_978"
       input_arg {
         name: "while_2_loop_counter"
         type: DT_INT32
@@ -51153,15 +52325,15 @@ library {
         type: DT_FLOAT
       }
       input_arg {
-        name: "while_2_cond_898___redundant_placeholder0"
+        name: "while_2_cond_978___redundant_placeholder0"
         type: DT_RESOURCE
       }
       input_arg {
-        name: "while_2_cond_898___redundant_placeholder1"
+        name: "while_2_cond_978___redundant_placeholder1"
         type: DT_RESOURCE
       }
       input_arg {
-        name: "while_2_cond_898___redundant_placeholder2"
+        name: "while_2_cond_978___redundant_placeholder2"
         type: DT_RESOURCE
       }
       output_arg {
@@ -51408,8 +52580,1263 @@ library {
       }
     }
   }
+  function {
+    signature {
+      name: "decode_image_cond_jpeg_cond_png_cond_gif_true_84"
+      input_arg {
+        name: "decode_image_cond_jpeg_cond_png_cond_gif_decodegif_reshape"
+        type: DT_STRING
+      }
+      output_arg {
+        name: "decode_image_cond_jpeg_cond_png_cond_gif_identity_1"
+        type: DT_UINT8
+      }
+      is_stateful: true
+      control_output: "decode_image/cond_jpeg/cond_png/cond_gif/Assert/Assert"
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/check_gif_channels/x"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 1
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/check_gif_channels/x"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/check_gif_channels/y"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 1
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/check_gif_channels/y"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/check_gif_channels"
+      op: "NotEqual"
+      input: "decode_image/cond_jpeg/cond_png/cond_gif/check_gif_channels/x:output:0"
+      input: "decode_image/cond_jpeg/cond_png/cond_gif/check_gif_channels/y:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "incompatible_shape_error"
+        value {
+          b: true
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/check_gif_channels"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/check_gif_channels_1/x"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 1
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/check_gif_channels_1/x"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/check_gif_channels_1/y"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 4
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/check_gif_channels_1/y"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/check_gif_channels_1"
+      op: "NotEqual"
+      input: "decode_image/cond_jpeg/cond_png/cond_gif/check_gif_channels_1/x:output:0"
+      input: "decode_image/cond_jpeg/cond_png/cond_gif/check_gif_channels_1/y:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "incompatible_shape_error"
+        value {
+          b: true
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/check_gif_channels_1"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/LogicalAnd"
+      op: "LogicalAnd"
+      input: "decode_image/cond_jpeg/cond_png/cond_gif/check_gif_channels:z:0"
+      input: "decode_image/cond_jpeg/cond_png/cond_gif/check_gif_channels_1:z:0"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/LogicalAnd"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/Assert/Const"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+            }
+            string_val: "Channels must be in (None, 0, 3) when decoding GIF images"
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/Assert/Const"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/Assert/Assert/data_0"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+            }
+            string_val: "Channels must be in (None, 0, 3) when decoding GIF images"
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/Assert/Assert/data_0"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/Assert/Assert"
+      op: "Assert"
+      input: "decode_image/cond_jpeg/cond_png/cond_gif/LogicalAnd:z:0"
+      input: "decode_image/cond_jpeg/cond_png/cond_gif/Assert/Assert/data_0:output:0"
+      attr {
+        key: "T"
+        value {
+          list {
+            type: DT_STRING
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+          }
+        }
+      }
+      attr {
+        key: "summarize"
+        value {
+          i: 3
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/Assert/Assert"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/DecodeGif"
+      op: "DecodeGif"
+      input: "decode_image_cond_jpeg_cond_png_cond_gif_decodegif_reshape"
+      input: "^decode_image/cond_jpeg/cond_png/cond_gif/Assert/Assert"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: -1
+              }
+              dim {
+                size: -1
+              }
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/DecodeGif"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/Identity"
+      op: "Identity"
+      input: "decode_image/cond_jpeg/cond_png/cond_gif/DecodeGif:image:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_UINT8
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: -1
+              }
+              dim {
+                size: -1
+              }
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/Identity"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/Identity_1"
+      op: "Identity"
+      input: "decode_image/cond_jpeg/cond_png/cond_gif/Identity:output:0"
+      input: "^decode_image/cond_jpeg/cond_png/cond_gif/Assert/Assert"
+      attr {
+        key: "T"
+        value {
+          type: DT_UINT8
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: -1
+              }
+              dim {
+                size: -1
+              }
+              dim {
+                size: 3
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/Identity_1"
+      }
+    }
+    ret {
+      key: "decode_image_cond_jpeg_cond_png_cond_gif_identity_1"
+      value: "decode_image/cond_jpeg/cond_png/cond_gif/Identity_1:output:0"
+    }
+    attr {
+      key: "_input_shapes"
+      value {
+        list {
+          shape {
+          }
+        }
+      }
+    }
+    control_ret {
+      key: "decode_image/cond_jpeg/cond_png/cond_gif/Assert/Assert"
+      value: "decode_image/cond_jpeg/cond_png/cond_gif/Assert/Assert"
+    }
+    arg_attr {
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  function {
+    signature {
+      name: "decode_image_cond_jpeg_true_54"
+      input_arg {
+        name: "decode_image_cond_jpeg_decodejpeg_reshape"
+        type: DT_STRING
+      }
+      input_arg {
+        name: "decode_image_cond_jpeg_placeholder"
+        type: DT_STRING
+      }
+      output_arg {
+        name: "decode_image_cond_jpeg_identity_1"
+        type: DT_UINT8
+      }
+      is_stateful: true
+      control_output: "decode_image/cond_jpeg/Assert/Assert"
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/check_jpeg_channels/x"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 1
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/check_jpeg_channels/x"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/check_jpeg_channels/y"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_INT32
+            tensor_shape {
+            }
+            int_val: 4
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/check_jpeg_channels/y"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/check_jpeg_channels"
+      op: "NotEqual"
+      input: "decode_image/cond_jpeg/check_jpeg_channels/x:output:0"
+      input: "decode_image/cond_jpeg/check_jpeg_channels/y:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_INT32
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "incompatible_shape_error"
+        value {
+          b: true
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/check_jpeg_channels"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/Assert/Const"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+            }
+            string_val: "Channels must be in (None, 0, 1, 3) when decoding JPEG images"
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/Assert/Const"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/Assert/Assert/data_0"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+            }
+            string_val: "Channels must be in (None, 0, 1, 3) when decoding JPEG images"
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/Assert/Assert/data_0"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/Assert/Assert"
+      op: "Assert"
+      input: "decode_image/cond_jpeg/check_jpeg_channels:z:0"
+      input: "decode_image/cond_jpeg/Assert/Assert/data_0:output:0"
+      attr {
+        key: "T"
+        value {
+          list {
+            type: DT_STRING
+          }
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+          }
+        }
+      }
+      attr {
+        key: "summarize"
+        value {
+          i: 3
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/Assert/Assert"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/DecodeJpeg"
+      op: "DecodeJpeg"
+      input: "decode_image_cond_jpeg_decodejpeg_reshape"
+      input: "^decode_image/cond_jpeg/Assert/Assert"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "acceptable_fraction"
+        value {
+          f: 1.0
+        }
+      }
+      attr {
+        key: "channels"
+        value {
+          i: 1
+        }
+      }
+      attr {
+        key: "dct_method"
+        value {
+          s: ""
+        }
+      }
+      attr {
+        key: "fancy_upscaling"
+        value {
+          b: true
+        }
+      }
+      attr {
+        key: "ratio"
+        value {
+          i: 1
+        }
+      }
+      attr {
+        key: "try_recover_truncated"
+        value {
+          b: false
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/DecodeJpeg"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/Identity"
+      op: "Identity"
+      input: "decode_image/cond_jpeg/DecodeJpeg:image:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_UINT8
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/Identity"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/Identity_1"
+      op: "Identity"
+      input: "decode_image/cond_jpeg/Identity:output:0"
+      input: "^decode_image/cond_jpeg/Assert/Assert"
+      attr {
+        key: "T"
+        value {
+          type: DT_UINT8
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/Identity_1"
+      }
+    }
+    ret {
+      key: "decode_image_cond_jpeg_identity_1"
+      value: "decode_image/cond_jpeg/Identity_1:output:0"
+    }
+    attr {
+      key: "_input_shapes"
+      value {
+        list {
+          shape {
+          }
+          shape {
+          }
+        }
+      }
+    }
+    control_ret {
+      key: "decode_image/cond_jpeg/Assert/Assert"
+      value: "decode_image/cond_jpeg/Assert/Assert"
+    }
+    arg_attr {
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+              }
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      key: 1
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  function {
+    signature {
+      name: "decode_image_cond_jpeg_cond_png_false_74"
+      input_arg {
+        name: "decode_image_cond_jpeg_cond_png_cond_gif_reshape"
+        type: DT_STRING
+      }
+      input_arg {
+        name: "decode_image_cond_jpeg_cond_png_is_gif_decode_image_substr"
+        type: DT_STRING
+      }
+      output_arg {
+        name: "decode_image_cond_jpeg_cond_png_identity"
+        type: DT_UINT8
+      }
+      is_stateful: true
+      control_output: "decode_image/cond_jpeg/cond_png/cond_gif"
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/is_gif/y"
+      op: "Const"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "value"
+        value {
+          tensor {
+            dtype: DT_STRING
+            tensor_shape {
+            }
+            string_val: "GIF"
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/is_gif/y"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/is_gif"
+      op: "Equal"
+      input: "decode_image_cond_jpeg_cond_png_is_gif_decode_image_substr"
+      input: "decode_image/cond_jpeg/cond_png/is_gif/y:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_STRING
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+            }
+          }
+        }
+      }
+      attr {
+        key: "incompatible_shape_error"
+        value {
+          b: true
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/is_gif"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif"
+      op: "If"
+      input: "decode_image/cond_jpeg/cond_png/is_gif:z:0"
+      input: "decode_image_cond_jpeg_cond_png_cond_gif_reshape"
+      attr {
+        key: "Tcond"
+        value {
+          type: DT_BOOL
+        }
+      }
+      attr {
+        key: "Tin"
+        value {
+          list {
+            type: DT_STRING
+          }
+        }
+      }
+      attr {
+        key: "Tout"
+        value {
+          list {
+            type: DT_UINT8
+          }
+        }
+      }
+      attr {
+        key: "_lower_using_switch_merge"
+        value {
+          b: true
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              unknown_rank: true
+            }
+          }
+        }
+      }
+      attr {
+        key: "_read_only_resource_inputs"
+        value {
+          list {
+          }
+        }
+      }
+      attr {
+        key: "else_branch"
+        value {
+          func {
+            name: "decode_image_cond_jpeg_cond_png_cond_gif_false_85"
+          }
+        }
+      }
+      attr {
+        key: "output_shapes"
+        value {
+          list {
+            shape {
+              unknown_rank: true
+            }
+          }
+        }
+      }
+      attr {
+        key: "then_branch"
+        value {
+          func {
+            name: "decode_image_cond_jpeg_cond_png_cond_gif_true_84"
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/cond_gif/Identity"
+      op: "Identity"
+      input: "decode_image/cond_jpeg/cond_png/cond_gif:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_UINT8
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              unknown_rank: true
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/cond_gif/Identity"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/Identity"
+      op: "Identity"
+      input: "decode_image/cond_jpeg/cond_png/cond_gif/Identity:output:0"
+      input: "^decode_image/cond_jpeg/cond_png/cond_gif"
+      attr {
+        key: "T"
+        value {
+          type: DT_UINT8
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              unknown_rank: true
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/Identity"
+      }
+    }
+    ret {
+      key: "decode_image_cond_jpeg_cond_png_identity"
+      value: "decode_image/cond_jpeg/cond_png/Identity:output:0"
+    }
+    attr {
+      key: "_input_shapes"
+      value {
+        list {
+          shape {
+          }
+          shape {
+          }
+        }
+      }
+    }
+    control_ret {
+      key: "decode_image/cond_jpeg/cond_png/cond_gif"
+      value: "decode_image/cond_jpeg/cond_png/cond_gif"
+    }
+    arg_attr {
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+              }
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      key: 1
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  function {
+    signature {
+      name: "decode_image_cond_jpeg_cond_png_true_73"
+      input_arg {
+        name: "decode_image_cond_jpeg_cond_png_decodepng_reshape"
+        type: DT_STRING
+      }
+      input_arg {
+        name: "decode_image_cond_jpeg_cond_png_placeholder"
+        type: DT_STRING
+      }
+      output_arg {
+        name: "decode_image_cond_jpeg_cond_png_identity_1"
+        type: DT_UINT8
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/DecodePng"
+      op: "DecodePng"
+      input: "decode_image_cond_jpeg_cond_png_decodepng_reshape"
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      attr {
+        key: "channels"
+        value {
+          i: 1
+        }
+      }
+      attr {
+        key: "dtype"
+        value {
+          type: DT_UINT8
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/DecodePng"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/Identity"
+      op: "Identity"
+      input: "decode_image/cond_jpeg/cond_png/DecodePng:image:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_UINT8
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/Identity"
+      }
+    }
+    node_def {
+      name: "decode_image/cond_jpeg/cond_png/Identity_1"
+      op: "Identity"
+      input: "decode_image/cond_jpeg/cond_png/Identity:output:0"
+      attr {
+        key: "T"
+        value {
+          type: DT_UINT8
+        }
+      }
+      attr {
+        key: "_output_shapes"
+        value {
+          list {
+            shape {
+              dim {
+                size: -1
+              }
+              dim {
+                size: -1
+              }
+              dim {
+                size: 1
+              }
+            }
+          }
+        }
+      }
+      experimental_debug_info {
+        original_node_names: "decode_image/cond_jpeg/cond_png/Identity_1"
+      }
+    }
+    ret {
+      key: "decode_image_cond_jpeg_cond_png_identity_1"
+      value: "decode_image/cond_jpeg/cond_png/Identity_1:output:0"
+    }
+    attr {
+      key: "_input_shapes"
+      value {
+        list {
+          shape {
+          }
+          shape {
+          }
+        }
+      }
+    }
+    arg_attr {
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+              }
+            }
+          }
+        }
+      }
+    }
+    arg_attr {
+      key: 1
+      value {
+        attr {
+          key: "_output_shapes"
+          value {
+            list {
+              shape {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 versions {
-  producer: 561
+  producer: 440
   min_consumer: 12
 }

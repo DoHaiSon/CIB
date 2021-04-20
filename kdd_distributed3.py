@@ -197,7 +197,7 @@ if __name__ == "__main__":
     labels_test[labels_test == '1'] = 1
     labels_test[labels_test == '2'] = 2
     labels_test[labels_test == '3'] = 3
-
+    labels_test[labels_test == '4'] = 4
     test_dataset['label'] = labels_test
     test_dataset = read_data_set_test(test_dataset)
 
@@ -211,7 +211,7 @@ if __name__ == "__main__":
         
         n_inp = [1, 1, 28]
         hidden_layer_sizes = [1000, 1000, 1000]
-        n_out = 4
+        n_out = 5
         sigmoid_layers = []
         layers = []
         params = []
