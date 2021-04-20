@@ -315,7 +315,7 @@ if __name__ == "__main__":
                         TP = np.diag(a)
                         TN = a.sum() - (FP + FN + TP)
                         ac = (TP + TN) / (TP + FP + FN + TN)
-                        ACC = ac.sum() / 4
+                        ACC = ac.sum() / n_out
                         precision = precision_score(d, b, average='weighted')
                         recall = recall_score(d, b, average='weighted')
                         if ACC > ACC_max:
@@ -325,7 +325,7 @@ if __name__ == "__main__":
                         if recall > rec_max:
                             rec_max = recall
 
-                        logging.info(ac.sum() / 4)
+                        logging.info(ac.sum() / n_out)
                         logging.info(a)
                         logging.info("Epoch: {0}, cost: {1}".format(int(epoch + 1), float(avg_cost)))
                         logging.info("WORKER: {0}, ACCURACY: {1}, PRECISION: {2}, RECALL: {3}:".format(int(FLAGS.task_index) + 1, ACC_max, pre_max, rec_max))
