@@ -36,7 +36,7 @@ Datasets = collections.namedtuple('Datasets', ['train', 'validation', 'test'])
 
 def read_dataset(filename):
     dataset_raw = read_data(filename)
-    dataset1, dataset2 = train_test_split(dataset_raw, train_size=0.8, random_state=2)
+    dataset1, dataset2 = train_test_split(dataset_raw, train_size=0.7, random_state=2)
 
     num_features = ["duration", "protocol_type", "service", "flag", "src_bytes", "dst_bytes",
                 "land", "wrong_fragment", "urgent", "count", "srv_count", "serror_rate",
@@ -64,7 +64,7 @@ def read_dataset(filename):
     labels1[labels1 == '1'] = 1
     labels1[labels1 == '2'] = 2
     labels1[labels1 == '3'] = 3
-    # labels1[labels1 == 'probe'] = 4
+    labels1[labels1 == '4'] = 4
     dataset1['label'] = labels1
         
     labels2 = dataset2['label'].copy()
@@ -74,7 +74,7 @@ def read_dataset(filename):
     labels2[labels2 == '1'] = 1
     labels2[labels2 == '2'] = 2
     labels2[labels2 == '3'] = 3
-    # labels2[labels2 == 'probe'] = 4
+    labels2[labels2 == '4'] = 4
     dataset2['label'] = labels2
         
     train_set = read_data_set(dataset1, dataset2)

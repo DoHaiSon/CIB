@@ -112,7 +112,7 @@ if __name__ == "__main__":
             
             n_inp = [1, 1, 28]
             hidden_layer_sizes = [1000, 1000, 1000]
-            n_out = 4
+            n_out = 5
 
             sigmoid_layers = []
             layers = []
