@@ -60,7 +60,7 @@ def publish(client, data):
     
 if __name__ == "__main__":
     client = connect_mqtt()
-    attack_type = ['normal', 'ddos', 'scan_port', 'burst_password']
+    attack_type = ['normal', 'ddos', 'scan_port', 'burst_password', 'MITM']
     #DBN structure
 
     with tf.device('cpu:0'):
@@ -71,7 +71,7 @@ if __name__ == "__main__":
         
         n_inp = [1, 1, 28]
         hidden_layer_sizes = [1000, 1000, 1000]
-        n_out = 4
+        n_out = 5
         sigmoid_layers = []
         layers = []
         params = []
@@ -154,7 +154,7 @@ if __name__ == "__main__":
                             if (log[0] == '1\n'):
                                 break
                     except:
-                        print("Lost permission.")
+                        pass
                     time.sleep(0.1)
                 test_dataset = collect_dataset()
                 pr = sess.run(pred, feed_dict ={x: globals()['test_dataset'].test.segments})
@@ -169,5 +169,6 @@ if __name__ == "__main__":
                 try:
                     with open ("/home/iot-nexcom/CIB/datasets/our_kdd_99/flag.txt", "w") as logs_flag:
                         logs_flag.write("0")
+                        print("Done")
                 except:
-                    print("Lost permission.")
+                    pass

@@ -9,12 +9,10 @@ def collect_dataset():
     while(True):
         try:
             raw_file = pd.read_csv("/home/iot-nexcom/CIB/datasets/our_kdd_99/data_raw.csv", header=None)
+            if (len(raw_file) > 0):
+                break
         except:
-            print("Not found datasets file.")
-        if (len(raw_file) == 0):
-            print("Empty file.")
-            continue
-        break
+            pass
     # # Remove 5 last columns in raw dataset
     # raw_file.drop(raw_file.columns[[-1, -2, -3, -4, -5]], axis=1, inplace=True)
     # raw_file.to_csv("/home/iot-nexcom/CIB/datasets/our_kdd_99/data_raw.csv", index = False, header=None)
