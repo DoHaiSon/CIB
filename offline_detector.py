@@ -169,7 +169,7 @@ def nomial_test(dataset1):
 if __name__ == "__main__":
     dir_path = os.path.dirname(os.path.realpath(__file__))
 
-    file_test_dataset = dir_path + "/datasets/our_kdd_99/test_shuffled.csv"
+    file_test_dataset = dir_path +  "/datasets/our_kdd_99/data_raw.csv"
 
     test_dataset = read_data(file_test_dataset)
 
@@ -210,7 +210,7 @@ if __name__ == "__main__":
         #--------------------DBN-----------------------------------
         
         n_inp = [1, 1, 28]
-        hidden_layer_sizes = [1000, 1000, 1000]
+        hidden_layer_sizes = [500, 500, 500]
         n_out = 5
         sigmoid_layers = []
         layers = []
@@ -278,21 +278,16 @@ if __name__ == "__main__":
         
         saver = tf.train.Saver()
         print("Loaded model")
-        n_test = 0
         start_time = timeit.default_timer()
         with tf.Session() as sess:
             global_step = tf.train.get_or_create_global_step()
             saver.restore(sess, ckpt.model_checkpoint_path)
             graph = tf.get_default_graph()
-            while(True):
-                pr = sess.run(pred, feed_dict ={x: globals()['test_dataset'].test.segments})
-                prediction=tf.argmax(pr,1)
-                labels_pred = prediction.eval(feed_dict={x: globals()['test_dataset'].test.segments}, session=sess)
-                acc = accuracy_score(labels_test, labels_pred)
-                print(labels_pred)
-                logging.info("Test: {0}".format(int(n_test +1)))
-                logging.info("ACCURACY: {0}.".format(float(acc)))
-                end_time = timeit.default_timer()
-                logging.info("Time {0} minutes".format((end_time- start_time)/ 60.))
-                n_test = n_test + 1
-                time.sleep(1)
+            pr = sess.run(pred, feed_dict ={x: globals()['test_dataset'].test.segments})
+            prediction=tf.argmax(pr,1)
+            labels_pred = prediction.eval(feed_dict={x: globals()['test_dataset'].test.segments}, session=sess)
+            acc = accuracy_score(labels_test, labels_pred)
+            print(labels_pred)
+            logging.info("ACCURACY: {0}.".format(float(acc)))
+            end_time = timeit.default_timer()
+            logging.info("Time {0} seconds".format((end_time- start_time)))
