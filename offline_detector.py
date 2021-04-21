@@ -169,7 +169,7 @@ def nomial_test(dataset1):
 if __name__ == "__main__":
     dir_path = os.path.dirname(os.path.realpath(__file__))
 
-    file_test_dataset = dir_path + "/datasets/our_kdd_99/data_raw.csv"
+    file_test_dataset = dir_path + "/datasets/our_kdd_99/test_shuffled.csv"
 
     test_dataset = read_data(file_test_dataset)
 
