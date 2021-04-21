@@ -169,7 +169,7 @@ def nomial_test(dataset1):
 if __name__ == "__main__":
     dir_path = os.path.dirname(os.path.realpath(__file__))
 
-    file_test_dataset = dir_path +  "/datasets/our_kdd_99/data_raw.csv"
+    file_test_dataset = dir_path +  "/datasets/our_kdd_99/test.csv"
 
     test_dataset = read_data(file_test_dataset)
 
@@ -184,6 +184,7 @@ if __name__ == "__main__":
                 "dst_host_rerror_rate", "dst_host_srv_rerror_rate"
     ]
     test_dataset[num_features] = test_dataset[num_features].astype(float)
+    normalize(test_dataset)
     test_dataset[num_features] = MinMaxScaler().fit_transform(test_dataset[num_features].values)
 
     print(test_dataset.describe())
