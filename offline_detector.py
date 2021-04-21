@@ -169,7 +169,7 @@ def nomial_test(dataset1):
 if __name__ == "__main__":
     dir_path = os.path.dirname(os.path.realpath(__file__))
 
-    file_test_dataset = dir_path +  "/datasets/our_kdd_99/test.csv"
+    file_test_dataset = dir_path +  "/datasets/our_kdd_99/data_raw.csv"
 
     test_dataset = read_data(file_test_dataset)
 
@@ -211,7 +211,7 @@ if __name__ == "__main__":
         #--------------------DBN-----------------------------------
         
         n_inp = [1, 1, 28]
-        hidden_layer_sizes = [500, 500, 500]
+        hidden_layer_sizes = [1000, 1000, 1000]
         n_out = 5
         sigmoid_layers = []
         layers = []
