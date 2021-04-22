@@ -50,8 +50,10 @@ def read_dataset(filename):
     nomial(dataset1, dataset2)    
 
     dataset1[num_features] = dataset1[num_features].astype(float)
+    normalize(dataset1)
     dataset1[num_features] = MinMaxScaler().fit_transform(dataset1[num_features].values)
     dataset2[num_features] = dataset2[num_features].astype(float)
+    normalize(dataset2)
     dataset2[num_features] = MinMaxScaler().fit_transform(dataset2[num_features].values)
     print(dataset1.describe())
 
