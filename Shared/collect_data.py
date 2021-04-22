@@ -6,9 +6,10 @@ import pandas as pd
 from Shared.read_dataset import read_dataset
 
 def collect_dataset():
+    os.system("sudo timeout 5s Shared/kdd99extractor -i 2 >datasets/our_kdd_99/data_raw.csv")
     while(True):
         try:
-            raw_file = pd.read_csv("/home/iot-nexcom/CIB/datasets/our_kdd_99/data_raw.csv", header=None)
+            raw_file = pd.read_csv("datasets/our_kdd_99/data_raw.csv", header=None)
             if (len(raw_file) > 0):
                 break
         except:
@@ -16,4 +17,4 @@ def collect_dataset():
     # # Remove 5 last columns in raw dataset
     # raw_file.drop(raw_file.columns[[-1, -2, -3, -4, -5]], axis=1, inplace=True)
     # raw_file.to_csv("/home/iot-nexcom/CIB/datasets/our_kdd_99/data_raw.csv", index = False, header=None)
-    return(read_dataset("/home/iot-nexcom/CIB/datasets/our_kdd_99/data_raw.csv"))
+    return(read_dataset("datasets/our_kdd_99/data_raw.csv"))

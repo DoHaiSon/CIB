@@ -59,7 +59,7 @@ def publish(client, data):
         print("Failed to send message to topic "  + topic)
     
 if __name__ == "__main__":
-    client = connect_mqtt()
+    # client = connect_mqtt()
     attack_type = ['normal', 'ddos', 'scan_port', 'burst_password', 'MITM']
     #DBN structure
 
@@ -133,7 +133,7 @@ if __name__ == "__main__":
         # Restore and Testing
         #
         
-        ckpt = tf.train.get_checkpoint_state("/home/iot-nexcom/CIB/Model_trained")
+        ckpt = tf.train.get_checkpoint_state("./Model_trained")
         idex = int(ckpt.model_checkpoint_path.split('/')[-1].split('-')[-1])
         
         saver = tf.train.Saver()
@@ -145,17 +145,17 @@ if __name__ == "__main__":
             saver.restore(sess, ckpt.model_checkpoint_path)
             graph = tf.get_default_graph()
             while(True):
-                while(True):
-                    try:
-                        with open ("/home/iot-nexcom/CIB/datasets/our_kdd_99/flag.txt", "r") as logs_flag:
-                            log = []
-                            for line in logs_flag:
-                                log.append(line)
-                            if (log[0] == '1\n'):
-                                break
-                    except:
-                        pass
-                    time.sleep(0.1)
+                # while(True):
+                #     try:
+                #         with open ("/home/iot-nexcom/CIB/datasets/our_kdd_99/flag.txt", "r") as logs_flag:
+                #             log = []
+                #             for line in logs_flag:
+                #                 log.append(line)
+                #             if (log[0] == '1\n'):
+                #                 break
+                #     except:
+                #         pass
+                #     time.sleep(0.1)
                 test_dataset = collect_dataset()
                 pr = sess.run(pred, feed_dict ={x: globals()['test_dataset'].test.segments})
                 prediction=tf.argmax(pr,1)
@@ -163,12 +163,13 @@ if __name__ == "__main__":
                 attack = []
                 for i in range (len(labels_pred)):
                     attack.append(attack_type[labels_pred[i]])
-                publish(client, attack)
+                # publish(client, attack)
+                print(attack)
                 end_time = timeit.default_timer()
                 logging.info("Time {0} minutes".format((end_time- start_time)/ 60.))
-                try:
-                    with open ("/home/iot-nexcom/CIB/datasets/our_kdd_99/flag.txt", "w") as logs_flag:
-                        logs_flag.write("0")
-                        print("Done")
-                except:
-                    pass
+                # try:
+                #     with open ("/home/iot-nexcom/CIB/datasets/our_kdd_99/flag.txt", "w") as logs_flag:
+                #         logs_flag.write("0")
+                #         print("Done")
+                # except:
+                #     pass

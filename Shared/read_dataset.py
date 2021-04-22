@@ -42,6 +42,7 @@ def read_dataset(raw_file):
                 "dst_host_rerror_rate", "dst_host_srv_rerror_rate"
     ]
     test_dataset[num_features] = test_dataset[num_features].astype(float)
+    normalize(test_dataset)
     test_dataset[num_features] = MinMaxScaler().fit_transform(test_dataset[num_features].values)
     test_dataset = read_data_set_test(test_dataset)
     return test_dataset
