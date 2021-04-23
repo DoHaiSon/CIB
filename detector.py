@@ -60,7 +60,7 @@ def publish(client, data):
     
 if __name__ == "__main__":
     # client = connect_mqtt()
-    attack_type = ['normal', 'ddos', 'scan_port', 'burst_password', 'MITM']
+    attack_type = ['normal', 'dos', 'u2r', 'r2l', 'probe']
     #DBN structure
 
     with tf.device('cpu:0'):
@@ -145,31 +145,13 @@ if __name__ == "__main__":
             saver.restore(sess, ckpt.model_checkpoint_path)
             graph = tf.get_default_graph()
             while(True):
-                # while(True):
-                #     try:
-                #         with open ("/home/iot-nexcom/CIB/datasets/our_kdd_99/flag.txt", "r") as logs_flag:
-                #             log = []
-                #             for line in logs_flag:
-                #                 log.append(line)
-                #             if (log[0] == '1\n'):
-                #                 break
-                #     except:
-                #         pass
-                #     time.sleep(0.1)
                 test_dataset = collect_dataset()
                 pr = sess.run(pred, feed_dict ={x: globals()['test_dataset'].test.segments})
                 prediction=tf.argmax(pr,1)
                 labels_pred = prediction.eval(feed_dict={x: globals()['test_dataset'].test.segments}, session=sess)
-                attack = []
-                for i in range (len(labels_pred)):
-                    attack.append(attack_type[labels_pred[i]])
                 # publish(client, attack)
-                print(attack)
+                (unique, counts) = np.unique(labels_pred, return_counts=True)
+                for i in range (len(unique)):
+                    print(attack_type[unique[i]], ": ", counts[i], "packets")
                 end_time = timeit.default_timer()
                 logging.info("Time {0} minutes".format((end_time- start_time)/ 60.))
-                # try:
-                #     with open ("/home/iot-nexcom/CIB/datasets/our_kdd_99/flag.txt", "w") as logs_flag:
-                #         logs_flag.write("0")
-                #         print("Done")
-                # except:
-                #     pass
