@@ -48,7 +48,9 @@ def read_dataset(filename):
     ]    
 
     nomial(dataset1, dataset2)    
-
+    dataset1['label'] = initlabel(dataset1)
+    dataset2['label'] = initlabel(dataset2)
+    
     dataset1[num_features] = dataset1[num_features].astype(float)
     normalize(dataset1)
     dataset1[num_features] = MinMaxScaler().fit_transform(dataset1[num_features].values)
@@ -62,21 +64,21 @@ def read_dataset(filename):
     labels1 = dataset1['label'].copy()
     print(labels1.unique())
 
-    labels1[labels1 == '0'] = 0
-    labels1[labels1 == '1'] = 1
-    labels1[labels1 == '2'] = 2
-    labels1[labels1 == '3'] = 3
-    labels1[labels1 == '4'] = 4
-    dataset1['label'] = labels1
+    labels1[labels1 == 'normal.'] = 0
+    labels1[labels1 == 'dos'] = 1
+    labels1[labels1 == 'u2r'] = 2
+    labels1[labels1 == 'r2l'] = 3
+    labels1[labels1 == 'probe'] = 4
+    dataset1['label'] = labels1 
         
     labels2 = dataset2['label'].copy()
     print(labels2.unique())
 
-    labels2[labels2 == '0'] = 0
-    labels2[labels2 == '1'] = 1
-    labels2[labels2 == '2'] = 2
-    labels2[labels2 == '3'] = 3
-    labels2[labels2 == '4'] = 4
+    labels2[labels2 == 'normal.'] = 0
+    labels2[labels2 == 'dos'] = 1
+    labels2[labels2 == 'u2r'] = 2
+    labels2[labels2 == 'r2l'] = 3
+    labels2[labels2 == 'probe'] = 4
     dataset2['label'] = labels2
         
     train_set = read_data_set(dataset1, dataset2)
@@ -267,6 +269,5 @@ def nomial(dataset1, dataset2):
     for i in range(len(flag_type)):
         flag1[flag1 == flag_type[i]] = i
         flag2[flag2 == flag_type[i]] = i
-        
     dataset1['flag'] = flag1
     dataset2['flag'] = flag2
