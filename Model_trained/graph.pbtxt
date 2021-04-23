@@ -29,7 +29,7 @@ node {
             size: 1
           }
         }
-        string_val: "/home/avitech/tensorflow_datasets/mnist/3.0.1/mnist-train.tfrecord-00000-of-00001"
+        string_val: "/home/ssllap4/tensorflow_datasets/mnist/3.0.1/mnist-train.tfrecord-00000-of-00001"
       }
     }
   }
@@ -44560,7 +44560,7 @@ node {
         dtype: DT_STRING
         tensor_shape {
         }
-        string_val: "_temp_17c7190b2fec45a9abe03003c9db437c/part"
+        string_val: "_temp_3fc98daa24fa49f8875308fd7cd30a25/part"
       }
     }
   }

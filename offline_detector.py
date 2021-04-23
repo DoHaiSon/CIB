@@ -138,6 +138,45 @@ def initlabel(dataset):
     labels = dataset['label'].copy()
     labels[labels == 'ddos'] = 'ddos'
     labels[labels == 'normal'] = 'normal'
+    labels[labels == 'back.'] = 'dos'
+    labels[labels == 'buffer_overflow.'] = 'u2r'
+    labels[labels == 'ftp_write.'] =  'r2l'
+    labels[labels == 'guess_passwd.'] = 'r2l'
+    labels[labels == 'imap.'] = 'r2l'
+    labels[labels == 'ipsweep.'] = 'probe'
+    labels[labels == 'land.'] = 'dos' 
+    labels[labels == 'loadmodule.'] = 'u2r'
+    labels[labels == 'multihop.'] = 'r2l'
+    labels[labels == 'neptune.'] = 'dos'
+    labels[labels == 'nmap.'] = 'probe'
+    labels[labels == 'perl.'] = 'u2r'
+    labels[labels == 'phf.'] =  'r2l'
+    labels[labels == 'pod.'] =  'dos'
+    labels[labels == 'portsweep.'] = 'probe'
+    labels[labels == 'rootkit.'] = 'u2r'
+    labels[labels == 'satan.'] = 'probe'
+    labels[labels == 'smurf.'] = 'dos'
+    labels[labels == 'spy.'] = 'r2l'
+    labels[labels == 'teardrop.'] = 'dos'
+    labels[labels == 'warezclient.'] = 'r2l'
+    labels[labels == 'warezmaster.'] = 'r2l'
+    labels[labels == 'apache2.'] = 'dos'
+    labels[labels == 'mailbomb.'] = 'dos'
+    labels[labels == 'processtable.'] = 'dos'
+    labels[labels == 'udpstorm.'] = 'dos'
+    labels[labels == 'mscan.'] = 'probe'
+    labels[labels == 'saint.'] = 'probe'
+    labels[labels == 'ps.'] = 'u2r'
+    labels[labels == 'sqlattack.'] = 'u2r'
+    labels[labels == 'xterm.'] = 'u2r'
+    labels[labels == 'named.'] = 'r2l'
+    labels[labels == 'sendmail.'] = 'r2l'
+    labels[labels == 'snmpgetattack.'] = 'r2l'
+    labels[labels == 'snmpguess.'] = 'r2l'
+    labels[labels == 'worm.'] = 'r2l'
+    labels[labels == 'xlock.'] = 'r2l'
+    labels[labels == 'xsnoop.'] = 'r2l'
+    labels[labels == 'httptunnel.'] = 'r2l'
     return labels
 
 def nomial_test(dataset1):
@@ -174,7 +213,7 @@ if __name__ == "__main__":
     test_dataset = read_data(file_test_dataset)
 
     nomial_test(test_dataset)
-    print(test_dataset)
+    test_dataset['label'] = initlabel(test_dataset)
     num_features = ["duration", "protocol_type", "service", "flag", "src_bytes", "dst_bytes",
                 "land", "wrong_fragment", "urgent", "count", "srv_count", "serror_rate",
                 "srv_serror_rate", "rerror_rate", "srv_rerror_rate", "same_srv_rate", 
@@ -194,11 +233,11 @@ if __name__ == "__main__":
     labels_test = test_dataset['label'].copy()
     print(labels_test.unique())
 
-    labels_test[labels_test == '0'] = 0
-    labels_test[labels_test == '1'] = 1
-    labels_test[labels_test == '2'] = 2
-    labels_test[labels_test == '3'] = 3
-    labels_test[labels_test == '4'] = 4
+    labels_test[labels_test == 'normal'] = 0
+    labels_test[labels_test == 'dos'] = 1
+    labels_test[labels_test == 'u2r'] = 2
+    labels_test[labels_test == 'r2l'] = 3
+    labels_test[labels_test == 'probe'] = 4
     test_dataset['label'] = labels_test
     test_dataset = read_data_set_test(test_dataset)
 
