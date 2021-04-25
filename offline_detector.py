@@ -137,7 +137,7 @@ def read_data_set_test(dataset1, one_hot = False, dtype = dtypes.float32, reshap
 def initlabel(dataset):
     labels = dataset['label'].copy()
     labels[labels == 'ddos'] = 'ddos'
-    labels[labels == 'normal'] = 'normal'
+    labels[labels == 'normal'] = 'normal.'
     labels[labels == 'back.'] = 'dos'
     labels[labels == 'buffer_overflow.'] = 'u2r'
     labels[labels == 'ftp_write.'] =  'r2l'
@@ -208,7 +208,7 @@ def nomial_test(dataset1):
 if __name__ == "__main__":
     dir_path = os.path.dirname(os.path.realpath(__file__))
 
-    file_test_dataset = dir_path +  "/datasets/our_kdd_99/data_raw.csv"
+    file_test_dataset = dir_path +  "/datasets/our_kdd_99/test.csv"
 
     test_dataset = read_data(file_test_dataset)
 
@@ -223,7 +223,6 @@ if __name__ == "__main__":
                 "dst_host_rerror_rate", "dst_host_srv_rerror_rate"
     ]
     test_dataset[num_features] = test_dataset[num_features].astype(float)
-    normalize(test_dataset)
     test_dataset[num_features] = MinMaxScaler().fit_transform(test_dataset[num_features].values)
 
     print(test_dataset.describe())
@@ -239,6 +238,7 @@ if __name__ == "__main__":
     labels_test[labels_test == 'r2l'] = 3
     labels_test[labels_test == 'probe'] = 4
     test_dataset['label'] = labels_test
+    labels_test = np.array(labels_test, dtype=int)
     test_dataset = read_data_set_test(test_dataset)
 
     #DBN structure
