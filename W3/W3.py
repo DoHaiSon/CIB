@@ -89,7 +89,7 @@ print('Worker 3: parameters specification finished!')
 
 if __name__ == "__main__":
     dir_path = os.path.dirname(os.path.realpath(__file__))[:-3]
-    filename = dir_path + "/datasets/our_kdd_99/train_W3.csv"
+    filename = dir_path + "/datasets/kdd/train_W3.csv"
     
     train_set_x2 = read_dataset(filename)
     #-------------------------------------------------------------

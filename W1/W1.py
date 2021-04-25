@@ -86,7 +86,7 @@ print('Worker 1: parameters specification finished!')
 #--------------------------------------------
 
 if __name__ == "__main__":
-    filename = dir_path + "/datasets/our_kdd_99/train_W1.csv"
+    filename = dir_path + "/datasets/kdd/train_W1.csv"
     
     train_set_x0 = read_dataset(filename)
     #-------------------------------------------------------------

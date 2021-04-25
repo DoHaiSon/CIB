@@ -50,14 +50,11 @@ def read_dataset(filename):
     nomial(dataset1, dataset2)    
     dataset1['label'] = initlabel(dataset1)
     dataset2['label'] = initlabel(dataset2)
-    
+
     dataset1[num_features] = dataset1[num_features].astype(float)
-    normalize(dataset1)
     dataset1[num_features] = MinMaxScaler().fit_transform(dataset1[num_features].values)
     dataset2[num_features] = dataset2[num_features].astype(float)
-    normalize(dataset2)
     dataset2[num_features] = MinMaxScaler().fit_transform(dataset2[num_features].values)
-    print(dataset1.describe())
 
     print(dataset1['label'].value_counts()) 
 
@@ -174,6 +171,7 @@ def read_data(filename):
 def normalize(dataset):
     mu = np.mean(dataset, axis = 0)
     sigma = np.std(dataset, axis = 0)
+    print(dataset)
     return (dataset - mu)/sigma
 
 def read_data_set(dataset1, dataset2, one_hot = False, dtype = dtypes.float32, reshape = True):
@@ -196,8 +194,8 @@ def read_data_set(dataset1, dataset2, one_hot = False, dtype = dtypes.float32, r
 
 def initlabel(dataset):
     labels = dataset['label'].copy()
-    labels[labels == 'ddos'] = 'ddos'
-    labels[labels == 'normal'] = 'normal'
+    labels[labels == 'ddos'] = 'dos'
+    labels[labels == 'normal'] = 'normal.'
     labels[labels == 'back.'] = 'dos'
     labels[labels == 'buffer_overflow.'] = 'u2r'
     labels[labels == 'ftp_write.'] =  'r2l'
