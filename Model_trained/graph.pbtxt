@@ -29,7 +29,7 @@ node {
             size: 1
           }
         }
-        string_val: "/home/ssllap4/tensorflow_datasets/mnist/3.0.1/mnist-train.tfrecord-00000-of-00001"
+        string_val: "/home/avitech/tensorflow_datasets/mnist/3.0.1/mnist-train.tfrecord-00000-of-00001"
       }
     }
   }
@@ -44560,7 +44560,7 @@ node {
         dtype: DT_STRING
         tensor_shape {
         }
-        string_val: "_temp_6462d03336214a6aa32c88c6dfe3af41/part"
+        string_val: "_temp_9e3e6b473ace442aa668141233d0a3c5/part"
       }
     }
   }
@@ -48810,12 +48810,12 @@ library {
     node_def {
       name: "Reshape"
       op: "Reshape"
-      input: "ParseSingleExample/ParseExample/ParseExampleV2:dense_values:1"
+      input: "ParseSingleExample/ParseExample/ParseExampleV2:dense_values:0"
       input: "Reshape/shape:output:0"
       attr {
         key: "T"
         value {
-          type: DT_INT64
+          type: DT_STRING
         }
       }
       attr {
@@ -48876,12 +48876,12 @@ library {
     node_def {
       name: "Reshape_1"
       op: "Reshape"
-      input: "ParseSingleExample/ParseExample/ParseExampleV2:dense_values:0"
+      input: "ParseSingleExample/ParseExample/ParseExampleV2:dense_values:1"
       input: "Reshape_1/shape:output:0"
       attr {
         key: "T"
         value {
-          type: DT_STRING
+          type: DT_INT64
         }
       }
       attr {
@@ -48972,7 +48972,7 @@ library {
     node_def {
       name: "decode_image/Substr"
       op: "Substr"
-      input: "Reshape_1:output:0"
+      input: "Reshape:output:0"
       input: "decode_image/Substr/pos:output:0"
       input: "decode_image/Substr/len:output:0"
       attr {
@@ -49069,7 +49069,7 @@ library {
     node_def {
       name: "decode_image/is_jpeg/Substr"
       op: "Substr"
-      input: "Reshape_1:output:0"
+      input: "Reshape:output:0"
       input: "decode_image/is_jpeg/Substr/pos:output:0"
       input: "decode_image/is_jpeg/Substr/len:output:0"
       attr {
@@ -49164,7 +49164,7 @@ library {
       name: "decode_image/cond_jpeg"
       op: "If"
       input: "decode_image/is_jpeg/Equal:z:0"
-      input: "Reshape_1:output:0"
+      input: "Reshape:output:0"
       input: "decode_image/Substr:output:0"
       attr {
         key: "Tcond"
@@ -49310,7 +49310,7 @@ library {
     node_def {
       name: "Identity_1"
       op: "Identity"
-      input: "Reshape:output:0"
+      input: "Reshape_1:output:0"
       input: "^decode_image/cond_jpeg"
       attr {
         key: "T"
@@ -49669,7 +49669,7 @@ library {
     signature {
       name: "decode_image_cond_jpeg_false_55"
       input_arg {
-        name: "decode_image_cond_jpeg_is_png_substr_reshape_1"
+        name: "decode_image_cond_jpeg_is_png_substr_reshape"
         type: DT_STRING
       }
       input_arg {
@@ -49752,7 +49752,7 @@ library {
     node_def {
       name: "decode_image/cond_jpeg/is_png/Substr"
       op: "Substr"
-      input: "decode_image_cond_jpeg_is_png_substr_reshape_1"
+      input: "decode_image_cond_jpeg_is_png_substr_reshape"
       input: "decode_image/cond_jpeg/is_png/Substr/pos:output:0"
       input: "decode_image/cond_jpeg/is_png/Substr/len:output:0"
       attr {
@@ -49847,7 +49847,7 @@ library {
       name: "decode_image/cond_jpeg/cond_png"
       op: "If"
       input: "decode_image/cond_jpeg/is_png/Equal:z:0"
-      input: "decode_image_cond_jpeg_is_png_substr_reshape_1"
+      input: "decode_image_cond_jpeg_is_png_substr_reshape"
       input: "decode_image_cond_jpeg_cond_png_decode_image_substr"
       attr {
         key: "Tcond"
@@ -51651,7 +51651,7 @@ library {
     signature {
       name: "decode_image_cond_jpeg_cond_png_cond_gif_false_85"
       input_arg {
-        name: "decode_image_cond_jpeg_cond_png_cond_gif_substr_reshape_1"
+        name: "decode_image_cond_jpeg_cond_png_cond_gif_substr_reshape"
         type: DT_STRING
       }
       output_arg {
@@ -51731,7 +51731,7 @@ library {
     node_def {
       name: "decode_image/cond_jpeg/cond_png/cond_gif/Substr"
       op: "Substr"
-      input: "decode_image_cond_jpeg_cond_png_cond_gif_substr_reshape_1"
+      input: "decode_image_cond_jpeg_cond_png_cond_gif_substr_reshape"
       input: "decode_image/cond_jpeg/cond_png/cond_gif/Substr/pos:output:0"
       input: "decode_image/cond_jpeg/cond_png/cond_gif/Substr/len:output:0"
       attr {
@@ -52114,7 +52114,7 @@ library {
     node_def {
       name: "decode_image/cond_jpeg/cond_png/cond_gif/DecodeBmp"
       op: "DecodeBmp"
-      input: "decode_image_cond_jpeg_cond_png_cond_gif_substr_reshape_1"
+      input: "decode_image_cond_jpeg_cond_png_cond_gif_substr_reshape"
       input: "^decode_image/cond_jpeg/cond_png/cond_gif/Assert/Assert"
       input: "^decode_image/cond_jpeg/cond_png/cond_gif/Assert_1/Assert"
       attr {
@@ -52584,7 +52584,7 @@ library {
     signature {
       name: "decode_image_cond_jpeg_cond_png_cond_gif_true_84"
       input_arg {
-        name: "decode_image_cond_jpeg_cond_png_cond_gif_decodegif_reshape_1"
+        name: "decode_image_cond_jpeg_cond_png_cond_gif_decodegif_reshape"
         type: DT_STRING
       }
       output_arg {
@@ -52903,7 +52903,7 @@ library {
     node_def {
       name: "decode_image/cond_jpeg/cond_png/cond_gif/DecodeGif"
       op: "DecodeGif"
-      input: "decode_image_cond_jpeg_cond_png_cond_gif_decodegif_reshape_1"
+      input: "decode_image_cond_jpeg_cond_png_cond_gif_decodegif_reshape"
       input: "^decode_image/cond_jpeg/cond_png/cond_gif/Assert/Assert"
       attr {
         key: "_output_shapes"
@@ -53036,7 +53036,7 @@ library {
     signature {
       name: "decode_image_cond_jpeg_true_54"
       input_arg {
-        name: "decode_image_cond_jpeg_decodejpeg_reshape_1"
+        name: "decode_image_cond_jpeg_decodejpeg_reshape"
         type: DT_STRING
       }
       input_arg {
@@ -53245,7 +53245,7 @@ library {
     node_def {
       name: "decode_image/cond_jpeg/DecodeJpeg"
       op: "DecodeJpeg"
-      input: "decode_image_cond_jpeg_decodejpeg_reshape_1"
+      input: "decode_image_cond_jpeg_decodejpeg_reshape"
       input: "^decode_image/cond_jpeg/Assert/Assert"
       attr {
         key: "_output_shapes"
@@ -53421,7 +53421,7 @@ library {
     signature {
       name: "decode_image_cond_jpeg_cond_png_false_74"
       input_arg {
-        name: "decode_image_cond_jpeg_cond_png_cond_gif_reshape_1"
+        name: "decode_image_cond_jpeg_cond_png_cond_gif_reshape"
         type: DT_STRING
       }
       input_arg {
@@ -53502,7 +53502,7 @@ library {
       name: "decode_image/cond_jpeg/cond_png/cond_gif"
       op: "If"
       input: "decode_image/cond_jpeg/cond_png/is_gif:z:0"
-      input: "decode_image_cond_jpeg_cond_png_cond_gif_reshape_1"
+      input: "decode_image_cond_jpeg_cond_png_cond_gif_reshape"
       attr {
         key: "Tcond"
         value {
@@ -53678,7 +53678,7 @@ library {
     signature {
       name: "decode_image_cond_jpeg_cond_png_true_73"
       input_arg {
-        name: "decode_image_cond_jpeg_cond_png_decodepng_reshape_1"
+        name: "decode_image_cond_jpeg_cond_png_decodepng_reshape"
         type: DT_STRING
       }
       input_arg {
@@ -53693,7 +53693,7 @@ library {
     node_def {
       name: "decode_image/cond_jpeg/cond_png/DecodePng"
       op: "DecodePng"
-      input: "decode_image_cond_jpeg_cond_png_decodepng_reshape_1"
+      input: "decode_image_cond_jpeg_cond_png_decodepng_reshape"
       attr {
         key: "_output_shapes"
         value {
