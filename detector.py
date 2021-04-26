@@ -60,7 +60,7 @@ def publish(client, data):
     
 if __name__ == "__main__":
     client = connect_mqtt()
-    attack_type = ['normal', 'ddos', 'scan_port', 'burst_password', 'MITM']
+    attack_type = ['normal', 'dos', 'u2r', 'r2l', 'probe']
     #DBN structure
 
     with tf.device('cpu:0'):
@@ -160,9 +160,10 @@ if __name__ == "__main__":
                 pr = sess.run(pred, feed_dict ={x: globals()['test_dataset'].test.segments})
                 prediction=tf.argmax(pr,1)
                 labels_pred = prediction.eval(feed_dict={x: globals()['test_dataset'].test.segments}, session=sess)
+                (unique, counts) = np.unique(labels_pred, return_counts=True)
                 attack = []
-                for i in range (len(labels_pred)):
-                    attack.append(attack_type[labels_pred[i]])
+                for i in range (len(unique)):
+                    attack.append(str(attack_type[unique[i]]) +" : " + str(counts[i]) + " packets")
                 publish(client, attack)
                 end_time = timeit.default_timer()
                 logging.info("Time {0} minutes".format((end_time- start_time)/ 60.))
