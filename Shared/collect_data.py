@@ -6,7 +6,7 @@ import pandas as pd
 from Shared.read_dataset import read_dataset
 
 def collect_dataset():
-    os.system("sudo timeout 5s Shared/kdd99extractor -i 2 >datasets/our_kdd_99/data_raw.csv")
+    os.system("sudo timeout 3s Shared/kdd99extractor -i 2 -e >datasets/our_kdd_99/data_raw.csv")
     while(True):
         try:
             raw_file = pd.read_csv("datasets/our_kdd_99/data_raw.csv", header=None)

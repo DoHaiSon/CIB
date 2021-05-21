@@ -39,10 +39,9 @@ def read_dataset(raw_file):
                 "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
                 "dst_host_same_srv_rate", "dst_host_diff_srv_rate", "dst_host_same_src_port_rate",
                 "dst_host_srv_diff_host_rate", "dst_host_serror_rate", "dst_host_srv_serror_rate", 
-                "dst_host_rerror_rate", "dst_host_srv_rerror_rate"
+                "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "source_ip", "dst_ip"
     ]
     test_dataset[num_features] = test_dataset[num_features].astype(float)
-    # normalize(test_dataset)
     test_dataset[num_features] = MinMaxScaler().fit_transform(test_dataset[num_features].values)
     test_dataset = read_data_set_test(test_dataset)
     return test_dataset
@@ -108,14 +107,14 @@ def windows(data, size):
 
 def segment_signal(data, window_size = 1):
 
-    segments = np.empty((0, window_size, 28))
+    segments = np.empty((0, window_size, 30))
     num_features = ["duration", "protocol_type", "service", "flag", "src_bytes", "dst_bytes",
                 "land", "wrong_fragment", "urgent", "count", "srv_count", "serror_rate",
                 "srv_serror_rate", "rerror_rate", "srv_rerror_rate", "same_srv_rate", 
                 "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
                 "dst_host_same_srv_rate", "dst_host_diff_srv_rate", "dst_host_same_src_port_rate",
                 "dst_host_srv_diff_host_rate", "dst_host_serror_rate", "dst_host_srv_serror_rate", 
-                "dst_host_rerror_rate", "dst_host_srv_rerror_rate"
+                "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "source_ip", "dst_ip"
     ]
     segments = np.asarray(data[num_features].copy())
 
@@ -128,8 +127,10 @@ def read_data(filename):
                 "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
                 "dst_host_same_srv_rate", "dst_host_diff_srv_rate", "dst_host_same_src_port_rate",
                 "dst_host_srv_diff_host_rate", "dst_host_serror_rate", "dst_host_srv_serror_rate", 
-                "dst_host_rerror_rate", "dst_host_srv_rerror_rate"]
+                "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "source_ip", "source_port", "dst_ip",
+                "dst_port", "timestamp"]
     dataset = pd.read_csv(filename, header = None, names = col_names)
+    dataset.drop(['source_port', 'dst_port', 'dst_port'], axis=1, inplace=True)
     return dataset      
 
 def normalize(dataset):
@@ -141,7 +142,7 @@ def normalize(dataset):
 def read_data_set_test(dataset, one_hot = False, dtype = dtypes.float32, reshape = True):
 
     segments = segment_signal(dataset)
-    train_x = segments.reshape(len(segments), 1, 1 ,28)
+    train_x = segments.reshape(len(segments), 1, 1, 30)
     test = Dataset(train_x, None, dtype = dtype , reshape = reshape)
     return base.Datasets(train = None, validation=None, test = test)
 
@@ -167,5 +168,18 @@ def nomial_test(dataset1):
     flag_type = ["SF", "S0", "S1", "S2", "S3", "REJ", "RSTOS0", "RSTO", "RSTR", "SH", "RSTRH", "SHR", "OTH"]
     for i in range(len(flag_type)):
         flag1[flag1 == flag_type[i]] = i
-        
     dataset1['flag'] = flag1
+
+    source_ip1 = np.array(dataset1['source_ip'].copy())
+    # Local LAN = 0 ; otherwise = 1
+    for i in range (len(source_ip1)):
+        source_ip1[i] = "192.168.2." not in source_ip1[i]
+        source_ip1[i] = source_ip1[i] * 1
+    dataset1['source_ip'] = source_ip1
+
+    dst_ip1 = np.array(dataset1['dst_ip'].copy())
+    # Local LAN = 0 ; otherwise = 1
+    for i in range (len(dst_ip1)):
+        dst_ip1[i] = "192.168.2." not in dst_ip1[i]
+        dst_ip1[i] = dst_ip1[i] * 1
+    dataset1['dst_ip'] = dst_ip1
