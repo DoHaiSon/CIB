@@ -234,8 +234,8 @@ def nomial(dataset1, dataset2):
     dataset1['flag'] = flag1
     dataset2['flag'] = flag2
 
-    source_ip1 = dataset1['source_ip'].copy()
-    source_ip2 = dataset2['source_ip'].copy()
+    source_ip1 = np.array(dataset1['source_ip'].copy())
+    source_ip2 = np.array(dataset2['source_ip'].copy())
     # Local LAN = 0 ; otherwise = 1
     for i in range (len(source_ip1)):
         source_ip1[i] = "192.168.2." not in source_ip1[i]
@@ -246,8 +246,8 @@ def nomial(dataset1, dataset2):
     dataset1['source_ip'] = source_ip1
     dataset2['source_ip'] = source_ip2
 
-    dst_ip1 = dataset1['dst_ip'].copy()
-    dst_ip2 = dataset2['dst_ip'].copy()
+    dst_ip1 = np.array(dataset1['dst_ip'].copy())
+    dst_ip2 = np.array(dataset2['dst_ip'].copy())
     # Local LAN = 0 ; otherwise = 1
     for i in range (len(dst_ip1)):
         dst_ip1[i] = "192.168.2." not in dst_ip1[i]
