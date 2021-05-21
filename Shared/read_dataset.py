@@ -202,6 +202,9 @@ def initlabel(dataset):
     return labels
 
 def nomial(dataset1, dataset2):
+
+    crypto_ips = np.array(pd.read_csv("Shared/crypto_ips.csv", header = None))
+
     protocol1 = dataset1['protocol_type'].copy()
     protocol2 = dataset2['protocol_type'].copy()
     protocol_type = ["tcp", "udp", "icmp"]
@@ -236,11 +239,17 @@ def nomial(dataset1, dataset2):
 
     source_ip1 = np.array(dataset1['source_ip'].copy())
     source_ip2 = np.array(dataset2['source_ip'].copy())
-    # Local LAN = 0 ; otherwise = 1
+    # Local LAN = 0 ; cryptojacking = 2; otherwise = 1
     for i in range (len(source_ip1)):
+        if source_ip1[i] in crypto_ips:
+            source_ip1[i] = 2
+            continue
         source_ip1[i] = "192.168.2." not in source_ip1[i]
         source_ip1[i] = source_ip1[i] * 1
     for i in range (len(source_ip2)):
+        if source_ip2[i] in crypto_ips:
+            source_ip2[i] = 2
+            continue
         source_ip2[i] = "192.168.2." not in source_ip2[i]
         source_ip2[i] = source_ip2[i] * 1
     dataset1['source_ip'] = source_ip1
@@ -248,11 +257,17 @@ def nomial(dataset1, dataset2):
 
     dst_ip1 = np.array(dataset1['dst_ip'].copy())
     dst_ip2 = np.array(dataset2['dst_ip'].copy())
-    # Local LAN = 0 ; otherwise = 1
+    # Local LAN = 0 ; cryptojacking = 2; otherwise = 1
     for i in range (len(dst_ip1)):
+        if dst_ip1[i] in crypto_ips:
+            dst_ip1[i] = 2
+            continue
         dst_ip1[i] = "192.168.2." not in dst_ip1[i]
         dst_ip1[i] = dst_ip1[i] * 1
     for i in range (len(dst_ip2)):
+        if dst_ip2[i] in crypto_ips:
+            dst_ip2[i] = 2
+            continue
         dst_ip2[i] = "192.168.2." not in dst_ip2[i]
         dst_ip2[i] = dst_ip2[i] * 1
     dataset1['dst_ip'] = dst_ip1
