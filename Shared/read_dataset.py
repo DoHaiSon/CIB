@@ -147,6 +147,9 @@ def read_data_set_test(dataset, one_hot = False, dtype = dtypes.float32, reshape
     return base.Datasets(train = None, validation=None, test = test)
 
 def nomial_test(dataset1):
+
+    crypto_ips = np.array(pd.read_csv("Shared/crypto_ips.csv", header = None))
+
     protocol1 = dataset1['protocol_type'].copy()
     protocol_type = ["tcp", "udp", "icmp"]
     for i in range(len(protocol_type)):
@@ -173,6 +176,9 @@ def nomial_test(dataset1):
     source_ip1 = np.array(dataset1['source_ip'].copy())
     # Local LAN = 0 ; otherwise = 1
     for i in range (len(source_ip1)):
+        if source_ip1[i] in crypto_ips:
+            source_ip1[i] = 2
+            continue
         source_ip1[i] = "192.168.2." not in source_ip1[i]
         source_ip1[i] = source_ip1[i] * 1
     dataset1['source_ip'] = source_ip1
@@ -180,6 +186,9 @@ def nomial_test(dataset1):
     dst_ip1 = np.array(dataset1['dst_ip'].copy())
     # Local LAN = 0 ; otherwise = 1
     for i in range (len(dst_ip1)):
+        if dst_ip1[i] in crypto_ips:
+            dst_ip1[i] = 2
+            continue
         dst_ip1[i] = "192.168.2." not in dst_ip1[i]
         dst_ip1[i] = dst_ip1[i] * 1
     dataset1['dst_ip'] = dst_ip1
