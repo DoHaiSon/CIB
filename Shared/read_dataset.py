@@ -36,7 +36,7 @@ Datasets = collections.namedtuple('Datasets', ['train', 'validation', 'test'])
 
 def read_dataset(filename):
     dataset_raw = read_data(filename)
-    dataset1, dataset2 = train_test_split(dataset_raw, train_size=0.7, random_state=2)
+    dataset1, dataset2 = train_test_split(dataset_raw, train_size=0.6, random_state=2)
 
     num_features = ["duration", "protocol_type", "service", "flag", "src_bytes", "dst_bytes",
                 "land", "wrong_fragment", "urgent", "count", "srv_count", "serror_rate",
@@ -44,7 +44,7 @@ def read_dataset(filename):
                 "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
                 "dst_host_same_srv_rate", "dst_host_diff_srv_rate", "dst_host_same_src_port_rate",
                 "dst_host_srv_diff_host_rate", "dst_host_serror_rate", "dst_host_srv_serror_rate", 
-                "dst_host_rerror_rate", "dst_host_srv_rerror_rate"
+                "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "source_ip", "dst_ip"
     ]    
 
     nomial(dataset1, dataset2)    
@@ -61,21 +61,21 @@ def read_dataset(filename):
     labels1 = dataset1['label'].copy()
     print(labels1.unique())
 
-    labels1[labels1 == 'normal.'] = 0
+    labels1[labels1 == 'normal'] = 0
     labels1[labels1 == 'dos'] = 1
-    labels1[labels1 == 'u2r'] = 2
-    labels1[labels1 == 'r2l'] = 3
-    labels1[labels1 == 'probe'] = 4
+    labels1[labels1 == 'brute_pass'] = 2
+    labels1[labels1 == 'mirai'] = 3
+    labels1[labels1 == 'crypto'] = 4
     dataset1['label'] = labels1 
         
     labels2 = dataset2['label'].copy()
     print(labels2.unique())
 
-    labels2[labels2 == 'normal.'] = 0
+    labels2[labels2 == 'normal'] = 0
     labels2[labels2 == 'dos'] = 1
-    labels2[labels2 == 'u2r'] = 2
-    labels2[labels2 == 'r2l'] = 3
-    labels2[labels2 == 'probe'] = 4
+    labels2[labels2 == 'brute_pass'] = 2
+    labels2[labels2 == 'mirai'] = 3
+    labels2[labels2 == 'crypto'] = 4
     dataset2['label'] = labels2
         
     train_set = read_data_set(dataset1, dataset2)
@@ -142,7 +142,7 @@ def windows(data, size):
 
 def segment_signal(data, window_size = 1):
 
-    segments = np.empty((0, window_size, 28))
+    segments = np.empty((0, window_size, 30))
     labels = np.empty((0))
     num_features = ["duration", "protocol_type", "service", "flag", "src_bytes", "dst_bytes",
                 "land", "wrong_fragment", "urgent", "count", "srv_count", "serror_rate",
@@ -150,7 +150,7 @@ def segment_signal(data, window_size = 1):
                 "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
                 "dst_host_same_srv_rate", "dst_host_diff_srv_rate", "dst_host_same_src_port_rate",
                 "dst_host_srv_diff_host_rate", "dst_host_serror_rate", "dst_host_srv_serror_rate", 
-                "dst_host_rerror_rate", "dst_host_srv_rerror_rate"
+                "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "source_ip", "dst_ip"
     ]
     segments = np.asarray(data[num_features].copy())
     labels = data["label"]
@@ -164,7 +164,7 @@ def read_data(filename):
                 "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
                 "dst_host_same_srv_rate", "dst_host_diff_srv_rate", "dst_host_same_src_port_rate",
                 "dst_host_srv_diff_host_rate", "dst_host_serror_rate", "dst_host_srv_serror_rate", 
-                "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "label"]
+                "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "source_ip", "dst_ip", "label"]
     dataset = pd.read_csv(filename, header = None, names = col_names)
     return dataset      
 
@@ -182,10 +182,10 @@ def read_data_set(dataset1, dataset2, one_hot = False, dtype = dtypes.float32, r
     labels = np.asarray(pd.get_dummies(labels1.append([labels2])), dtype = np.int8)
     labels1 = labels[:len(labels1)]
     labels2 = labels[len(labels1):]
-    train_x = segments1.reshape(len(segments1), 1, 1 ,28)
+    train_x = segments1.reshape(len(segments1), 1, 1, 30)
     train_y = labels1
 
-    test_x = segments2.reshape(len(segments2), 1, 1 ,28)
+    test_x = segments2.reshape(len(segments2), 1, 1, 30)
     test_y = labels2
         
     train = Dataset(train_x, train_y, dtype = dtype , reshape = reshape)
@@ -195,46 +195,10 @@ def read_data_set(dataset1, dataset2, one_hot = False, dtype = dtypes.float32, r
 def initlabel(dataset):
     labels = dataset['label'].copy()
     labels[labels == 'ddos'] = 'dos'
-    labels[labels == 'normal'] = 'normal.'
-    labels[labels == 'back.'] = 'dos'
-    labels[labels == 'buffer_overflow.'] = 'u2r'
-    labels[labels == 'ftp_write.'] =  'r2l'
-    labels[labels == 'guess_passwd.'] = 'r2l'
-    labels[labels == 'imap.'] = 'r2l'
-    labels[labels == 'ipsweep.'] = 'probe'
-    labels[labels == 'land.'] = 'dos' 
-    labels[labels == 'loadmodule.'] = 'u2r'
-    labels[labels == 'multihop.'] = 'r2l'
-    labels[labels == 'neptune.'] = 'dos'
-    labels[labels == 'nmap.'] = 'probe'
-    labels[labels == 'perl.'] = 'u2r'
-    labels[labels == 'phf.'] =  'r2l'
-    labels[labels == 'pod.'] =  'dos'
-    labels[labels == 'portsweep.'] = 'probe'
-    labels[labels == 'rootkit.'] = 'u2r'
-    labels[labels == 'satan.'] = 'probe'
-    labels[labels == 'smurf.'] = 'dos'
-    labels[labels == 'spy.'] = 'r2l'
-    labels[labels == 'teardrop.'] = 'dos'
-    labels[labels == 'warezclient.'] = 'r2l'
-    labels[labels == 'warezmaster.'] = 'r2l'
-    labels[labels == 'apache2.'] = 'dos'
-    labels[labels == 'mailbomb.'] = 'dos'
-    labels[labels == 'processtable.'] = 'dos'
-    labels[labels == 'udpstorm.'] = 'dos'
-    labels[labels == 'mscan.'] = 'probe'
-    labels[labels == 'saint.'] = 'probe'
-    labels[labels == 'ps.'] = 'u2r'
-    labels[labels == 'sqlattack.'] = 'u2r'
-    labels[labels == 'xterm.'] = 'u2r'
-    labels[labels == 'named.'] = 'r2l'
-    labels[labels == 'sendmail.'] = 'r2l'
-    labels[labels == 'snmpgetattack.'] = 'r2l'
-    labels[labels == 'snmpguess.'] = 'r2l'
-    labels[labels == 'worm.'] = 'r2l'
-    labels[labels == 'xlock.'] = 'r2l'
-    labels[labels == 'xsnoop.'] = 'r2l'
-    labels[labels == 'httptunnel.'] = 'r2l'
+    labels[labels == 'normal'] = 'normal'
+    labels[labels == 'mirai'] = 'mirai'
+    labels[labels == 'brute_pass'] = 'brute_pass'
+    labels[labels == 'crypto'] = 'crypto'
     return labels
 
 def nomial(dataset1, dataset2):
@@ -269,3 +233,27 @@ def nomial(dataset1, dataset2):
         flag2[flag2 == flag_type[i]] = i
     dataset1['flag'] = flag1
     dataset2['flag'] = flag2
+
+    source_ip1 = dataset1['source_ip'].copy()
+    source_ip2 = dataset2['source_ip'].copy()
+    # Local LAN = 0 ; otherwise = 1
+    for i in range (len(source_ip1)):
+        source_ip1[i] = "192.168.2." not in source_ip1[i]
+        source_ip1[i] = source_ip1[i] * 1
+    for i in range (len(source_ip2)):
+        source_ip2[i] = "192.168.2." not in source_ip2[i]
+        source_ip2[i] = source_ip2[i] * 1
+    dataset1['source_ip'] = source_ip1
+    dataset2['source_ip'] = source_ip2
+
+    dst_ip1 = dataset1['dst_ip'].copy()
+    dst_ip2 = dataset2['dst_ip'].copy()
+    # Local LAN = 0 ; otherwise = 1
+    for i in range (len(dst_ip1)):
+        dst_ip1[i] = "192.168.2." not in dst_ip1[i]
+        dst_ip1[i] = dst_ip1[i] * 1
+    for i in range (len(dst_ip2)):
+        dst_ip2[i] = "192.168.2." not in dst_ip2[i]
+        dst_ip2[i] = dst_ip2[i] * 1
+    dataset1['dst_ip'] = dst_ip1
+    dataset2['dst_ip'] = dst_ip2

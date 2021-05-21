@@ -86,7 +86,7 @@ print('Worker 1: parameters specification finished!')
 #--------------------------------------------
 
 if __name__ == "__main__":
-    filename = dir_path + "/datasets/kdd/train_W1.csv"
+    filename = dir_path + "/datasets/our_kdd_99/data/train_W1_final.csv"
     
     train_set_x0 = read_dataset(filename)
     #-------------------------------------------------------------
@@ -107,7 +107,7 @@ if __name__ == "__main__":
             global_step = tf1.train.get_or_create_global_step()
             #--------------------DBN-----------------------------------
             
-            n_inp = [1, 1, 28]
+            n_inp = [1, 1, 30]
             hidden_layer_sizes = [1000, 1000, 1000]
             n_out = 5
 
