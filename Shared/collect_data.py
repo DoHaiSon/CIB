@@ -13,9 +13,6 @@ def collect_dataset():
                 break
         except:
             pass
-    # # Remove 5 last columns in raw dataset
-    # raw_file.drop(raw_file.columns[[-1, -2, -3, -4, -5]], axis=1, inplace=True)
-    # raw_file.to_csv("/home/iot-nexcom/CIB/datasets/our_kdd_99/data_raw.csv", index = False, header=None)
     return(read_dataset(raw_file))
 
 def read_data(filename):
@@ -25,6 +22,8 @@ def read_data(filename):
                 "diff_srv_rate", "srv_diff_host_rate", "dst_host_count", "dst_host_srv_count",
                 "dst_host_same_srv_rate", "dst_host_diff_srv_rate", "dst_host_same_src_port_rate",
                 "dst_host_srv_diff_host_rate", "dst_host_serror_rate", "dst_host_srv_serror_rate", 
-                "dst_host_rerror_rate", "dst_host_srv_rerror_rate"]
+                "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "source_ip", "source_port", "dst_ip",
+		"dst_port", "timestamp"]
     dataset = pd.read_csv(filename, header = None, names = col_names)
+    dataset.drop(['source_port', 'dst_port', 'timestamp'], axis=1, inplace=True)   
     return dataset      

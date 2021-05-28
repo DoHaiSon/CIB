@@ -52,15 +52,15 @@ def publish(client, data):
     msg = str(data)
     result = client.publish(topic, msg)
     # result: [0, 1]
-    status = result[0]
-    if status == 0:
-        print("Send " + msg + " to topic " + topic)
-    else:
-        print("Failed to send message to topic "  + topic)
+    #status = result[0]
+    #if status == 0:
+    #    print("Send " + msg + " to topic " + topic)
+    #else:
+    #    print("Failed to send message to topic "  + topic)
     
 if __name__ == "__main__":
     client = connect_mqtt()
-    attack_type = ['normal', 'dos', 'u2r', 'r2l', 'probe']
+    attack_type = ['normal', 'dos', 'brute_password', 'botnet', 'crypto']
     #DBN structure
 
     with tf.device('cpu:0'):
@@ -69,8 +69,8 @@ if __name__ == "__main__":
         global_step = tf.train.get_or_create_global_step()
         #--------------------DBN-----------------------------------
         
-        n_inp = [1, 1, 28]
-        hidden_layer_sizes = [1000, 1000, 1000]
+        n_inp = [1, 1, 30]
+        hidden_layer_sizes = [2000, 2000, 2000]
         n_out = 5
         sigmoid_layers = []
         layers = []
@@ -137,9 +137,9 @@ if __name__ == "__main__":
         idex = int(ckpt.model_checkpoint_path.split('/')[-1].split('-')[-1])
         
         saver = tf.train.Saver()
-        print("Loaded model")
+        #print("Loaded model")
         n_test = 0
-        start_time = timeit.default_timer()
+        #start_time = timeit.default_timer()
         with tf.Session() as sess:
             global_step = tf.train.get_or_create_global_step()
             saver.restore(sess, ckpt.model_checkpoint_path)
@@ -165,8 +165,8 @@ if __name__ == "__main__":
                 for i in range (len(unique)):
                     attack.append(str(attack_type[unique[i]]) +" : " + str(counts[i]) + " packets")
                 publish(client, attack)
-                end_time = timeit.default_timer()
-                logging.info("Time {0} minutes".format((end_time- start_time)/ 60.))
+                #end_time = timeit.default_timer()
+                #logging.info("Time {0} minutes".format((end_time- start_time)/ 60.))
                 try:
                     with open ("/home/iot-nexcom/CIB/datasets/our_kdd_99/flag.txt", "w") as logs_flag:
                         logs_flag.write("0")
