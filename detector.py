@@ -61,6 +61,7 @@ def publish(client, data):
 if __name__ == "__main__":
     # client = connect_mqtt()
     attack_type = ['normal', 'dos', 'brute_pass', 'mirai', 'crypto']
+    # attack_type = ['normal', 'dos', 'brute_pass', 'mirai']
     #DBN structure
 
     with tf.device('cpu:0'):
@@ -70,7 +71,7 @@ if __name__ == "__main__":
         #--------------------DBN-----------------------------------
         
         n_inp = [1, 1, 30]
-        hidden_layer_sizes = [1000, 1000, 1000]
+        hidden_layer_sizes = [2000, 2000, 2000]
         n_out = 5
         sigmoid_layers = []
         layers = []

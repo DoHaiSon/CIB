@@ -130,7 +130,7 @@ def read_data(filename):
                 "dst_host_rerror_rate", "dst_host_srv_rerror_rate", "source_ip", "source_port", "dst_ip",
                 "dst_port", "timestamp"]
     dataset = pd.read_csv(filename, header = None, names = col_names)
-    dataset.drop(['source_port', 'dst_port', 'dst_port'], axis=1, inplace=True)
+    dataset.drop(['source_port', 'dst_port', 'timestamp'], axis=1, inplace=True)
     return dataset      
 
 def normalize(dataset):
@@ -178,6 +178,7 @@ def nomial_test(dataset1):
     for i in range (len(source_ip1)):
         if source_ip1[i] in crypto_ips:
             source_ip1[i] = 2
+            print("Crypto IP detected.")
             continue
         source_ip1[i] = "192.168.2." not in source_ip1[i]
         source_ip1[i] = source_ip1[i] * 1
@@ -188,6 +189,7 @@ def nomial_test(dataset1):
     for i in range (len(dst_ip1)):
         if dst_ip1[i] in crypto_ips:
             dst_ip1[i] = 2
+            print("Crypto IP detected.")
             continue
         dst_ip1[i] = "192.168.2." not in dst_ip1[i]
         dst_ip1[i] = dst_ip1[i] * 1
