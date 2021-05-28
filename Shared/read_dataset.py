@@ -202,7 +202,6 @@ def initlabel(dataset):
     return labels
 
 def nomial(dataset1, dataset2):
-
     crypto_ips = np.array(pd.read_csv("../Shared/crypto_ips.csv", header = None))
 
     protocol1 = dataset1['protocol_type'].copy()

@@ -89,7 +89,7 @@ print('Worker 3: parameters specification finished!')
 
 if __name__ == "__main__":
     dir_path = os.path.dirname(os.path.realpath(__file__))[:-3]
-    filename = dir_path + "/datasets/kdd/train_W3.csv"
+    filename = dir_path + "/datasets/our_kdd_99/data/train_W3_final.csv"
     
     train_set_x2 = read_dataset(filename)
     #-------------------------------------------------------------
@@ -110,8 +110,8 @@ if __name__ == "__main__":
             global_step = tf1.train.get_or_create_global_step()
             #--------------------DBN-----------------------------------
             
-            n_inp = [1, 1, 28]
-            hidden_layer_sizes = [1000, 1000, 1000]
+            n_inp = [1, 1, 30]
+            hidden_layer_sizes = [2000, 2000, 2000]
             n_out = 5
 
             sigmoid_layers = []
